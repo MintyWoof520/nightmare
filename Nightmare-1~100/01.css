@@ -1,35 +1,22 @@
-nav#landmarks {
-    display: none;
+/* 1. 设置 HTML 根元素的基准大小 (16px 作为标准) */
+html {
+    font-size: 16px;
 }
 
-nav#page-list {
-    display: none;
+/* 2. 针对不同屏幕宽度调整基准大小 */
+/* 当屏幕宽于 400px 的手机上，基础字号稍微放大一点 */
+@media screen and (max-width: 400px) {
+    html { font-size: 14px; } /* 小屏手机稍微缩小一点，防止字太大换行不好看 */
 }
 
-ol {
-    list-style-type: none;
-}
-
-/* 确保封面不受影响 */
-.cover,
-.cover img {
-    padding-left: 0;
-    padding-right: 0;
-}
-
-.cover {
-    text-align: center;
-    page-break-after: always;
-}
-
-.cover img {
-    max-width: 100%;
-    height: auto;
+/* 针对平板/电脑，基础字号放大 */
+@media screen and (min-width: 768px) {
+    html { font-size: 18px; }
 }
 
 /* 背景 */
 body {
-    background-image: url(../image/78.png);
+    background-image: url(../Images/78.png);
     background-size: 100% auto;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -39,7 +26,6 @@ body {
 h1,
 h2,
 h3 {
-    font-family: "宋体", "SimSun", "DK-SONGTI", "STSong", serif;
     text-align: center;
     margin: 1em 0 1em 0;
     page-break-after: avoid;
@@ -50,6 +36,10 @@ h3 {
     text-shadow: 0 0 10px #ff7171;
 }
 
+.bubble{
+    font-size: 1rem;
+}
+
 /* 旁白 */
 .narration {
     background-image: linear-gradient(to bottom right,
@@ -58,10 +48,11 @@ h3 {
     color: #fff2ce;
     font-weight: bold;
     /* 加粗 */
+    font-size: 0.8rem;
     backdrop-filter: blur(4px) brightness(1.5);
     border-radius: 6px;
     width: fit-content;
-    padding: 6px 10px;
+    padding: 0.6rem 0.8rem;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -76,7 +67,7 @@ h3 {
     border-radius: 8px;
     /* 变圆 */
     border-top-right-radius: 0;
-    padding: 6px 10px;
+    padding: 0.6rem 0.8rem;
     position: relative;
     color: #caffeb;
     text-align: left;
@@ -99,7 +90,7 @@ h3 {
             #ffffff88);
     border-radius: 8px;
     border-top-left-radius: 0;
-    padding: 6px 10px;
+    padding: 0.6rem 0.8rem;
     color: #d6fff8;
     font-family: "speak2";
     /* 字体 */
