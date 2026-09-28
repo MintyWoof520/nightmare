@@ -1,0 +1,54 @@
+
+@font-face {
+    font-family: name;
+    src: url(../Fonts/AaMeiSong-2.ttf);
+}
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../Images/80.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media (min-width: 768px) {
+    body {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url(../Images/81.jpg);
+    }
+}
+a{
+    text-decoration: none;
+    color: rgb(156, 235, 208);
+    font-weight: bold;
+    font-family: "name";
+    font-size: 1.4rem;
+    transition: color 0.5s;
+}
+.wang{
+    color: aquamarine;
+    transition: transform 0.5s, color 0.5s;
+}
+.wang:hover{
+    transform: scale(1.2);
+    color: red;
+}
+a:hover{
+    color: red;
+}
+.miao{
+    background-image: linear-gradient(
+        to bottom,
+        #0000009f,
+        #aaaaaaa8,
+        #0000009f,
+        #aaaaaaa8,
+        #0000009f
+    );
+    display: flex;
+    width: fit-content;
+    border-radius: 18px;
+}
