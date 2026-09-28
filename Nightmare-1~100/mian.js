@@ -1,68 +1,68 @@
 // =========================================
-// 点击屏幕逐段显示逻辑（修复版）
+// 极简点击显示逻辑（手机/电脑全兼容版）
 // =========================================
 
-// 1. 获取所有需要显示的段落
+// 1. 获取所有故事段落
 const items = document.querySelectorAll('.story-item');
-
-let currentIndex = 0; // 记录当前显示到第几段
+let currentIndex = 0; // 当前显示到第几段
 
 // 2. 核心函数：显示下一段
 function revealNextItem() {
+    // 如果还有没显示的内容
     if (currentIndex < items.length) {
+        // 显示当前段落
         items[currentIndex].classList.add('show');
         currentIndex++;
         
-        // 显示后，自动平滑滚动到页面最底部（推荐用这个，比 scrollIntoView 体验更好）
+        // 自动平滑滚动到页面最底部，确保新内容被看到
         window.scrollTo({
             top: document.body.scrollHeight,
             behavior: 'smooth'
         });
-    } else {
-        // 全部显示完了，可以在这里显示“下一章”按钮，或者什么都不做
-        console.log("本章已全部显示完毕");
     }
 }
 
-// 3. 监听鼠标/手指“点击”事件
-document.body.addEventListener('click', function(e) {
-    // 【安全过滤1】如果点击的是链接（比如底部的下一章按钮），不要触发展开剧情
-    if (e.target.tagName === 'A' || e.target.closest('a')) {
-        return;
-    }
-    // 【安全过滤2】如果点击的是按钮，也不要触发
-    if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
+// 3. 定义一个变量，用来防止手机端“点一下触发两次”的问题
+let isProcessing = false;
+
+// 4. 监听整个屏幕的点击（鼠标 + 触摸）
+function handleScreenClick(e) {
+    // 防抖锁：如果正在处理中，直接忽略
+    if (isProcessing) return;
+    
+    // 排除点击链接或按钮的情况（比如底部的“下一章”）
+    if (e.target.tagName === 'A' || e.target.closest('a') || e.target.tagName === 'BUTTON') {
         return;
     }
 
+    // 加锁，防止 300ms 内连续触发
+    isProcessing = true;
     revealNextItem();
-});
 
-// 4. 监听键盘事件（方便在电脑上用空格或回车）
+    // 200毫秒后解锁，让下一次点击可以生效
+    setTimeout(() => {
+        isProcessing = false;
+    }, 200);
+}
+
+// 5. 绑定事件监听
+// 鼠标点击（电脑端）
+document.addEventListener('click', handleScreenClick);
+
+// 触摸结束（手机端，取代 click，避免延迟和双重触发）
+document.addEventListener('touchend', function(e) {
+    // 阻止默认的 click 事件触发，防止弹两次
+    e.preventDefault(); 
+    handleScreenClick(e);
+}, { passive: false }); 
+
+// 6. 键盘按键（空格/回车）作为备选
 document.addEventListener('keydown', function(e) {
     if (e.key === ' ' || e.key === 'Enter') {
-        e.preventDefault(); // 防止按空格时页面跟着滚动
+        e.preventDefault();
+        if (isProcessing) return;
+        isProcessing = true;
         revealNextItem();
+        setTimeout(() => { isProcessing = false; }, 200);
     }
 });
-
-// 5. 解决移动端滑动误触
-// 记录手指按下的 Y 坐标
-let touchStartY = 0;
-
-document.body.addEventListener('touchstart', function(e) {
-    // 只记录第一个手指的坐标
-    if (e.touches.length === 1) {
-        touchStartY = e.touches[0].clientY;
-    }
-}, { passive: true });
-
-document.body.addEventListener('touchend', function(e) {
-    // 如果手指滑动的距离超过 10px，说明用户是在“滚动页面”，而不是“点击屏幕”
-    // 此时我们直接返回，不触发显示
-    const touchEndY = e.changedTouches[0].clientY;
-    if (Math.abs(touchEndY - touchStartY) > 10) {
-        return;
-    }
-    // 如果滑动距离很小，说明是在“点按”，逻辑交给上面的 click 事件处理
-}, { passive: true });
