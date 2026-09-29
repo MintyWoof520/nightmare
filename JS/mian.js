@@ -7,17 +7,33 @@ const items = document.querySelectorAll('.story-item');
 let currentIndex = 0; // 当前显示到第几段
 let isProcessing = false; // 防抖锁，防止一次点击触发两次
 
-// 2. 核心函数：显示下一段
+// 核心函数：显示下一段
 function revealNextItem() {
     if (currentIndex < items.length) {
+        // 1. 显示当前段落
         items[currentIndex].classList.add('show');
         currentIndex++;
         
-        // 自动平滑滚动到页面最底部
+        // 2. 自动平滑滚动到页面最底部
         window.scrollTo({
             top: document.body.scrollHeight,
             behavior: 'smooth'
         });
+        
+        // 3. 【新增】如果所有内容都显示完了，浮现导航栏
+        if (currentIndex === items.length) {
+            const nav = document.getElementById('chapter-nav');
+            if (nav) {
+                nav.classList.add('show');
+                // 导航栏出现后，平滑滚动到底部，让读者看到导航
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: document.body.scrollHeight,
+                        behavior: 'smooth'
+                    });
+                }, 300); // 延迟一点点滚动，等导航栏的动画做完
+            }
+        }
     }
 }
 
@@ -99,3 +115,48 @@ document.addEventListener('keydown', function(e) {
         setTimeout(() => { isProcessing = false; }, 200);
     }
 });
+
+// =========================================
+// 一键展开全文功能
+// =========================================
+
+// 获取一键展开按钮
+const expandBtn = document.getElementById('expand-btn');
+
+if (expandBtn) {
+    expandBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // 阻止冒泡，防止误触发下一句
+        
+        // 1. 先让所有隐藏的段落显示出来
+        items.forEach(item => {
+            item.classList.add('show');
+        });
+        
+        // 更新索引
+        currentIndex = items.length;
+        
+        // 按钮状态更新
+        expandBtn.classList.add('done');
+        expandBtn.innerHTML = '✅';
+        
+        const nav = document.getElementById('chapter-nav');
+        if (nav) nav.classList.add('show');
+
+        // =========================================
+        // 【核心修复】强制滚动到页面最底部
+        // =========================================
+        // 因为 CSS 里 .story-item.show 有 0.6s 的过渡动画，
+        // 如果马上滚动，页面高度还没完全长开，滚动会失效。
+        // 我们加一个 650ms（比动画稍长一点）的延迟，确保所有内容都撑开后再滚动。
+                // =========================================
+        // 【核心修改】展开后固定滚动到页面最顶部
+        // =========================================
+        setTimeout(() => {
+            // 滚动到坐标 0,0，也就是页面最顶端
+            window.scrollTo({
+                top: 0,             // 目标位置：Y轴为0（最顶部）
+                behavior: 'smooth'  // 平滑滚动过去，体验更好
+            });
+        }, 650); 
+    });
+}
