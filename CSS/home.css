@@ -3,6 +3,10 @@
     font-family: name;
     src: url(../Fonts/AaMeiSong-2.ttf);
 }
+@font-face {
+    font-family: speak1;
+    src: url(../Fonts/FontsLab-FuGuShouJi-2.ttf);
+}
 body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(../Images/80.jpg);
@@ -11,6 +15,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -26,11 +31,11 @@ a{
     font-weight: bold;
     font-family: "name";
     font-size: 1.4rem;
-    transition: color 0.5s;
+    transition: color 0.4s;
 }
 .wang{
     color: aquamarine;
-    transition: transform 0.5s, color 0.5s;
+    transition: transform 0.3s, color 0.3s;
 }
 .wang:hover{
     transform: scale(1.2);
@@ -48,21 +53,72 @@ a:hover{
         #aaaaaaa8,
         #0000009f
     );
+    background-size: 100% 200%;
+    animation: nav 2s linear infinite;
     display: flex;
     width: fit-content;
     border-radius: 18px;
+    position: relative;
+    top: 10px;
+    box-shadow: 0 0 5px 4px #ffffffab;
+    padding: 0 18px;
+}
+@keyframes nav {
+    0% {
+        background-position: 50% 0%;
+    }
+
+    100% {
+        background-position: 50% 100%;
+    }
+}
+.pic{
+    display: flex;
+    justify-content: center;
 }
 .feng{
     width: 180px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px #ffffffa6;
 }
 .my1{
-    background-color: rgba(0, 0, 0, 0.466);
+    background-color: rgba(0, 0, 0, 0.548);
+    width: fit-content;
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    box-shadow: 0 0 5px 4px #ffffffa6;
+}
+/* 标题 */
+h1,
+h2,
+h3 {
+    text-align: center;
+    margin: 1em 0 1em 0;
+    page-break-after: avoid;
+    text-indent: 0;
+    color: #ff8080;
+    font-family: "name";
+    font-size: 3.5rem;
+    text-shadow: 0 0 10px #ff0000;
 }
 p{
-    color: aliceblue;
+    color: rgb(255, 195, 195);
+    font-family: "speak1";
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    text-shadow: 0 0 8px #ff0000;
+}
+summary{
+    color: aquamarine;
     font-family: "name";
-    font-size: 1.2rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    transition: transform 0.3s, color 0.3s;
+}
+summary:hover{
+    transform: scale(1.1);
+    color: red;
 }

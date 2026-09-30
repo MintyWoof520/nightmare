@@ -69,21 +69,21 @@
         }
         /* 宋命题人物名字 */
         .msg-nameE {
-            color: rgb(255, 228, 139);
+            color: rgb(158, 227, 255);
             font-family: "name"; /* 字体引用 */
             font-size: 90%;
             font-style: italic;
             font-weight: bold;
-            text-shadow: 0 0 8px #fbff01;
+            text-shadow: 0 0 8px #0184ff;
         }
         /* 贝采薇人物名字 */
         .msg-nameF {
-            color: rgb(255, 228, 139);
+            color: rgb(255, 188, 241);
             font-family: "name"; /* 字体引用 */
             font-size: 90%;
             font-style: italic;
             font-weight: bold;
-            text-shadow: 0 0 8px #fbff01;
+            text-shadow: 0 0 8px #ff01c8;
         }
         
 
