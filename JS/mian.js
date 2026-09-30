@@ -74,22 +74,27 @@ document.addEventListener('touchstart', function(e) {
 
 // 手指离开时判断是点击还是滑动
 document.addEventListener('touchend', function(e) {
+    // =========================================
+    // 【新增】如果是点击“按钮”或“链接”，直接放行，不拦截
+    // =========================================
+    // 判断点击的目标是不是按钮或链接
+    if (e.target.closest('#expand-btn') || e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('.chapter-nav')) {
+        return; // 直接返回，不要执行下面的 preventDefault，让 click 事件正常触发
+    }
+
     if (e.changedTouches.length === 1) {
         const touchEndY = e.changedTouches[0].clientY;
         const touchEndX = e.changedTouches[0].clientX;
         
-        // 计算滑动的距离
         const deltaY = Math.abs(touchEndY - touchStartY);
         const deltaX = Math.abs(touchEndX - touchStartX);
         
-        // 如果滑动距离超过 10px，说明用户是在滚屏，直接返回，不触发剧情
         if (deltaY > 10 || deltaX > 10) {
-            return;
+            return; // 滑动，不触发剧情
         }
     }
     
     // 如果滑动距离很小，说明是“点按”，触发剧情
-    // preventDefault 是为了阻止手机浏览器在 touchend 后还会触发一次 click 事件，防止弹出两次
     e.preventDefault(); 
     handleScreenClick(e);
 }, { passive: false });
