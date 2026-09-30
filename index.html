@@ -7,6 +7,7 @@
     <title>噩梦时代</title>
     <link rel="stylesheet" href="CSS/home.css">
     <link rel="icon" href="Images/momokarun.ico">
+    <link rel="stylesheet" href="CSS/music.css">
 </head>
 
 <body>
@@ -25,7 +26,10 @@
                 哎，我更喜欢一下一下点屏幕，沉浸感更好
             </p>
             <p>
-                这个页面之后我在调整，先这样吧
+                我在底部加了一个音乐播放器，门尼的歌太好听了你知道吗
+            </p>
+            <p>
+                持续更新中~
             </p>
         </div>
     </div>
@@ -226,6 +230,53 @@
              </details>
         </ul>
     </nav>
-</body>
+    <div class="player">
+    <div class="header">
+      <div class="cover">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z" />
+        </svg>
+      </div>
+      <div class="info">
+        <div class="title" id="songTitle">未选择歌曲</div>
+        <div class="artist" id="songArtist">—</div>
+      </div>
+    </div>
 
+    <div class="time"><span id="curTime">0:00</span><span id="totTime">0:00</span></div>
+    <div class="bar" id="progressBar">
+      <div class="fill" id="progressFill"></div>
+    </div>
+
+    <div class="lyrics" id="lyricsBox">
+      <div class="lyric-line" style="opacity:.4;">♪ 暂无歌词 ♪</div>
+    </div>
+
+    <div class="controls">
+      <button class="btn" id="prevBtn" title="上一首">
+        <svg viewBox="0 0 24 24">
+          <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+        </svg>
+      </button>
+      <button class="btn play" id="playBtn">
+        <svg id="playIcon" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+        <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none">
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+        </svg>
+      </button>
+      <button class="btn" id="nextBtn" title="下一首">
+        <svg viewBox="0 0 24 24">
+          <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="playlist" id="playlist"></div>
+
+    <audio id="audio" preload="metadata" crossorigin="anonymous"></audio>
+  </div>
+</body>
+<script src="JS/music.js"></script>
 </html>
