@@ -88,6 +88,18 @@ a:hover{
     box-shadow: 0 0 5px 4px #ffffffa6;
     width: 250px;
 }
+.my2{
+    background-color: rgba(255, 255, 255, 0.37);
+    border-radius: 10px;
+    backdrop-filter: blur(3px);
+    box-shadow: 2px 2px 5px #800000b6;
+    position: relative;
+    top: 20px;
+}
+.wenzi2{
+    color: rgb(90, 228, 198);
+    text-shadow: 0 0 8px #000;
+}
 /* 标题 */
 h1,
 h2,
