@@ -1,251 +1,258 @@
 /* ===== 整体容器：小尺寸 ===== */
-    .player {
-      width: 250px;
-      /* ← 想更小就改这里 */
-      background-image: linear-gradient(to bottom,#000000a1, #000000d2),
-      url(../Images/MomOkarun.jpg);
-      background-size: cover;
-      background-position: center;
-      /* backdrop-filter: blur(12px); */
-      border-radius: 22px;
-      padding: 16px;
-      box-shadow: 0 20px 32px -12px rgba(0, 0, 0, .8), inset 0 1px 2px rgba(255, 255, 255, .08);
-      border: 1px solid rgba(255, 255, 255, 0.466);
-      position: relative;
-      top: 50px;
-      box-shadow: 0 0 2px 2px #804ae481;
-    }
+.player {
+  width: 250px;
+  /* ← 想更小就改这里 */
+  background-image: linear-gradient(to bottom, #000000a1, #000000d2),
+    url(../Images/MomOkarun.jpg);
+  background-size: cover;
+  background-position: center;
+  /* backdrop-filter: blur(12px); */
+  border-radius: 22px;
+  padding: 16px;
+  box-shadow: 0 20px 32px -12px rgba(0, 0, 0, .8), inset 0 1px 2px rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, 0.466);
+  position: relative;
+  top: 50px;
+  box-shadow: 0 0 2px 2px #804ae481;
+  -webkit-tap-highlight-color: transparent;
+}
 
-    /* 封面 + 信息 */
-    .header {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      margin-bottom: 12px;
-    }
+body {
+  overscroll-behavior: none;
+}
 
-    .cover {
-      width: 52px;
-      height: 52px;
-      border-radius: 18px;
-      flex-shrink: 0;
-      background-image: url(../Images/menni.jpg);
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid rgba(255, 255, 255, .08);
-    }
+/* 封面 + 信息 */
+.header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
 
-    .cover svg {
-      width: 26px;
-      height: 26px;
-      fill: rgba(220, 230, 255, 0);
-    }
+.cover {
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  flex-shrink: 0;
+  background-image: url(../Images/menni.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, .08);
+}
 
-    .info {
-      flex: 1;
-      min-width: 0;
-    }
+.cover svg {
+  width: 26px;
+  height: 26px;
+  fill: rgba(220, 230, 255, 0);
+}
 
-    .title {
-      font-size: .95rem;
-      font-weight: 700;
-      color: #f0f4ff;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+.info {
+  flex: 1;
+  min-width: 0;
+}
 
-    .artist {
-      font-size: .75rem;
-      color: #9aa9c4;
-      margin-top: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+.title {
+  font-size: .95rem;
+  font-weight: 700;
+  color: #f0f4ff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-    /* 进度条 */
-    .time {
-      display: flex;
-      justify-content: space-between;
-      font-size: .65rem;
-      color: #95a6c9;
-      margin-bottom: 4px;
-    }
+.artist {
+  font-size: .75rem;
+  color: #9aa9c4;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-    .bar {
-      height: 4px;
-      background: rgba(255, 255, 255, .08);
-      border-radius: 8px;
-      cursor: pointer;
-    }
+/* 进度条 */
+.time {
+  display: flex;
+  justify-content: space-between;
+  font-size: .65rem;
+  color: #95a6c9;
+  margin-bottom: 4px;
+}
 
-    .bar:hover {
-      height: 6px;
-    }
+.bar {
+  height: 4px;
+  background: rgba(255, 255, 255, .08);
+  border-radius: 8px;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+}
 
-    .fill {
-      width: 0%;
-      height: 100%;
-      border-radius: 8px;
-      background: linear-gradient(90deg, #7f9cf5, #b794f4);
-      box-shadow: 0 0 8px #7f9cf5;
-    }
+.bar:hover {
+  height: 6px;
+}
 
-    /* 歌词框：矮一些 */
-    .lyrics {
-      position: relative;
-      /* ← 关键：让 offsetTop 相对它计算 */
-      height: 90px;
-      /* ← 歌词区高度 */
-      overflow-y: auto;
-      scroll-behavior: smooth;
-      background: rgba(32, 54, 121, 0.24);
-      backdrop-filter: blur(4px);
-      border-radius: 14px;
-      padding: 8px 6px;
-      border: 1px solid rgba(255, 255, 255, 0.178);
-      margin: 10px 0;
-      box-shadow: inset 0 4px 8px rgba(0, 0, 0, .5);
-      scrollbar-width: thin;
-      scrollbar-color: #3e4b6b #161c2eb0;
-    }
+.fill {
+  width: 0%;
+  height: 100%;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #7f9cf5, #b794f4);
+  box-shadow: 0 0 8px #7f9cf5;
+}
 
-    .lyrics::-webkit-scrollbar {
-      width: 4px;
-    }
+/* 歌词框：矮一些 */
+.lyrics {
+  position: relative;
+  /* ← 关键：让 offsetTop 相对它计算 */
+  height: 90px;
+  /* ← 歌词区高度 */
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  background: rgba(32, 54, 121, 0.24);
+  backdrop-filter: blur(4px);
+  border-radius: 14px;
+  padding: 8px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.178);
+  margin: 10px 0;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, .5);
+  scrollbar-width: thin;
+  scrollbar-color: #3e4b6b #161c2eb0;
+}
 
-    .lyrics::-webkit-scrollbar-thumb {
-      background: #3e4b6b;
-      border-radius: 10px;
-    }
+.lyrics::-webkit-scrollbar {
+  width: 4px;
+}
 
-    .lyric-line {
-      font-size: .78rem;
-      color: #8b9bc2;
-      padding: 4px 8px;
-      border-radius: 20px;
-      text-align: center;
-      opacity: .6;
-      transition: all .2s;
-      cursor: pointer;
-      line-height: 1.35;
-    }
+.lyrics::-webkit-scrollbar-thumb {
+  background: #3e4b6b;
+  border-radius: 10px;
+}
 
-    .lyric-line.active {
-      color: #fff;
-      background: rgba(127, 156, 245, .15);
-      font-weight: 600;
-      opacity: 1;
-      text-shadow: 0 0 10px #7f9cf5;
-    }
+.lyric-line {
+  font-size: .78rem;
+  color: #8b9bc2;
+  padding: 4px 8px;
+  border-radius: 20px;
+  text-align: center;
+  opacity: .6;
+  transition: all .2s;
+  cursor: pointer;
+  line-height: 1.35;
+}
 
-    /* 按钮：小一圈 */
-    .controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      margin-top: 10px;
-    }
+.lyric-line.active {
+  color: #fff;
+  background: rgba(127, 156, 245, .15);
+  font-weight: 600;
+  opacity: 1;
+  text-shadow: 0 0 10px #7f9cf5;
+}
 
-    .btn {
-      background: rgba(255, 255, 255, .06);
-      border: 1px solid rgba(255, 255, 255, .08);
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      color: #d6e2ff;
-      transition: all .15s;
-    }
+/* 按钮：小一圈 */
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
 
-    .btn svg {
-      width: 15px;
-      height: 15px;
-      fill: currentColor;
-    }
+.btn {
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .08);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #d6e2ff;
+  transition: all .15s;
+}
 
-    .btn:hover {
-      background: rgba(127, 156, 245, .25);
-      color: #fff;
-    }
+.btn svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+}
 
-    .btn.play {
-      width: 42px;
-      height: 42px;
-      background: linear-gradient(145deg, #2b3b5c, #1d263b);
-    }
+.btn:hover {
+  background: rgba(127, 156, 245, .25);
+  color: #fff;
+}
 
-    .btn.play svg {
-      width: 18px;
-      height: 18px;
-    }
+.btn.play {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(145deg, #2b3b5c, #1d263b);
+}
 
-    /* 播放列表：紧凑 */
-    .playlist {
-      margin-top: 10px;
-      max-height: 70px;
-      overflow-y: auto;
-      background: rgba(12, 16, 28, .6);
-      border-radius: 10px;
-      padding: 4px;
-      border: 1px solid rgba(255, 255, 255, .05);
-      scrollbar-width: thin;
-      scrollbar-color: #3e4b6b #161c2e;
-    }
+.btn.play svg {
+  width: 18px;
+  height: 18px;
+}
 
-    .playlist::-webkit-scrollbar {
-      width: 4px;
-    }
+/* 播放列表：紧凑 */
+.playlist {
+  margin-top: 10px;
+  max-height: 70px;
+  overflow-y: auto;
+  background: rgba(12, 16, 28, .6);
+  border-radius: 10px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, .05);
+  scrollbar-width: thin;
+  scrollbar-color: #3e4b6b #161c2e;
+}
 
-    .playlist::-webkit-scrollbar-thumb {
-      background: #3e4b6b;
-      border-radius: 10px;
-    }
+.playlist::-webkit-scrollbar {
+  width: 4px;
+}
 
-    .playlist-item {
-      padding: 5px 8px;
-      border-radius: 6px;
-      color: #9aa9c4;
-      font-size: .72rem;
-      cursor: pointer;
-      transition: all .15s;
-      display: flex;
-      justify-content: space-between;
-      gap: 6px;
-    }
+.playlist::-webkit-scrollbar-thumb {
+  background: #3e4b6b;
+  border-radius: 10px;
+}
 
-    .playlist-item:hover {
-      background: rgba(127, 156, 245, .12);
-      color: #d6e2ff;
-    }
+.playlist-item {
+  padding: 5px 8px;
+  border-radius: 6px;
+  color: #9aa9c4;
+  font-size: .72rem;
+  cursor: pointer;
+  transition: all .15s;
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+}
 
-    .playlist-item.active {
-      background: rgba(127, 156, 245, .2);
-      color: #fff;
-      font-weight: 600;
-    }
+.playlist-item:hover {
+  background: rgba(127, 156, 245, .12);
+  color: #d6e2ff;
+}
 
-    .playlist-item span:first-child {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+.playlist-item.active {
+  background: rgba(127, 156, 245, .2);
+  color: #fff;
+  font-weight: 600;
+}
 
-    .playlist-item .dur {
-      font-size: .65rem;
-      opacity: .6;
-      flex-shrink: 0;
-    }
+.playlist-item span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
-    audio {
-      display: none;
-    }
+.playlist-item .dur {
+  font-size: .65rem;
+  opacity: .6;
+  flex-shrink: 0;
+}
+
+audio {
+  display: none;
+}
