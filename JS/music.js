@@ -44,21 +44,18 @@ const playlistEl = document.getElementById('playlist');
 
 /* ============ 状态 ============ */
 let currentIndex = 0;
-let lyrics = [];          // [{time: 秒, text: "歌词"}]
-let lyricEls = [];        // 对应的 DOM 元素
+let lyrics = [];
+let lyricEls = [];
 let activeLyricIdx = -1;
-let isDragging = false;   // 进度条是否正在拖动
+let isDragging = false;   // 移动端拖动标志
 
 /* ============ LRC 解析 ============ */
 function parseLRC(text) {
   const result = [];
-  // 支持 [mm:ss]、[mm:ss.xx]、[mm:ss.xxx]
   const timeReg = /\[(\d{1,2}):(\d{1,2})(?:[.:](\d{1,3}))?\]/g;
-
   for (const raw of text.split('\n')) {
     const line = raw.trim();
     if (!line) continue;
-
     const times = [];
     let m;
     timeReg.lastIndex = 0;
@@ -67,16 +64,14 @@ function parseLRC(text) {
       times.push(parseInt(m[1], 10) * 60 + parseInt(m[2], 10) + ms / 1000);
     }
     if (!times.length) continue;
-
     const content = line.replace(timeReg, '').trim();
     if (!content) continue;
-
     times.forEach(t => result.push({ time: t, text: content }));
   }
   return result.sort((a, b) => a.time - b.time);
 }
 
-/* ============ 加载歌词（支持内嵌文本或 .lrc 路径）============ */
+/* ============ 加载歌词 ============ */
 async function loadLyrics(source) {
   if (!source) return [];
   if (source.includes('\n')) return parseLRC(source);
@@ -107,13 +102,12 @@ function renderLyrics(data) {
     div.className = 'lyric-line';
     div.textContent = item.text;
 
-    // ✅ 用 pointerup，阻止冒泡到进度条，且只在 metadata 加载后跳转
-    div.addEventListener('pointerup', (e) => {
-      e.stopPropagation();
-      e.preventDefault();
+    // ✅ 用 click，简单可靠。移动端 click 也能用（有 300ms 延迟但可接受）
+    div.addEventListener('click', (e) => {
+      e.stopPropagation();               // 防止冒泡
+      if (isDragging) return;            // 拖动进度条时忽略
       if (audio.readyState >= 1 && audio.duration) {
         audio.currentTime = item.time;
-        // 保持当前播放/暂停状态，不强制 play
       }
     });
 
@@ -124,7 +118,7 @@ function renderLyrics(data) {
   setActiveLyric(0);
 }
 
-/* ============ 高亮 + 滚动到中央（修复版）============ */
+/* ============ 高亮 + 滚动 ============ */
 function setActiveLyric(index) {
   if (index === activeLyricIdx) return;
   if (activeLyricIdx >= 0 && lyricEls[activeLyricIdx]) {
@@ -133,14 +127,13 @@ function setActiveLyric(index) {
   if (index >= 0 && index < lyricEls.length) {
     const el = lyricEls[index];
     el.classList.add('active');
-    // .lyrics 是 position:relative，offsetTop 相对它计算
     const targetTop = el.offsetTop - (lyricsBox.clientHeight - el.offsetHeight) / 2;
     lyricsBox.scrollTo({ top: targetTop, behavior: 'smooth' });
   }
   activeLyricIdx = index;
 }
 
-/* ============ 根据时间找歌词索引 ============ */
+/* ============ 歌词索引 ============ */
 function findLyricIndex(time) {
   let idx = -1;
   for (let i = 0; i < lyrics.length; i++) {
@@ -170,7 +163,6 @@ async function loadSong(index, autoPlay = false) {
     el.classList.toggle('active', i === currentIndex);
   });
 
-  // 清空旧歌词状态，防止点击残留
   lyricEls = [];
   activeLyricIdx = -1;
 
@@ -183,7 +175,7 @@ async function loadSong(index, autoPlay = false) {
   progressFill.style.width = '0%';
   curTimeEl.textContent = '0:00';
 
-  if (autoPlay) audio.play().catch(e => console.log('自动播放被阻止:', e));
+  if (autoPlay) audio.play().catch(e => console.log(e));
 }
 
 /* ============ 播放/暂停 ============ */
@@ -207,53 +199,62 @@ function updateProgress() {
   progressFill.style.width = dur ? (cur / dur * 100) + '%' : '0%';
 }
 
-/* ============ 渲染播放列表 ============ */
+/* ============ 播放列表 ============ */
 function renderPlaylist() {
   playlistEl.innerHTML = '';
   songs.forEach((s, i) => {
     const div = document.createElement('div');
     div.className = 'playlist-item';
     div.innerHTML = `<span>${i + 1}. ${s.title}</span><span class="dur">${s.artist}</span>`;
-    div.addEventListener('click', () => loadSong(i, true));
+    div.addEventListener('click', () => {
+      if (isDragging) return;
+      loadSong(i, true);
+    });
     playlistEl.appendChild(div);
   });
 }
 
 /* ========================================================
-   ✅ 进度条：点击 + 拖动（鼠标 & 触摸统一用 pointer 事件）
+   ✅ 进度条：桌面用 click，移动端用 touch —— 分开处理，互不干扰
    ======================================================== */
-function seekTo(clientX) {
+
+// 纯计算，不掺任何事件处理
+function seekToClientX(clientX) {
   if (!audio.duration) return;
   const rect = progressBar.getBoundingClientRect();
   const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
   audio.currentTime = ratio * audio.duration;
-  // 立即更新 UI，不等 timeupdate
+  // 立即更新 UI
   progressFill.style.width = (ratio * 100) + '%';
   curTimeEl.textContent = fmt(ratio * audio.duration);
 }
 
-progressBar.addEventListener('pointerdown', (e) => {
+/* ----- 桌面端：click ----- */
+progressBar.addEventListener('click', (e) => {
+  if (isDragging) return;     // 移动端刚拖完，忽略这次 click
+  seekToClientX(e.clientX);
+});
+
+/* ----- 移动端：touch ----- */
+progressBar.addEventListener('touchstart', (e) => {
   if (!audio.duration) return;
   isDragging = true;
-  // 捕获指针，滑出进度条范围也能继续响应
-  try { progressBar.setPointerCapture(e.pointerId); } catch (err) { }
-  seekTo(e.clientX);
-  e.preventDefault();
-});
+  seekToClientX(e.touches[0].clientX);
+  // ⚠️ 注意：这里不 preventDefault，由 CSS touch-action: none 阻止滚动
+}, { passive: true });
 
-progressBar.addEventListener('pointermove', (e) => {
+progressBar.addEventListener('touchmove', (e) => {
   if (!isDragging) return;
-  seekTo(e.clientX);
-  e.preventDefault();
+  seekToClientX(e.touches[0].clientX);
+}, { passive: true });
+
+progressBar.addEventListener('touchend', () => {
+  // 延迟解除，等 click 幽灵事件过去
+  setTimeout(() => { isDragging = false; }, 150);
 });
 
-progressBar.addEventListener('pointerup', (e) => {
-  isDragging = false;
-  try { progressBar.releasePointerCapture(e.pointerId); } catch (err) { }
-});
-
-progressBar.addEventListener('pointercancel', () => {
-  isDragging = false;
+progressBar.addEventListener('touchcancel', () => {
+  setTimeout(() => { isDragging = false; }, 150);
 });
 
 /* ============ 事件绑定 ============ */
@@ -267,7 +268,6 @@ audio.addEventListener('ended', () => loadSong(currentIndex + 1, true));
 audio.addEventListener('loadedmetadata', updateProgress);
 
 audio.addEventListener('timeupdate', () => {
-  // 拖动时先不刷新，避免和手动 seek 打架
   if (!isDragging) updateProgress();
   if (lyrics.length) {
     const idx = findLyricIndex(audio.currentTime);

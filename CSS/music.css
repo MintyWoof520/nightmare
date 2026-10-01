@@ -14,7 +14,6 @@
   position: relative;
   top: 50px;
   box-shadow: 0 0 2px 2px #804ae481;
-  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -88,7 +87,7 @@ body {
   border-radius: 8px;
   cursor: pointer;
   touch-action: none;
-  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .bar:hover {
