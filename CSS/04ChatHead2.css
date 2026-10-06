@@ -15,7 +15,7 @@
             top: 50%;
             transform: translateY(-60%); /* 向上移动 */
             right: 0;
-            box-shadow: 0 0 5px 4px #47ffc2cb;
+            box-shadow: 0 0 5px 4px #47ffc291;
         }
         /* 万俟子琅头像 */
         .right-msg .msg-nameA::before {
@@ -33,9 +33,30 @@
             top: 50%;
             transform: translateY(-60%); /* 向上移动 */
             right: 0;
-            box-shadow: 0 0 5px 4px #00ccffb9;
+            box-shadow: 0 0 5px 4px #00ccff85;
         }
-        /* 刘歌产头像 */
+        /* 万俟子琅左头像 */
+        .left-msg .msg-nameAa::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/moqizilang.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+            box-shadow: 0 0 5px 4px #00ccff8a;
+        }
+
+        /* ————————————————————分割线———————————————————————— */
+
+        /* 刘歌产2头像 */
         .right-msg .msg-name52a::before {
             content: "";
             /* 头像大小 */
@@ -52,7 +73,25 @@
             transform: translateY(-60%); /* 向上移动 */
             right: 0;
         }
+        /* 易二三2头像 */
+        .right-msg .msg-name106a::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/yiersan.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            top: 50%;
+            transform: translateY(-60%); /* 向上移动 */
+            right: 0;
+        }
 
+        /* ————————————————————分割线———————————————————————— */
 
         /* 乌龟头像 */
         .left-msg .msg-nameB::before {
@@ -70,7 +109,7 @@
             transform: translateY(-60%); /* 向上移动 */
             left: 0;
             top: 50%;
-            box-shadow: 0 0 5px 4px #36ff2fbe;
+            box-shadow: 0 0 5px 4px #36ff2f8c;
         }
         /* 人形乌龟头像 */
         .left-msg .msg-nameBb::before {
@@ -88,7 +127,7 @@
             transform: translateY(-60%); /* 向上移动 */
             left: 0;
             top: 50%;
-            box-shadow: 0 0 5px 4px #3643ffc9;
+            box-shadow: 0 0 5px 4px #3643ff91;
         }
         /* 桑肖柠头像 */
         .left-msg .msg-nameC::before {
@@ -106,7 +145,7 @@
             transform: translateY(-60%); /* 向上移动 */
             left: 0;
             top: 50%;
-            box-shadow: 0 0 5px 4px #ff01eab2;
+            box-shadow: 0 0 5px 4px #ff01ea96;
         }
         /* 宋分题头像 */
         .left-msg .msg-nameD::before {
@@ -142,7 +181,7 @@
             transform: translateY(-60%); /* 向上移动 */
             left: 0;
             top: 50%;
-            box-shadow: 0 0 5px 4px #41f2ffad;
+            box-shadow: 0 0 5px 4px #41f2ff83;
         }
         /* 贝采薇头像 */
         .left-msg .msg-nameF::before {
@@ -160,9 +199,46 @@
             transform: translateY(-60%); /* 向上移动 */
             left: 0;
             top: 50%;
-            box-shadow: 0 0 5px 4px #ff82e4ab;
+            box-shadow: 0 0 5px 4px #ff82e48c;
+        }
+        /* 桑薛糕头像 */
+        .left-msg .msg-nameG::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/sangxuegao.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+            box-shadow: 0 0 5px 4px #fffbd685;
+        }
+        /* 燕归头像 */
+        .left-msg .msg-nameH::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/yangui.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+            box-shadow: 0 0 5px 4px #4f5bff8c;
         }
 
+        /* ————————————————————分割线———————————————————————— */
 
         /* DeepSeek头像 */
         .left-msg .msg-nameDS::before {
@@ -183,7 +259,7 @@
             box-shadow: 0 0 5px 4px #206effc5;
         }
 
-
+        /* ————————————————————分割线———————————————————————— */
 
         /* 余厌厌头像 */
         .left-msg .msg-name1::before {
@@ -1936,6 +2012,23 @@
             left: 0;
             top: 50%;
         }
+        /* 挖掘机老王鬼头像 */
+        .left-msg .msg-name99a::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/wjjlwgui.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
         /* 虔沂可头像 */
         .left-msg .msg-name100::before {
             content: "";
@@ -1961,6 +2054,414 @@
             height: 36px;
             /* 头像插入 */
             background-image: url(../Images/sushanli.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 狗头像 */
+        .left-msg .msg-name102::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/gou.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 女学生头像 */
+        .left-msg .msg-name103::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/nvxuesheng.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* ？燕归头像 */
+        .left-msg .msg-name104::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/yangui.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 校长老婆头像 */
+        .left-msg .msg-name105::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/xiaozhanglaopo.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 易二三头像 */
+        .left-msg .msg-name106::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/yiersan.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 冷季头像 */
+        .left-msg .msg-name107::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/lengji.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 陈姜茗头像 */
+        .left-msg .msg-name108::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/chenjiangming.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 陈姜茗鬼头像 */
+        .left-msg .msg-name108a::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/chenjiangming1.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 陆泽宇头像 */
+        .left-msg .msg-name109::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/luzeyu.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 陆泽宇头像 */
+        .left-msg .msg-name109a::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/luzeyu1.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 宋淳早头像 */
+        .left-msg .msg-name110::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/songchunzao.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 宋淳早鬼头像 */
+        .left-msg .msg-name110a::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/songchunzao1.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 陆九渊头像 */
+        .left-msg .msg-name111::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/lujiuyuan.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 女人头像 */
+        .left-msg .msg-name112::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/nvren.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 希米露头像 */
+        .left-msg .msg-name113::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/ximilu.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 赵映澜头像 */
+        .left-msg .msg-name114::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/zhaoyinglan.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 夹谷梁头像 */
+        .left-msg .msg-name115::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/jiaguliang.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 余子倩头像 */
+        .left-msg .msg-name116::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/yuziqian.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 鹿小闹头像 */
+        .left-msg .msg-name117::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/luxiaonao.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 林杨头像 */
+        .left-msg .msg-name118::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/linyang.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 白墨头像 */
+        .left-msg .msg-name119::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/baimo.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 歪扭人头像 */
+        .left-msg .msg-name120::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/wainiuren.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 尸体头像 */
+        .left-msg .msg-name121::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/shiti.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 70%;
+            /* 位置调整 */
+            position: absolute;
+            transform: translateY(-60%); /* 向上移动 */
+            left: 0;
+            top: 50%;
+        }
+        /* 螳螂头像 */
+        .left-msg .msg-name122::before {
+            content: "";
+            /* 头像大小 */
+            width: 36px;
+            height: 36px;
+            /* 头像插入 */
+            background-image: url(../Images/tanglang.png);
             background-size: cover;
             background-position: center;
             border-radius: 70%;

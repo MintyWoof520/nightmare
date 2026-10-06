@@ -64,7 +64,7 @@ h3 {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    box-shadow: 0 0 10px #d12121;
+    box-shadow: 0 0 10px #d12121b6;
 }
 
 /* 右对话框 */
@@ -92,7 +92,7 @@ h3 {
     border-left: 4px solid #ffffff;
     /* 右边框 */
     border-right: 6px solid #ffffff;
-    box-shadow: 0 0 10px #80ffbf;
+    box-shadow: 0 0 10px #80ffc0a9;
 }
 /* 左对话框 */
 .left-msg .bubble {
@@ -114,7 +114,7 @@ h3 {
     border-left: 6px solid #ffffff;
     /* 右边框 */
     border-right: 4px solid #ffffff;
-    box-shadow: 0 0 10px #b55aff;
+    box-shadow: 0 0 10px #b55affbb;
 }
 
 /* 字体引用 */
