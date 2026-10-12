@@ -41,6 +41,8 @@ function revealNextItem() {
 function handleScreenClick(e) {
     // 防抖锁：如果正在处理中，直接忽略
     if (isProcessing) return;
+    // 点气泡 → 不推进剧情
+    if (e.target.closest('.hint-trigger')) return;
     
     // 排除点击链接或按钮的情况（比如底部的“下一章”）
     if (e.target.tagName === 'A' || e.target.closest('a') || e.target.tagName === 'BUTTON') {
@@ -165,3 +167,12 @@ if (expandBtn) {
         }, 650); 
     });
 }
+// =========================================
+// 点击气泡 → 散开 / 收起小段
+// =========================================
+document.querySelectorAll('.hint-trigger').forEach(trigger => {
+    trigger.addEventListener('click', function(e) {
+        e.stopPropagation();          // 别触发“下一句”
+        trigger.classList.toggle('open');
+    });
+});

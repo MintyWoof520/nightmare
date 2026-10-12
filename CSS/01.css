@@ -256,3 +256,85 @@ h3 {
     opacity: 0.3;          /* 变暗淡 */
     pointer-events: none;  /* 不可再点击 */
 }
+
+
+
+
+/* 气泡本体：贴在对话框外侧 */
+.hint-trigger {
+    position: absolute;
+    top: 50%;
+    width: 22px;
+    height: 22px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%,
+        rgba(255, 255, 255, 0.9),
+        rgba(211, 24, 24, 0.75));
+    box-shadow: 0 0 8px rgba(255, 243, 249, 0.7);
+    cursor: pointer;
+    z-index: 10;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform .25s ease;
+}
+/* 悬停缩放（注意要和 translateY 合并） */
+.hint-trigger:hover,
+.hint-trigger:active {
+    transform: translateY(-50%) scale(1.15);
+}
+
+/* 左消息：气泡贴在对话框右边外面 */
+.left-msg .hint-trigger {
+    right: -32px;
+}
+/* 右消息：气泡贴在对话框左边外面 */
+.right-msg .hint-trigger {
+    left: -32px;
+}
+/* 旁白 */
+.narration .hint-trigger{
+    right: -30px;
+}
+
+/* 散开内容容器：以气泡为基准 */
+.hint-bubbles {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    pointer-events: none;   /* 不挡点击 */
+    z-index: 20;
+}
+/* 每段小内容 */
+.hint {
+    position: absolute;
+    left: 0; top: 0;
+    white-space: nowrap;
+    padding: 6px 12px;
+    background-image: linear-gradient(to bottom right,
+        rgba(255, 59, 59, 0.9),
+        rgba(255, 247, 250, 0.75));
+    color: #ffffff;
+    font-family: "speak1";
+    font-size: 0.8rem;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px #ff0000c5;
+    backdrop-filter: blur(4px);
+
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.6);
+    transition: all .45s cubic-bezier(.34,1.56,.64,1);
+}
+/* 展开态 */
+.hint-trigger.open .hint {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1);
+}
+
+/* 逐个错开 */
+.hint-trigger.open .hint:nth-child(1) { transition-delay: 0s; }
+.hint-trigger.open .hint:nth-child(2) { transition-delay: .08s; }
+.hint-trigger.open .hint:nth-child(3) { transition-delay: .16s; }
+.hint-trigger.open .hint:nth-child(4) { transition-delay: .24s; }
+.hint-trigger.open .hint:nth-child(5) { transition-delay: .32s; }
