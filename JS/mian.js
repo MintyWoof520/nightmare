@@ -76,6 +76,12 @@ document.addEventListener('touchstart', function(e) {
 
 // 手指离开时判断是点击还是滑动
 document.addEventListener('touchend', function(e) {
+
+    if (e.target.closest('#expand-btn') || e.target.tagName === 'A' || e.target.tagName === 'BUTTON' 
+        || e.target.closest('.chapter-nav') || e.target.closest('.hint-trigger')) {
+        return;   // 放行，不 preventDefault，让 click 正常触发
+    }
+    
     // =========================================
     // 【新增】如果是点击“按钮”或“链接”，直接放行，不拦截
     // =========================================
@@ -95,10 +101,7 @@ document.addEventListener('touchend', function(e) {
             return; // 滑动，不触发剧情
         }
     }
-    if (e.target.closest('#expand-btn') || e.target.tagName === 'A' || e.target.tagName === 'BUTTON' 
-        || e.target.closest('.chapter-nav') || e.target.closest('.hint-trigger')) {
-        return;   // 放行，不 preventDefault，让 click 正常触发
-    }
+    
     // 如果滑动距离很小，说明是“点按”，触发剧情
     e.preventDefault(); 
     handleScreenClick(e);
