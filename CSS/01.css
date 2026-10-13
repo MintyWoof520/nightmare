@@ -100,6 +100,7 @@ h3 {
     /* 右边框 */
     border-right: 6px solid #ffffff;
     box-shadow: 0 0 10px #80ffc0a9;
+    max-width: 75vw;
 }
 
 /* 左对话框 */
@@ -123,6 +124,7 @@ h3 {
     /* 右边框 */
     border-right: 4px solid #ffffff;
     box-shadow: 0 0 10px #b55affbb;
+    max-width: 75vw;
 }
 
 /* 字体引用 */
@@ -286,8 +288,8 @@ h3 {
 .hint-trigger {
     position: absolute;
     top: 50%;
-    width: 22px;
-    height: 22px;
+    width: 15px;
+    height: 15px;
     background: transparent;
     box-shadow: none;
     cursor: pointer;
@@ -371,17 +373,17 @@ h3 {
 
 /* 左消息：气泡贴在对话框右边外面 */
 .left-msg .hint-trigger {
-    right: -32px;
+    right: -25px;
 }
 
 /* 右消息：气泡贴在对话框左边外面 */
 .right-msg .hint-trigger {
-    left: -32px;
+    left: -25px;
 }
 
 /* 旁白 */
 .narration .hint-trigger {
-    right: -30px;
+    right: -20px;
 }
 
 /* 散开内容容器：以气泡为基准 */
@@ -413,7 +415,7 @@ h3 {
     box-shadow: 0 4px 12px #c00909e5;
     backdrop-filter: blur(4px) brightness(1.8);
     /* white-space: normal; */
-    max-width: 40vw;
+    /* max-width: 40vw; */
     text-align: center;
     line-height: 1.3;
 
