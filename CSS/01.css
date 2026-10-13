@@ -398,9 +398,10 @@ h3 {
     pointer-events: none;
     /* 不挡点击 */
     z-index: 20;
-    color: #cbffef;
+    color: #fff3f3;
     text-shadow: 0 0 8px #ff0000;
-    font-size: 0.6rem;
+    font-family: "speak3";
+    font-size: 0.58rem;
 }
 
 /* 每段小内容 */
@@ -415,7 +416,7 @@ h3 {
             rgba(226, 95, 95, 0.836));
     color: #ffffff;
     font-family: "speak1";
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     border-radius: 999px;
     box-shadow: 0 4px 12px #c00909e5;
     backdrop-filter: blur(4px) brightness(1.8);
