@@ -6,12 +6,18 @@ html {
 /* 2. 针对不同屏幕宽度调整基准大小 */
 /* 当屏幕宽于 400px 的手机上，基础字号稍微放大一点 */
 @media screen and (max-width: 400px) {
-    html { font-size: 15px; } /* 小屏手机稍微缩小一点，防止字太大换行不好看 */
+    html {
+        font-size: 15px;
+    }
+
+    /* 小屏手机稍微缩小一点，防止字太大换行不好看 */
 }
 
 /* 针对平板/电脑，基础字号放大 */
 @media screen and (min-width: 768px) {
-    html { font-size: 18px; }
+    html {
+        font-size: 18px;
+    }
 }
 
 /* 背景 */
@@ -23,10 +29,11 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
 @media (min-width: 768px) {
     body {
         background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.5)),
-        url(../Images/79.jpg);
+            url(../Images/79.jpg);
     }
 }
 
@@ -44,7 +51,7 @@ h3 {
     text-shadow: 0 0 10px #ff0000;
 }
 
-.bubble{
+.bubble {
     font-size: 1rem;
 }
 
@@ -60,7 +67,7 @@ h3 {
     backdrop-filter: blur(4px) brightness(1.5);
     border-radius: 6px;
     width: fit-content;
-    padding: 0.3rem 0.5rem;
+    padding: 0rem 0.3rem;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -94,6 +101,7 @@ h3 {
     border-right: 6px solid #ffffff;
     box-shadow: 0 0 10px #80ffc0a9;
 }
+
 /* 左对话框 */
 .left-msg .bubble {
     background-image: linear-gradient(to right,
@@ -132,6 +140,7 @@ h3 {
     font-family: speak2;
     src: url(../Fonts/XiangJiaoXiuZhengDaiLingGanTi-2.ttf);
 }
+
 @font-face {
     font-family: speak3;
     src: url(../Fonts/YuWoErYanNiZuiKeAi-2.ttf);
@@ -141,15 +150,16 @@ h3 {
 .story-item {
     opacity: 0;
     visibility: hidden;
-    
+
     /* 新增这两行：限制高度和边距，让隐藏时不占位置 */
     max-height: 0;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
-    overflow: hidden; /* 防止内容溢出 */
-    
+    overflow: hidden;
+    /* 防止内容溢出 */
+
     /* 保留原有的过渡动画 */
     transition: all 0.6s ease;
 }
@@ -159,10 +169,12 @@ h3 {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
-    
+
     /* 恢复高度和边距 */
-    max-height: 2000px; /* 给一个足够大的值，防止长段落被截断 */
-    margin-top: 15px !important; /* 恢复你原本的段落间距 */
+    max-height: 2000px;
+    /* 给一个足够大的值，防止长段落被截断 */
+    margin-top: 15px !important;
+    /* 恢复你原本的段落间距 */
     margin-bottom: 15px !important;
     padding-top: 10px !important;
     padding-bottom: 10px !important;
@@ -176,9 +188,11 @@ h3 {
 
 .chapter-nav {
     display: flex;
-    justify-content: space-between; /* 三个按钮均匀分布 */
+    justify-content: space-between;
+    /* 三个按钮均匀分布 */
     align-items: center;
-    margin-top: 40px;      /* 与正文保持距离 */
+    margin-top: 40px;
+    /* 与正文保持距离 */
     padding: 20px 10px;
     font-family: "speak1";
     font-weight: 600;
@@ -200,11 +214,13 @@ h3 {
     font-size: 0.85rem;
     color: #ccc;
     text-decoration: none;
-    background-color: rgba(235, 47, 47, 0.274); /* 极淡的毛玻璃底色 */
+    background-color: rgba(235, 47, 47, 0.274);
+    /* 极淡的毛玻璃底色 */
     border: 3px solid rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     transition: all 0.3s ease;
-    backdrop-filter: blur(4px); /* 加一点点毛玻璃 */
+    backdrop-filter: blur(4px);
+    /* 加一点点毛玻璃 */
     box-shadow: 5px 5px 8px #ff585852;
 }
 
@@ -228,33 +244,39 @@ h3 {
 .expand-btn {
     width: 35px;
     height: 35px;
-    background-color: rgba(255, 255, 255, 0.267); /* 半透明背景 */
+    background-color: rgba(255, 255, 255, 0.267);
+    /* 半透明背景 */
     color: #cccccc96;
-    border-radius: 50%;    /* 圆形按钮 */
+    border-radius: 50%;
+    /* 圆形按钮 */
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
     cursor: pointer;
-    backdrop-filter: blur(4px); /* 毛玻璃效果 */
+    backdrop-filter: blur(4px);
+    /* 毛玻璃效果 */
     border: 1px solid rgba(255, 255, 255, 0.15);
     transition: all 0.3s ease;
-    user-select: none;     /* 防止长按选中 */
+    user-select: none;
+    /* 防止长按选中 */
     -webkit-tap-highlight-color: transparent;
 }
 
 /* 鼠标悬停/手机点击反馈 */
-.expand-btn:hover, 
+.expand-btn:hover,
 .expand-btn:active {
     background-color: rgba(233, 146, 146, 0.507);
     color: #fff;
-    transform: scale(1.1);
+    transform: scale(1.4);
 }
 
 /* 当全文已经展开后，按钮隐藏（或者变个颜色，提示已展开） */
 .expand-btn.done {
-    opacity: 0.3;          /* 变暗淡 */
-    pointer-events: none;  /* 不可再点击 */
+    opacity: 0.3;
+    /* 变暗淡 */
+    pointer-events: none;
+    /* 不可再点击 */
 }
 
 
@@ -266,33 +288,99 @@ h3 {
     top: 50%;
     width: 22px;
     height: 22px;
-    transform: translateY(-50%);
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%,
-        rgba(255, 255, 255, 0.9),
-        rgba(211, 24, 24, 0.75));
-    box-shadow: 0 0 8px rgba(255, 243, 249, 0.7);
+    background: transparent;
+    box-shadow: none;
     cursor: pointer;
     z-index: 10;
     -webkit-tap-highlight-color: transparent;
-    transition: transform .25s ease;
+
 }
-/* 悬停缩放（注意要和 translateY 合并） */
-.hint-trigger:hover,
-.hint-trigger:active {
-    transform: translateY(-50%) scale(1.15);
+
+.hint-trigger::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(120deg,
+            #ffaed9,
+            #ff3e48,
+            #fc997b,
+            #ff7ee9,
+            #e29aff);
+    background-size: 300% 300%;
+    box-shadow: 0 0 15px rgb(255, 255, 255);
+    border: #ffffff86 2px solid;
+    pointer-events: none;
+    animation: bubbleFlow 4s ease infinite,
+        bubblePulse 2s ease-in-out infinite;
+    transition: transform .25s ease,
+        box-shadow .25s ease,
+        filter .25s ease;
+    z-index: 0;
+    /* 放到文字后面 */
+}
+
+/* @keyframes bubbleFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+} */
+/* 颜色流动 */
+@keyframes bubbleFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
+}
+@keyframes bubblePulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+/* 展开气泡时，把整个对话段落抬到最上层 */
+.story-item:has(.hint-trigger.open) {
+    z-index: 999;
+    position: relative;
+}
+
+.story-item.bubble-open {
+    z-index: 999;
+    position: relative;
+}
+
+.hint-trigger:hover::before,
+.hint-trigger:active::before {
+    transform: scale(1.2);
+    filter: brightness(1.15);
+    box-shadow: 0 0 18px rgba(255, 150, 220, 1),
+                0 0 32px rgba(200, 150, 255, .8);
 }
 
 /* 左消息：气泡贴在对话框右边外面 */
 .left-msg .hint-trigger {
     right: -32px;
 }
+
 /* 右消息：气泡贴在对话框左边外面 */
 .right-msg .hint-trigger {
     left: -32px;
 }
+
 /* 旁白 */
-.narration .hint-trigger{
+.narration .hint-trigger {
     right: -30px;
 }
 
@@ -303,29 +391,37 @@ h3 {
     top: 50%;
     width: 0;
     height: 0;
-    pointer-events: none;   /* 不挡点击 */
+    pointer-events: none;
+    /* 不挡点击 */
     z-index: 20;
 }
+
 /* 每段小内容 */
 .hint {
     position: absolute;
-    left: 0; top: 0;
+    left: 0;
+    top: 0;
     white-space: nowrap;
     padding: 6px 12px;
     background-image: linear-gradient(to bottom right,
-        rgba(255, 59, 59, 0.9),
-        rgba(255, 247, 250, 0.75));
+            rgba(44, 3, 3, 0.699),
+            rgba(226, 95, 95, 0.836));
     color: #ffffff;
     font-family: "speak1";
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     border-radius: 999px;
-    box-shadow: 0 4px 12px #ff0000c5;
-    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 12px #c00909e5;
+    backdrop-filter: blur(4px) brightness(1.8);
+    /* white-space: normal; */
+    max-width: 40vw;
+    text-align: center;
+    line-height: 1.3;
 
     opacity: 0;
     transform: translate(-50%, -50%) scale(.6);
-    transition: all .45s cubic-bezier(.34,1.56,.64,1);
+    transition: all .45s cubic-bezier(.34, 1.56, .64, 1);
 }
+
 /* 展开态 */
 .hint-trigger.open .hint {
     opacity: 1;
@@ -333,8 +429,22 @@ h3 {
 }
 
 /* 逐个错开 */
-.hint-trigger.open .hint:nth-child(1) { transition-delay: 0s; }
-.hint-trigger.open .hint:nth-child(2) { transition-delay: .08s; }
-.hint-trigger.open .hint:nth-child(3) { transition-delay: .16s; }
-.hint-trigger.open .hint:nth-child(4) { transition-delay: .24s; }
-.hint-trigger.open .hint:nth-child(5) { transition-delay: .32s; }
+.hint-trigger.open .hint:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.hint-trigger.open .hint:nth-child(2) {
+    transition-delay: .08s;
+}
+
+.hint-trigger.open .hint:nth-child(3) {
+    transition-delay: .16s;
+}
+
+.hint-trigger.open .hint:nth-child(4) {
+    transition-delay: .24s;
+}
+
+.hint-trigger.open .hint:nth-child(5) {
+    transition-delay: .32s;
+}

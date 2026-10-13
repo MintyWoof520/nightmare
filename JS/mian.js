@@ -173,12 +173,88 @@ if (expandBtn) {
         }, 650); 
     });
 }
+
+
 // =========================================
 // 点击气泡 → 散开 / 收起小段
 // =========================================
 document.querySelectorAll('.hint-trigger').forEach(trigger => {
-    trigger.addEventListener('click', function(e) {
-        e.stopPropagation();          // 别触发“下一句”
+    const toggle = (e) => {
+        e.stopPropagation();
+
+        const willOpen = !trigger.classList.contains('open');
+        if (willOpen) {
+            layoutHints(trigger);   // 展开前算位置
+        }
+
         trigger.classList.toggle('open');
+
+        const item = trigger.closest('.story-item');
+        if (trigger.classList.contains('open')) {
+            item.classList.add('bubble-open');
+        } else {
+            item.classList.remove('bubble-open');
+        }
+    };
+
+    trigger.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        toggle(e);
+    }, { passive: false });
+
+    trigger.addEventListener('click', (e) => {
+        if (e.pointerType === 'touch') return;
+        toggle(e);
     });
 });
+
+
+
+// 隐藏评论自动排版
+function layoutHints(trigger) {
+    const hints = trigger.querySelectorAll('.hint');
+    if (!hints.length) return;
+
+    const rect = trigger.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    // 判断气泡在屏幕左半还是右半，决定朝哪边散
+    const toRight = cx < vw / 2;
+
+    // 可用半径：朝内侧那一半的距离
+    const availW = toRight ? (vw - cx - 20) : (cx - 20);
+    const availH = Math.min(cy, vh - cy) - 20;
+
+    // 半径：横向空间不够就压缩
+    const r = Math.max(50, Math.min(availW * 0.85, availH * 1.1));
+
+    // 扇形角度范围：朝内侧 ±60 度
+    const baseAngle = toRight ? 0 : Math.PI;   // 朝右 = 0，朝左 = π
+    const spread = Math.PI / 1.5;              // 扇形张开 120 度
+
+    hints.forEach((el, i) => {
+        const t = hints.length === 1 ? 0.5 : i / (hints.length - 1);
+        const angle = baseAngle - spread / 2 + spread * t;
+
+        let x = Math.cos(angle) * r;
+        let y = Math.sin(angle) * r;
+
+        // 夹紧，不让它出屏
+        const halfW = (el.offsetWidth  / 2) || 40;
+        const halfH = (el.offsetHeight / 2) || 16;
+        const absX = cx + x;
+        const absY = cy + y;
+
+        if (absX - halfW < 6)       x += (6 - (absX - halfW));
+        if (absX + halfW > vw - 6)  x -= ((absX + halfW) - (vw - 6));
+        if (absY - halfH < 6)       y += (6 - (absY - halfH));
+        if (absY + halfH > vh - 6)  y -= ((absY + halfH) - (vh - 6));
+
+        el.style.setProperty('--x', x + 'px');
+        el.style.setProperty('--y', y + 'px');
+    });
+}
