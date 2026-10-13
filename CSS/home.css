@@ -1,4 +1,6 @@
 
+/* 欸呦喂，这都让你找到了，那你就好好看一看我和胖鲸鱼一起写的屎山代码吧口瓜！ */
+
 @font-face {
     font-family: name;
     src: url(../Fonts/AaMeiSong-2.ttf);
@@ -8,8 +10,8 @@
     src: url(../Fonts/FontsLab-FuGuShouJi-2.ttf);
 }
 body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(../Images/80.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url(../Images/Ohtoai.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -47,11 +49,11 @@ a:hover{
 .miao{
     background-image: linear-gradient(
         to bottom,
-        #0000009f,
-        #aaaaaaa8,
-        #0000009f,
-        #aaaaaaa8,
-        #0000009f
+        #00000065,
+        #aaaaaa65,
+        #00000065,
+        #aaaaaa65,
+        #00000065
     );
     background-size: 100% 200%;
     animation: nav 2s linear infinite;
@@ -60,7 +62,8 @@ a:hover{
     border-radius: 18px;
     position: relative;
     top: 10px;
-    box-shadow: 0 0 4px 3px #ffffff67;
+    box-shadow: 0 0 4px 3px #000000ce;
+    backdrop-filter: blur(2px);
     padding: 0 18px;
 }
 @keyframes nav {
@@ -79,22 +82,33 @@ a:hover{
 .feng{
     width: 180px;
     border-radius: 15px;
-    box-shadow: 5px 5px 5px #ffffffa6;
+    box-shadow: 5px 5px 5px #000000ce;
 }
 .my1{
-    background-color: rgba(0, 0, 0, 0.548);
+    background-color: rgba(0, 0, 0, 0.24);
     border-radius: 10px;
+    backdrop-filter: blur(2px);
     padding: 1rem 1.2rem;
-    box-shadow: 0 0 5px 4px #ffffffa6;
+    box-shadow: 0 0 5px 4px #000000ce;
     width: 250px;
 }
 .my2{
-    background-color: rgba(255, 255, 255, 0.37);
+    background-color: rgba(0, 0, 0, 0.24);
     border-radius: 10px;
     backdrop-filter: blur(3px);
-    box-shadow: 2px 2px 5px #800000b6;
+    box-shadow: 2px 2px 5px #000000ce;
     position: relative;
     top: 20px;
+}
+.my3{
+    background-color: rgba(0, 0, 0, 0.24);
+    border-radius: 10px;
+    backdrop-filter: blur(3px);
+    padding: 0.1rem 0.6rem;
+    box-shadow: 2px 2px 5px #000000ce;
+    width: 250px;
+    position: relative;
+    top: 30px;
 }
 .wenzi2{
     color: rgb(90, 228, 198);

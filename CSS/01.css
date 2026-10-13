@@ -1,3 +1,6 @@
+/* 欸呦喂，这都让你找到了，那你就好好看一看我和胖鲸鱼一起写的屎山代码吧口瓜！ */
+
+
 /* 1. 设置 HTML 根元素的基准大小 (16px 作为标准) */
 html {
     font-size: 16px;
@@ -23,7 +26,7 @@ html {
 /* 背景 */
 
 body {
-    background-image: url(../Images/78.png);
+    background-image: url(../Images/18.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -33,7 +36,7 @@ body {
 @media (min-width: 768px) {
     body {
         background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.5)),
-            url(../Images/79.jpg);
+            url(../Images/1yasuo.jpg);
     }
 }
 
@@ -319,7 +322,6 @@ h3 {
         box-shadow .25s ease,
         filter .25s ease;
     z-index: 0;
-    /* 放到文字后面 */
 }
 
 /* @keyframes bubbleFlow {
@@ -396,6 +398,9 @@ h3 {
     pointer-events: none;
     /* 不挡点击 */
     z-index: 20;
+    color: #cbffef;
+    text-shadow: 0 0 8px #ff0000;
+    font-size: 0.6rem;
 }
 
 /* 每段小内容 */
