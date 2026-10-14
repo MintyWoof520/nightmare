@@ -25,7 +25,7 @@ html {
 
 /* 背景 */
 html {
-    overflow-x: clip;
+    overflow-x: hidden;
 }
 
 body {
@@ -111,9 +111,9 @@ h3 {
     /* 右边框 */
     border-right: 5px solid #ffffff;
     box-shadow: 0 0 10px #80ffc0a9;
-    max-width: 75vw;
+    max-width: 70vw;
     position: relative;
-    right: 5px;
+    right: 30px;
 }
 
 /* 左对话框 */
@@ -137,9 +137,9 @@ h3 {
     /* 右边框 */
     border-right: 3px solid #ffffff;
     box-shadow: 0 0 10px #b55affbb;
-    max-width: 75vw;
+    max-width: 70vw;
     position: relative;
-    left: 5px;
+    left: 30px;
 }
 
 /* 字体引用 */
