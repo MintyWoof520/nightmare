@@ -153,7 +153,7 @@ if (expandBtn) {
         
         // 按钮状态更新
         expandBtn.classList.add('done');
-        expandBtn.innerHTML = '✅';
+        expandBtn.innerHTML = '<i class="iconfont icon-yuedu"></i>';
         
         const nav = document.getElementById('chapter-nav');
         if (nav) nav.classList.add('show');
