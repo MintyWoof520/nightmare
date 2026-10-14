@@ -5,392 +5,435 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>噩梦时代</title>
-    <link rel="stylesheet" href="CSS/home.css">
     <link rel="icon" href="Images/momokarun.ico">
+    <link rel="stylesheet" href="Iconfont/iconfont.css">
+    <link rel="stylesheet" href="CSS/hometest.css">
     <link rel="stylesheet" href="CSS/music.css">
 </head>
 
 <body>
-    <div class="my1">
-        <div class="pic">
-            <img class="feng" src="Images/0.webp" alt="">
+    <!-- 导航栏 -->
+    <div class="nav" id="navContainer">
+        <button class="nav-btn active" data-page="home">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-chaiquan"></use>
+            </svg>
+            <div>首页</div>
+        </button>
+        <button class="nav-btn" data-page="mulu">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-bianmu"></use>
+            </svg>
+            <div>目录</div>
+        </button>
+        <button class="nav-btn" data-page="music">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-jinmao"></use>
+            </svg>
+            <div>音乐</div>
+        </button>
+    </div>
+    <div class="app">
+
+        <!-- 各页面 -->
+        <div class="page-container">
+            <!-- 首页 -->
+            <div id="page-home" class="page active">
+                <div class="my1">
+                    <div class="pic">
+                        <img class="feng" src="Images/0.webp" alt="">
+                    </div>
+                    <div class="wenzi">
+                        <h1>
+                            《噩梦时代》
+                        </h1><br>
+                        <p>
+                            做了一个崭新的首页
+                        </p><br>
+                        <p>
+                            目前已更新90章，章节左上角的按钮是展开全文
+                        </p><br>
+                        <p>
+                            哎，我更喜欢一下一下点屏幕，沉浸感更好
+                        </p><br>
+                        <p>
+                            我在底部加了一个音乐播放器，门尼的歌太好听了你知道吗
+                        </p><br>
+                        <p>
+                            如果做完整本书就能失忆该多好，好想用崭新的脑子看一遍
+                        </p><br>
+                        <p>
+                            除主角外，其他绝大部分人物的头像都是我在一个捏头像的网站捏的，还有些是网图（比如鬼啊动物啊之类的），还有一些真人头像但都打了码
+                        </p><br>
+                        <p>
+                            快一百章了诶！持续更新中~
+                        </p><br>
+                        <p>
+                            最新科研，伪段评,但是有个小有bug，太好笑了🤣🤣凑合看吧修不好了
+                        </p><br>
+                        <p>
+                            正所谓一个bug是bug，一堆bug能work，既然能work起来，那就让它自由发挥吧
+                        </p><br>
+                        <p>
+                            真的的评论区倒也能做，但是评论门槛比较高需要github账号，而且只能做章节评论
+                        </p>
+                    </div>
+                </div>
+                <div class="my2">
+                    <div class="wenzi2">
+                        <p>不知道会不会有人来看</p>
+                        <p>我建了一个群，进群答案是“万俟子琅”</p>
+                        <p>群号：813678909</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 目录 -->
+            <div id="page-mulu" class="page">
+                <h1>目录</h1>
+                <nav class="miao">
+                    <ul>
+                        <!-- 1~50-->
+                        <details>
+                            <summary>章节 1~50</summary>
+                            <ul>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter001.html" target="_blank">1附体（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter002.html" target="_blank">2附体（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter003.html" target="_blank">3附体（三）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter004.html" target="_blank">4怀胎（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter005.html" target="_blank">5怀胎（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter006.html" target="_blank">6乞丐</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter007.html" target="_blank">7黑洞（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter008.html" target="_blank">8黑洞（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter009.html" target="_blank">9空间</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter010.html" target="_blank">10做客（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter011.html" target="_blank">11做客（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter012.html" target="_blank">12做客（三）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter013.html" target="_blank">13物资（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter014.html" target="_blank">14物资（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter015.html" target="_blank">15井底之蛙</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter016.html" target="_blank">16物资（三）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter017.html" target="_blank">17物资（四）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter018.html" target="_blank">18箱鬼（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter019.html" target="_blank">19箱鬼（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter020.html" target="_blank">20箱鬼（三）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter021.html" target="_blank">21箱鬼（四）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter022.html" target="_blank">22箱鬼（五）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter023.html" target="_blank">23燕归</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter024.html" target="_blank">24车</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter025.html" target="_blank">25双妻（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter026.html" target="_blank">26双妻（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter027.html" target="_blank">27鼠患（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter028.html" target="_blank">28鼠患（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter029.html" target="_blank">29鼠患（三）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter030.html" target="_blank">30鼠患（四）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter031.html" target="_blank">31长发（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter032.html" target="_blank">32长发（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter033.html" target="_blank">33长发（三）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter034.html" target="_blank">34离开</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter035.html" target="_blank">35疯狗</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter036.html" target="_blank">36收养</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter037.html" target="_blank">37学习</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter038.html" target="_blank">38美人头（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter039.html" target="_blank">39美人头（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter040.html" target="_blank">40人皮（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter041.html" target="_blank">41人皮（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter042.html" target="_blank">42倒计时</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter043.html" target="_blank">43异能化</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter044.html" target="_blank">44力量型</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter045.html" target="_blank">45强盗</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter046.html" target="_blank">46单方面殴打/a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter047.html" target="_blank">47噩梦降临</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter048.html" target="_blank">48噩梦来临</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter049.html" target="_blank">49觉醒</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter050.html" target="_blank">50彻夜无眠</a>
+                                </li>
+                            </ul>
+                        </details>
+                        <!-- 51~100 -->
+                        <details>
+                            <summary>章节 51~100</summary>
+                            <ul>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter051.html" target="_blank">51晶核</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter052.html" target="_blank">52灾情</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter053.html" target="_blank">53野猫</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter054.html" target="_blank">54气息</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter055.html" target="_blank">55救援点</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter056.html" target="_blank">56丧尸潮</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter057.html" target="_blank">57死尸（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter058.html" target="_blank">58死尸（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter059.html" target="_blank">59歪脖子树（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter060.html" target="_blank">60歪脖子树（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter061.html" target="_blank">61变异种</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter062.html" target="_blank">62春天到了</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter063.html" target="_blank">63爆裂</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter064.html" target="_blank">64狸熊市·基地</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter065.html" target="_blank">65堵塞</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter066.html" target="_blank">66日记本（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter067.html" target="_blank">67日记本（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter068.html" target="_blank">68柳树（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter069.html" target="_blank">69柳树（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter070.html" target="_blank">70探井（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter071.html" target="_blank">71探井（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter072.html" target="_blank">72探井（三）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter073.html" target="_blank">73鬼胎（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter074.html" target="_blank">74鬼胎（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter075.html" target="_blank">75交锋</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter076.html" target="_blank">76公路（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter077.html" target="_blank">77公路（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter078.html" target="_blank">78伥鬼</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter079.html" target="_blank">79蚯蚓（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter080.html" target="_blank">80蚯蚓（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter081.html" target="_blank">81人皮蝇（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter082.html" target="_blank">82人皮蝇（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter083.html" target="_blank">83鬼影</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter084.html" target="_blank">84雪人（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter085.html" target="_blank">85雪人（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter086.html" target="_blank">86雪人（三）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter087.html" target="_blank">87自杀林（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter088.html" target="_blank">88自杀林（二）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter089.html" target="_blank">89螳螂（一）</a>
+                                </li>
+                                <li class="wang">
+                                    <a href="Nightmare-1~100/Chapter090.html" target="_blank">90螳螂（二）</a>
+                                </li>
+                            </ul>
+                        </details>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- 音乐 -->
+            <div id="page-music" class="page">
+                <div class="player">
+                    <div class="header">
+                        <div class="cover">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z" />
+                            </svg>
+                        </div>
+                        <div class="info">
+                            <div class="title" id="songTitle">未选择歌曲</div>
+                            <div class="artist" id="songArtist">—</div>
+                        </div>
+                    </div>
+
+                    <div class="time"><span id="curTime">0:00</span><span id="totTime">0:00</span></div>
+                    <div class="bar" id="progressBar">
+                        <div class="fill" id="progressFill"></div>
+                    </div>
+
+                    <div class="lyrics" id="lyricsBox">
+                        <div class="lyric-line" style="opacity:.4;">♪ 暂无歌词 ♪</div>
+                    </div>
+
+                    <div class="controls">
+                        <button class="btn" id="prevBtn" title="上一首">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+                            </svg>
+                        </button>
+                        <button class="btn play" id="playBtn">
+                            <svg id="playIcon" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                            <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none">
+                                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                            </svg>
+                        </button>
+                        <button class="btn" id="nextBtn" title="下一首">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="playlist" id="playlist"></div>
+
+                    <audio id="audio" preload="metadata" crossorigin="anonymous"></audio>
+                </div>
+            </div>
         </div>
-        <div class="wenzi">
-            <p>
-                《噩梦时代》
-            </p>
-            <p>
-                目前已更新90章，章节左上角的按钮是展开全文
-            </p>
-            <p>
-                哎，我更喜欢一下一下点屏幕，沉浸感更好
-            </p>
-            <p>
-                我在底部加了一个音乐播放器，门尼的歌太好听了你知道吗
-            </p>
-            <p>
-                如果做完整本书就能失忆该多好，好想用崭新的脑子看一遍
-            </p>
-            <p>
-                除主角外，其他绝大部分人物的头像都是我在一个捏头像的网站捏的，还有些是网图（比如鬼啊动物啊之类的），还有一些真人头像但都打了码
-            </p>
-            <p>
-                快一百章了诶！持续更新中~
-            </p>
-            <p>
-                最新科研，伪段评，现在只有第一章有，之后会慢慢加
-            </p>
-            <p>
-                真的的评论区倒也能做，但是评论门槛比较高需要github账号，而且只能做章节评论
-            </p>
-        </div>
-    </div>
-    <div class="my2">
-        <p class="wenzi2">不知道会不会有人来看</p>
-        <p class="wenzi2">我建了一个群，进群答案是“万俟子琅”</p>
-        <p class="wenzi2">群号：813678909</p>
-    </div>
-    <h1>目录</h1>
-    <nav class="miao">
-        <ul>
-            <!-- 1~50-->
-            <details>
-                <summary>章节 1~50</summary>
-                <ul>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter001.html" target="_blank">1附体（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter002.html" target="_blank">2附体（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter003.html" target="_blank">3附体（三）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter004.html" target="_blank">4怀胎（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter005.html" target="_blank">5怀胎（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter006.html" target="_blank">6乞丐</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter007.html" target="_blank">7黑洞（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter008.html" target="_blank">8黑洞（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter009.html" target="_blank">9空间</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter010.html" target="_blank">10做客（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter011.html" target="_blank">11做客（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter012.html" target="_blank">12做客（三）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter013.html" target="_blank">13物资（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter014.html" target="_blank">14物资（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter015.html" target="_blank">15井底之蛙</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter016.html" target="_blank">16物资（三）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter017.html" target="_blank">17物资（四）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter018.html" target="_blank">18箱鬼（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter019.html" target="_blank">19箱鬼（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter020.html" target="_blank">20箱鬼（三）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter021.html" target="_blank">21箱鬼（四）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter022.html" target="_blank">22箱鬼（五）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter023.html" target="_blank">23燕归</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter024.html" target="_blank">24车</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter025.html" target="_blank">25双妻（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter026.html" target="_blank">26双妻（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter027.html" target="_blank">27鼠患（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter028.html" target="_blank">28鼠患（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter029.html" target="_blank">29鼠患（三）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter030.html" target="_blank">30鼠患（四）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter031.html" target="_blank">31长发（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter032.html" target="_blank">32长发（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter033.html" target="_blank">33长发（三）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter034.html" target="_blank">34离开</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter035.html" target="_blank">35疯狗</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter036.html" target="_blank">36收养</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter037.html" target="_blank">37学习</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter038.html" target="_blank">38美人头（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter039.html" target="_blank">39美人头（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter040.html" target="_blank">40人皮（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter041.html" target="_blank">41人皮（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter042.html" target="_blank">42倒计时</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter043.html" target="_blank">43异能化</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter044.html" target="_blank">44力量型</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter045.html" target="_blank">45强盗</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter046.html" target="_blank">46单方面殴打/a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter047.html" target="_blank">47噩梦降临</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter048.html" target="_blank">48噩梦来临</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter049.html" target="_blank">49觉醒</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter050.html" target="_blank">50彻夜无眠</a>
-                    </li>
-                </ul>
-            </details>
-            <!-- 51~100 -->
-             <details>
-                <summary>章节 51~100</summary>
-                <ul>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter051.html" target="_blank">51晶核</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter052.html" target="_blank">52灾情</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter053.html" target="_blank">53野猫</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter054.html" target="_blank">54气息</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter055.html" target="_blank">55救援点</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter056.html" target="_blank">56丧尸潮</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter057.html" target="_blank">57死尸（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter058.html" target="_blank">58死尸（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter059.html" target="_blank">59歪脖子树（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter060.html" target="_blank">60歪脖子树（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter061.html" target="_blank">61变异种</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter062.html" target="_blank">62春天到了</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter063.html" target="_blank">63爆裂</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter064.html" target="_blank">64狸熊市·基地</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter065.html" target="_blank">65堵塞</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter066.html" target="_blank">66日记本（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter067.html" target="_blank">67日记本（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter068.html" target="_blank">68柳树（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter069.html" target="_blank">69柳树（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter070.html" target="_blank">70探井（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter071.html" target="_blank">71探井（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter072.html" target="_blank">72探井（三）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter073.html" target="_blank">73鬼胎（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter074.html" target="_blank">74鬼胎（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter075.html" target="_blank">75交锋</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter076.html" target="_blank">76公路（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter077.html" target="_blank">77公路（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter078.html" target="_blank">78伥鬼</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter079.html" target="_blank">79蚯蚓（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter080.html" target="_blank">80蚯蚓（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter081.html" target="_blank">81人皮蝇（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter082.html" target="_blank">82人皮蝇（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter083.html" target="_blank">83鬼影</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter084.html" target="_blank">84雪人（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter085.html" target="_blank">85雪人（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter086.html" target="_blank">86雪人（三）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter087.html" target="_blank">87自杀林（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter088.html" target="_blank">88自杀林（二）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter089.html" target="_blank">89螳螂（一）</a>
-                    </li>
-                    <li class="wang">
-                        <a href="Nightmare-1~100/Chapter090.html" target="_blank">90螳螂（二）</a>
-                    </li>
-                </ul>
-             </details>
-        </ul>
-    </nav>
-    <div class="my3">
-        <div class="wenzi">
-            <p>
-                很可惜这个播放器只有pc端能拖动进度条，还有点击歌词跳转到对应时间节点
-            </p>
-        </div>
-    </div>
-    <div class="player">
-    <div class="header">
-      <div class="cover">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z" />
-        </svg>
-      </div>
-      <div class="info">
-        <div class="title" id="songTitle">未选择歌曲</div>
-        <div class="artist" id="songArtist">—</div>
-      </div>
-    </div>
 
-    <div class="time"><span id="curTime">0:00</span><span id="totTime">0:00</span></div>
-    <div class="bar" id="progressBar">
-      <div class="fill" id="progressFill"></div>
     </div>
-
-    <div class="lyrics" id="lyricsBox">
-      <div class="lyric-line" style="opacity:.4;">♪ 暂无歌词 ♪</div>
-    </div>
-
-    <div class="controls">
-      <button class="btn" id="prevBtn" title="上一首">
-        <svg viewBox="0 0 24 24">
-          <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
-        </svg>
-      </button>
-      <button class="btn play" id="playBtn">
-        <svg id="playIcon" viewBox="0 0 24 24">
-          <path d="M8 5v14l11-7z" />
-        </svg>
-        <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none">
-          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-        </svg>
-      </button>
-      <button class="btn" id="nextBtn" title="下一首">
-        <svg viewBox="0 0 24 24">
-          <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
-        </svg>
-      </button>
-    </div>
-
-    <div class="playlist" id="playlist"></div>
-
-    <audio id="audio" preload="metadata" crossorigin="anonymous"></audio>
-  </div>
 </body>
+<script src="JS/home.js"></script>
+<script src="Iconfont/iconfont.js"></script>
 <script src="JS/music.js"></script>
 </html>
