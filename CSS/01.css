@@ -111,7 +111,7 @@ h3 {
     /* 右边框 */
     border-right: 5px solid #ffffff;
     box-shadow: 0 0 10px #80ffc0a9;
-    max-width: 70vw;
+    max-width: 55vw;
     position: relative;
     right: 30px;
 }
@@ -137,7 +137,7 @@ h3 {
     /* 右边框 */
     border-right: 3px solid #ffffff;
     box-shadow: 0 0 10px #b55affbb;
-    max-width: 70vw;
+    max-width: 55vw;
     position: relative;
     left: 30px;
 }

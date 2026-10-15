@@ -15,7 +15,7 @@
             top: 50%;
             transform: translateY(-60%); /* 向上移动 */
             right: 0;
-            box-shadow: 0 0 5px 4px #47ffc291;
+            box-shadow: 0 0 3px 2px #47ffc296;
         }
         /* 万俟子琅头像 */
         .right-msg .msg-nameA::before {
@@ -33,7 +33,7 @@
             top: 50%;
             transform: translateY(-60%); /* 向上移动 */
             right: 0;
-            box-shadow: 0 0 5px 4px #00ccff85;
+            box-shadow: 0 0 3px 3px #00ccff9c;
         }
         /* 万俟子琅左头像 */
         .left-msg .msg-nameAa::before {
@@ -109,7 +109,7 @@
             transform: translateY(-60%); /* 向上移动 */
             left: 0;
             top: 50%;
-            box-shadow: 0 0 5px 4px #36ff2f8c;
+            box-shadow: 0 0 3px 3px #36ff2f91;
         }
         /* 人形乌龟头像 */
         .left-msg .msg-nameBb::before {
