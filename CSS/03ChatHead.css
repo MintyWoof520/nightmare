@@ -32,6 +32,12 @@
             padding-right: 42px;
             line-height: 36px;
         }
+        /* 方昀2头像空间 */
+        .right-msg .msg-name133a {
+            position: relative;
+            padding-right: 42px;
+            line-height: 36px;
+        }
 
         /* ————————————————————分割线———————————————————————— */
 
@@ -871,6 +877,102 @@
         }
         /* 螳螂头像空间 */
         .left-msg .msg-name122 {
+            position: relative;
+            padding-left: 40px;
+            line-height: 36px;
+        }
+        /* 汤暄头像空间 */
+        .left-msg .msg-name123 {
+            position: relative;
+            padding-left: 40px;
+            line-height: 36px;
+        }
+        /* 郭若羽头像空间 */
+        .left-msg .msg-name124 {
+            position: relative;
+            padding-left: 40px;
+            line-height: 36px;
+        }
+        /* 挑着水桶的人头像空间 */
+        .left-msg .msg-name125 {
+            position: relative;
+            padding-left: 40px;
+            line-height: 36px;
+        }
+        /* 柳诗雅头像空间 */
+        .left-msg .msg-name126 {
+            position: relative;
+            padding-left: 40px;
+            line-height: 36px;
+        }
+        /* 陈清酒头像空间 */
+        .left-msg .msg-name127 {
+            position: relative;
+            padding-left: 40px;
+            line-height: 36px;
+        }
+        /* 陈卿卿头像空间 */
+        .left-msg .msg-name128 {
+            position: relative;
+            padding-left: 40px;
+            line-height: 36px;
+        }
+        /* 铁线虫头像空间 */
+        .left-msg .msg-name129 {
+            position: relative;
+            padding-left: 40px;
+            line-height: 36px;
+        }
+        /* 苗橙头像空间 */
+        .left-msg .msg-name130 {
+            position: relative;
+            padding-left: 40px;
+            line-height: 36px;
+        }
+        /* 苗橙鬼头像空间 */
+        .left-msg .msg-name130a {
+            position: relative;
+            padding-left: 40px;
+            line-height: 36px;
+        }
+        /* 苗老太太头像空间 */
+        .left-msg .msg-name131 {
+            position: relative;
+            padding-left: 40px;
+            line-height: 36px;
+        }
+        /* 苗老太太鬼头像空间 */
+        .left-msg .msg-name131a {
+            position: relative;
+            padding-left: 40px;
+            line-height: 36px;
+        }
+        /* 苗老爷爷头像空间 */
+        .left-msg .msg-name132 {
+            position: relative;
+            padding-left: 40px;
+            line-height: 36px;
+        }
+        /* 苗老爷爷鬼头像空间 */
+        .left-msg .msg-name132a {
+            position: relative;
+            padding-left: 40px;
+            line-height: 36px;
+        }
+        /* 方昀头像空间 */
+        .left-msg .msg-name133 {
+            position: relative;
+            padding-left: 40px;
+            line-height: 36px;
+        }
+        /* 姜余头像空间 */
+        .left-msg .msg-name134 {
+            position: relative;
+            padding-left: 40px;
+            line-height: 36px;
+        }
+        /* 肋骨头像空间 */
+        .left-msg .msg-name135 {
             position: relative;
             padding-left: 40px;
             line-height: 36px;
