@@ -7,7 +7,7 @@
     <title>噩梦时代</title>
     <link rel="icon" href="Images/momokarun.ico">
     <link rel="stylesheet" href="Iconfont/iconfont.css">
-    <link rel="stylesheet" href="CSS/hometest.css">
+    <link rel="stylesheet" href="CSS/home.css">
     <link rel="stylesheet" href="CSS/music.css">
 </head>
 
@@ -35,6 +35,12 @@
     </div>
     <div class="app">
 
+        <button class="nav-toggle" id="navToggle" aria-label="展开导航" aria-expanded="false">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-diqiuyi"></use>
+            </svg>
+        </button>
+
         <!-- 各页面 -->
         <div class="page-container">
             <!-- 首页 -->
@@ -45,11 +51,8 @@
                     </div>
                     <div class="wenzi">
                         <h1>
-                            《噩梦时代》
+                            《噩梦时代》作者：仄黎
                         </h1><br>
-                        <p>
-                            做了一个崭新的首页
-                        </p><br>
                         <p>
                             宇宙免责声明，此网站无任何盈利行为
                         </p><br>
@@ -64,10 +67,7 @@
                         </p><br>
                         <p>
                             除主角外，其他绝大部分人物的头像都是我在一个捏头像的网站捏的，还有些是网图（比如鬼啊动物啊之类的），还有一些真人头像但都打了码
-                        </p><br>
-                        <p>
-                            快一百章了诶！持续更新中~
-                        </p><br>
+                        </p>
                         <p>
                             最新科研，伪段评,但是有个小有bug，太好笑了🤣🤣凑合看吧修不好了
                         </p><br>
@@ -77,6 +77,28 @@
                         <p>
                             真的的评论区倒也能做，但是评论门槛比较高需要github账号，而且只能做章节评论
                         </p>
+                    </div>
+                    <div class="changelog">
+                        <button class="changelog-toggle" aria-expanded="false" aria-controls="changelog-content">
+                            <span>
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-qianbi"></use>
+                                </svg>更新日志</span>
+                            <span class="arrow">▼</span>
+                        </button>
+
+                        <div class="changelog-content" id="changelog-content">
+                            <div class="log-item">
+                                <span class="log-version">哎</span>
+                                <span class="log-date">2026-10-23</span>
+                                <ul>
+                                    <li>突然想到应该加个更新日志</li>
+                                    <li>我再次优化了首页</li>
+                                    <li>我和大胖鱼畅聊了两天搓出来一个播放器（其实大部分时间都在解决音频的引用问题）</li>
+                                    <li>正文什么的之后会继续更的</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="my2">
@@ -411,52 +433,101 @@
 
             <!-- 音乐 -->
             <div id="page-music" class="page">
-                <div class="player">
-                    <div class="header">
-                        <div class="cover">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z" />
-                            </svg>
+                <div id="mpRoot">
+                    <div class="mp-card">
+
+                        <!-- 封面区域 -->
+                        <div class="mp-art">
+                            <div class="mp-cover-wrap" id="coverWrap">
+                                <!-- ⚠️ 在这里换你的图片路径！ -->
+                                <img class="mp-cover-bg" src="Images/MomOkarun.jpg" alt="封面图">
+
+                                <!-- 中间的耳机图标 -->
+                                <div class="mp-cover" id="cover">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-erji"></use>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
-                        <div class="info">
-                            <div class="title" id="songTitle">未选择歌曲</div>
-                            <div class="artist" id="songArtist">—</div>
+
+                        <div class="mp-meta">
+                            <h1 class="mp-title" id="title">加载中…</h1>
+                            <p class="mp-artist" id="artist">正在准备音频</p>
                         </div>
+
+                        <div class="mp-lyrics" id="lyrics">
+                            <div class="mp-empty">歌词加载中…</div>
+                        </div>
+
+                        <div class="mp-prog-area">
+                            <div class="mp-progress" id="progress">
+                                <div class="mp-rail">
+                                    <div class="mp-buffer" id="buffer"></div>
+                                    <div class="mp-fill" id="fill"></div>
+                                </div>
+                                <div class="mp-thumb" id="thumb"></div>
+                            </div>
+                            <div class="mp-time">
+                                <span id="cur">0:00</span>
+
+                                <!-- 👇 新增：播放模式切换按钮 -->
+                                <button id="modeBtn"
+                                    style="background:none; border:none; color:#8f8fa3; cursor:pointer; padding:0 5px; display:flex; align-items:center;"
+                                    title="切换播放模式">
+                                    <svg id="modeIcon" viewBox="0 0 24 24"
+                                        style="width:16px; height:16px; fill:currentColor;">
+                                        <!-- 默认是列表循环的图标 -->
+                                        <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z" />
+                                    </svg>
+                                </button>
+
+                                <span id="dur">0:00</span>
+                            </div>
+                        </div>
+
+                        <div class="mp-controls">
+                            <button class="mp-btn" id="prevBtn" aria-label="上一首">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M6 6h2v12H6zm3.5 6L18 6v12z" />
+                                </svg>
+                            </button>
+                            <button class="mp-btn mp-btn-play" id="playBtn" aria-label="播放/暂停" disabled>
+                                <svg class="mp-icon-play" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                                <svg class="mp-icon-pause" viewBox="0 0 24 24">
+                                    <path d="M7 5h4v14H7zm6 0h4v14h-4z" />
+                                </svg>
+                            </button>
+                            <button class="mp-btn" id="nextBtn" aria-label="下一首">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M16 6h2v12h-2zM6 6l8.5 6L6 18z" />
+                                </svg>
+                            </button>
+
+                            <!-- 👇 新增：歌单按钮 -->
+                            <button class="mp-btn" id="playlistBtn" aria-label="播放列表" style="margin-left: 10px;">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h10v2H4z" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- 👇 新增：歌单列表弹窗（放在 mp-card 内部最下面） -->
+                        <div class="mp-playlist" id="playlistPanel">
+                            <div class="mp-playlist-header">
+                                <span>播放列表</span>
+                                <button id="closePlaylist" class="mp-close-btn">✕</button>
+                            </div>
+                            <div class="mp-playlist-items" id="playlistItems">
+                                <!-- JS 会把歌曲列表渲染到这里 -->
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="time"><span id="curTime">0:00</span><span id="totTime">0:00</span></div>
-                    <div class="bar" id="progressBar">
-                        <div class="fill" id="progressFill"></div>
-                    </div>
 
-                    <div class="lyrics" id="lyricsBox">
-                        <div class="lyric-line" style="opacity:.4;">♪ 暂无歌词 ♪</div>
-                    </div>
-
-                    <div class="controls">
-                        <button class="btn" id="prevBtn" title="上一首">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
-                            </svg>
-                        </button>
-                        <button class="btn play" id="playBtn">
-                            <svg id="playIcon" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z" />
-                            </svg>
-                            <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none">
-                                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-                            </svg>
-                        </button>
-                        <button class="btn" id="nextBtn" title="下一首">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
-                            </svg>
-                        </button>
-                    </div>
-
-                    <div class="playlist" id="playlist"></div>
-
-                    <audio id="audio" preload="metadata" crossorigin="anonymous"></audio>
                 </div>
             </div>
         </div>
@@ -465,5 +536,7 @@
 </body>
 <script src="JS/home.js"></script>
 <script src="Iconfont/iconfont.js"></script>
+<script src="Iconfont/Iconfont2/iconfont.js"></script>
 <script src="JS/music.js"></script>
+
 </html>

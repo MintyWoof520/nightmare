@@ -91,6 +91,10 @@
 
         // 更新当前页面记录
         currentPage = pageName;
+        // 👇 通知播放器，现在切到哪个页面了
+        if (window.toggleMiniMode) {
+            window.toggleMiniMode(pageName);
+        }
 
         // 如果需要更新 URL hash
         if (updateHash) {
@@ -179,3 +183,62 @@
         init();
       }
     })();
+
+
+
+    // 导航栏按钮
+    (function () {
+    const toggle = document.getElementById('navToggle');
+    const nav = document.getElementById('navContainer');  // ← 你的 id
+
+    function setOpen(open) {
+        nav.classList.toggle('open', open);
+        toggle.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', open);
+        // toggle.textContent = open ? '✕' : '☰';
+    }
+
+    toggle.addEventListener('click', () => {
+        setOpen(!nav.classList.contains('open'));
+    });
+
+    // 点导航项后自动收起
+    nav.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => setOpen(false));
+    });
+
+    // 点外部收起
+    document.addEventListener('click', (e) => {
+        if (nav.classList.contains('open')
+            && !nav.contains(e.target)
+            && !toggle.contains(e.target)) {
+            setOpen(false);
+        }
+    });
+
+    // Esc 收起
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') setOpen(false);
+    });
+})();
+
+
+// 更新日志 
+const toggleBtn = document.querySelector('.changelog-toggle');
+const content = document.getElementById('changelog-content');
+
+toggleBtn.addEventListener('click', () => {
+  const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+  toggleBtn.setAttribute('aria-expanded', String(!isOpen));
+  content.classList.toggle('is-open', !isOpen);
+
+  // 用 JS 动态算高度，展开动画更自然
+  if (!isOpen) {
+    content.style.maxHeight = content.scrollHeight + 'px';
+  } else {
+    content.style.maxHeight = content.scrollHeight + 'px'; // 先固定当前高度
+    requestAnimationFrame(() => {
+      content.style.maxHeight = '0px';
+    });
+  }
+});

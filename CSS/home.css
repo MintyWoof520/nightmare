@@ -1,17 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-/* 欸呦喂，这都让你找到了，那你就好好看一看我和胖鲸鱼一起写的屎山代码吧口瓜！ */
+.icon {
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
 
 @font-face {
     font-family: name;
     src: url(../Fonts/AaMeiSong-2.ttf);
 }
+
 @font-face {
     font-family: speak1;
     src: url(../Fonts/FontsLab-FuGuShouJi-2.ttf);
 }
+
 body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url(../Images/Ohtoai.jpg);
+        url(../Images/Ohtoai.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -20,100 +33,216 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 0;
 }
+
 @media (min-width: 768px) {
     body {
         background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url(../Images/81.jpg);
+            url(../Images/81.jpg);
     }
 }
-a{
-    text-decoration: none;
-    color: rgb(156, 235, 208);
-    font-weight: bold;
-    font-family: "name";
-    font-size: 1.4rem;
-    transition: color 0.4s;
-}
-.wang{
-    color: aquamarine;
-    transition: transform 0.3s, color 0.3s;
-}
-.wang:hover{
-    transform: scale(1.2);
-    color: red;
-}
-a:hover{
-    color: red;
-}
-.miao{
-    background-image: linear-gradient(
-        to bottom,
-        #00000065,
-        #aaaaaa65,
-        #00000065,
-        #aaaaaa65,
-        #00000065
-    );
-    background-size: 100% 200%;
-    animation: nav 2s linear infinite;
+
+
+/* 导航区 —— 自动从 HTML 按钮收集 */
+/* ========== 桌面端：横排（保持原方案五） ========== */
+.nav {
     display: flex;
-    width: fit-content;
-    border-radius: 18px;
-    position: relative;
-    top: 10px;
-    box-shadow: 0 0 4px 3px #000000ce;
-    backdrop-filter: blur(2px);
-    padding: 0 18px;
+    flex-direction: row;
+    gap: 0.8rem;
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid #ffffff33;
+    justify-content: space-around;
+    width: 100%;
+    background: #ffffff08;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-sizing: border-box;
 }
-@keyframes nav {
-    0% {
-        background-position: 50% 0%;
+
+.nav-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-width: 120px;
+    min-height: 54px;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 25px;
+    background: #ffffff12;
+    color: #ffffffcc;
+    font-family: "speak1";
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow:
+        3px 3px 8px #00000055,
+        -2px -2px 6px #ffffff18;
+    transition: all 0.18s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.nav-btn:active {
+    transform: scale(0.94);
+}
+
+@media (hover: hover) {
+    .nav-btn:hover {
+        color: #fff;
+        transform: translateY(-1px);
+    }
+}
+
+.nav-btn.active {
+    background: #ffffff08;
+    color: #c1fff0;
+    box-shadow:
+        inset 3px 3px 8px #00000066,
+        inset -2px -2px 6px #ffffff14,
+        0 0 0 1px #c1fff033;
+}
+
+/* ========== 手机端：竖排侧边导航 ========== */
+@media (max-width: 640px) {
+
+    /* ---- 悬浮开关按钮（默认显示）---- */
+    .nav-toggle {
+        display: flex;
+        /* 手机上显示 */
+        position: fixed;
+        left: max(14px, env(safe-area-inset-left));
+        bottom: max(20px, env(safe-area-inset-bottom));
+        width: 52px;
+        height: 52px;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 50%;
+        background: #ffffff14;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        color: #c1fff0;
+        font-size: 1.4rem;
+        cursor: pointer;
+        box-shadow:
+            3px 3px 10px #00000066,
+            -2px -2px 6px #ffffff18,
+            0 0 0 1px #c1fff033;
+        z-index: 1100;
+        transition: transform 0.2s ease;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
     }
 
-    100% {
-        background-position: 50% 100%;
+    .nav-toggle:active {
+        transform: scale(0.9);
+    }
+
+    /* 展开时图标旋转成"关闭" */
+    .nav-toggle.open {
+        transform: rotate(45deg);
+    }
+
+    /* ---- 竖排导航本体：默认收缩隐藏 ---- */
+    .nav {
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 0.6rem;
+
+        position: fixed;
+        left: max(14px, env(safe-area-inset-left));
+        bottom: calc(52px + max(20px, env(safe-area-inset-bottom)) + 12px);
+        /* ↑ 正好在开关按钮正上方 12px */
+
+        width: auto;
+        padding: 0.7rem;
+        border: none;
+        border-radius: 18px;
+        background: #ffffff10;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        box-shadow: 4px 4px 24px #00000066;
+
+        /* 收缩动画 */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px) scale(0.92);
+        transform-origin: left bottom;
+        /* 从开关按钮处展开 */
+        transition:
+            opacity 0.22s ease,
+            transform 0.22s ease,
+            visibility 0.22s;
+        z-index: 1050;
+
+        max-height: 70vh;
+        overflow-y: auto;
+        scrollbar-width: none;
+    }
+
+    .nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* 展开状态 */
+    .nav.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+    }
+
+    /* 竖排按钮：图标+文字横排小胶囊 */
+    .nav-btn {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 8px;
+        width: 100%;
+        min-width: 0;
+        min-height: 44px;
+        padding: 0.45rem 0.9rem;
+        border-radius: 12px;
+        font-size: 0.85rem;
+    }
+
+    .nav-btn svg,
+    .nav-btn .icon {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
     }
 }
-.pic{
-    display: flex;
-    justify-content: center;
+
+/* 桌面端隐藏开关按钮 */
+@media (min-width: 641px) {
+    .nav-toggle {
+        display: none;
+    }
 }
-.feng{
-    width: 180px;
-    border-radius: 15px;
-    box-shadow: 5px 5px 5px #000000ce;
+
+/* 多页面 */
+.page {
+    display: none;
+    animation: fadeSlide 0.35s cubic-bezier(0.2, 0.9, 0.4, 1);
 }
-.my1{
-    background-color: rgba(0, 0, 0, 0.24);
-    border-radius: 10px;
-    backdrop-filter: blur(2px);
-    padding: 1rem 1.2rem;
-    box-shadow: 0 0 5px 4px #000000ce;
-    width: 250px;
+
+.page.active {
+    display: block;
 }
-.my2{
-    background-color: rgba(0, 0, 0, 0.24);
-    border-radius: 10px;
-    backdrop-filter: blur(3px);
-    box-shadow: 2px 2px 5px #000000ce;
+
+/* ———————————————————————————首页————————————————————————————— */
+.my1 {
     position: relative;
     top: 20px;
 }
-.my3{
-    background-color: rgba(0, 0, 0, 0.24);
-    border-radius: 10px;
-    backdrop-filter: blur(3px);
-    padding: 0.1rem 0.6rem;
-    box-shadow: 2px 2px 5px #000000ce;
-    width: 250px;
-    position: relative;
-    top: 30px;
-}
-.wenzi2{
-    color: rgb(90, 228, 198);
-    text-shadow: 0 0 8px #000;
-}
+
 /* 标题 */
 h1,
 h2,
@@ -124,27 +253,221 @@ h3 {
     text-indent: 0;
     color: #ff8080;
     font-family: "name";
-    font-size: 3.5rem;
+    font-size: 2rem;
     text-shadow: 0 0 10px #ff0000;
 }
-p{
-    color: rgb(255, 195, 195);
-    font-family: "speak1";
-    font-size: 1.1rem;
-    font-style: italic;
-    font-weight: 600;
+
+/* 图片居中 */
+.pic {
     display: flex;
     justify-content: center;
+}
+
+/* 封面尺寸 */
+.feng {
+    width: 180px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px #000000ce;
+}
+
+/* 文字 */
+.wenzi {
+    position: relative;
+    top: 20px;
+    background-color: rgba(0, 0, 0, 0.24);
+    border-radius: 10px;
+    backdrop-filter: blur(3px);
+    padding: 0.1rem 0.6rem;
+    box-shadow: 2px 2px 5px #000000ce;
+    width: 80%;
+    /* 占父容器的 80% */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem 1.2rem;
+}
+
+.wenzi2 {
+    position: relative;
+    top: 60px;
+    background-color: rgba(0, 0, 0, 0.24);
+    border-radius: 10px;
+    backdrop-filter: blur(3px);
+    padding: 0.1rem 0.6rem;
+    box-shadow: 2px 2px 5px #000000ce;
+    width: 80%;
+    /* 占父容器的 80% */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem 1.2rem;
+}
+
+p {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    font-family: "speak1";
+    font-style: italic;
     text-shadow: 0 0 8px #ff0000;
 }
-summary{
+
+/* ———————————————————————————目录————————————————————————————— */
+
+.miao {
+    background-image: linear-gradient(to bottom,
+            #00000065,
+            #aaaaaa65,
+            #00000065,
+            #aaaaaa65,
+            #00000065);
+    background-size: 100% 200%;
+    animation: nav 2s linear infinite;
+    display: flex;
+    width: fit-content;
+    border-radius: 18px;
+    position: relative;
+    top: 10px;
+    box-shadow: 0 0 4px 3px #000000ce;
+    backdrop-filter: blur(2px);
+    padding: 8px 25px;
+}
+
+@keyframes nav {
+    0% {
+        background-position: 50% 0%;
+    }
+
+    100% {
+        background-position: 50% 100%;
+    }
+}
+
+summary {
     color: aquamarine;
     font-family: "name";
     font-size: 1.6rem;
     font-weight: 600;
     transition: transform 0.3s, color 0.3s;
 }
-summary:hover{
-    transform: scale(1.1);
-    color: red;
+
+summary:hover {
+    /* transform: scale(1.1); */
+    color: #328bff;
+}
+
+.wang {
+    color: aquamarine;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.wang:hover {
+    /* transform: scale(1.2); */
+    color: #328bff;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(156, 235, 208);
+    font-weight: bold;
+    font-family: "name";
+    font-size: 1.4rem;
+    transition: color 0.4s;
+    display: flex;
+    justify-content: center;
+}
+
+a:hover {
+    color: #328bff;
+}
+
+/* 更新日志 */
+.changelog {
+    max-width: 640px;
+    margin: 40px auto;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: #ffffff;
+    max-width: 80vw;
+}
+
+.changelog-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 14px 18px;
+    background: #f5f7fa2f;
+    backdrop-filter: blur(4px);
+    border: 1px solid #e2e6ea73;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "speak1";
+    font-size: 16px;
+    font-weight: 600;
+    font-style: italic;
+    color: inherit;
+    transition: background .2s;
+}
+
+.changelog-toggle:hover {
+    background: #00000059;
+}
+
+/* 小箭头 */
+.changelog-toggle .arrow {
+    display: inline-block;
+    transition: transform .25s ease;
+    font-size: 13px;
+    color: #888;
+}
+
+.changelog-toggle[aria-expanded="true"] .arrow {
+    transform: rotate(180deg);
+}
+
+/* 内容区：默认收起 */
+.changelog-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    font-family: "speak1";
+    transition: max-height .35s ease, opacity .3s ease, margin-top .3s ease;
+    margin-top: 0;
+}
+
+.changelog-content.is-open {
+    opacity: 1;
+    margin-top: 12px;
+}
+
+/* 日志样式 */
+.log-item {
+    padding: 14px 18px;
+    border-left: 3px solid #4a90d9;
+    background: #ffffff2c;
+    backdrop-filter: blur(4px);
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 10px;
+}
+
+.log-item:last-child {
+    margin-bottom: 0;
+}
+
+.log-version {
+    font-weight: 700;
+    color: #4a90d9;
+    margin-right: 8px;
+}
+
+.log-date {
+    font-size: 13px;
+    color: #e9e7e7;
+}
+
+.log-item ul {
+    margin: 8px 0 0;
+    padding-left: 20px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #99e5d2;
 }

@@ -1,218 +1,615 @@
-/* ============ 歌曲列表：加歌就加一条 ============ */
-const songs = [
-  {
-    title: "抑人（开门live版）",
-    artist: "门尼",
-    src: "Music/抑人（开门live版）.mp3",
-    lrc: "Music/抑人（开门live版）.lrc"
-  },
-  {
-    title: "看门狗",
-    artist: "门尼",
-    src: "Music/看门狗.mp3",
-    lrc: "Music/看门狗.lrc"
-  },
-  {
-    title: "没有了（The End）",
-    artist: "门尼",
-    src: "Music/没有了.mp3",
-    lrc: "Music/没有了.lrc"
-  },
-  {
-    title: "呜（The Ember）",
-    artist: "门尼",
-    src: "Music/呜.mp3",
-    lrc: "Music/呜.lrc"
+
+(function () {
+  'use strict';
+
+  /* ============ 曲目数据 ============ */
+  const TRACK_DATA = [
+    {
+      title: '预制分手（Best Before）',
+      artist: '门尼',
+      audioUrl: 'https://music01-3bxv3bn.maozi.io/MONEY/yuzhifenshou.mp3',
+      lrcUrl: 'Music/预制分手.lrc',
+      grad: ['#8b7cff', '#ff6ba8']
+    },
+    {
+      title: '看门狗',
+      artist: '门尼',
+      audioUrl: 'https://music01-3bxv3bn.maozi.io/MONEY/kanmengou.mp3',
+      lrcUrl: 'Music/看门狗.lrc',
+      grad: ['#8b7cff', '#ff6ba8']
+    },
+    {
+      title: "没有了（The End）",
+      artist: "门尼",
+      audioUrl: "Music/没有了.mp3",
+      lrcUrl: "Music/没有了.lrc",
+      grad: ['#8b7cff', '#ff6ba8']
+    },
+    {
+      title: "呜（The Ember）",
+      artist: "门尼",
+      audioUrl: "Music/呜.mp3",
+      lrcUrl: "Music/呜.lrc",
+      grad: ['#8b7cff', '#ff6ba8']
+    },
+    {
+      title: "抑人（开门live版）",
+      artist: "门尼",
+      audioUrl: "Music/抑人（开门live版）.mp3",
+      lrcUrl: "Music/抑人（开门live版）.lrc",
+      grad: ['#8b7cff', '#ff6ba8']
+    },
+    {
+      title: '南三环东路',
+      artist: 'DOUDOU',
+      audioUrl: 'https://music01-3bxv3bn.maozi.io/DOUDOU/nansanhuandonglu.mp3',
+      lrcUrl: 'Music/南三环东路.lrc',
+      grad: ['#8b7cff', '#ff6ba8']
+    },
+    {
+      title: '嗵嗵',
+      artist: 'DOUDOU',
+      audioUrl: 'https://music01-3bxv3bn.maozi.io/DOUDOU/tongtong.mp3',
+      lrcUrl: 'Music/嗵嗵.lrc',
+      grad: ['#8b7cff', '#ff6ba8']
+    },
+    {
+      title: '失踪的朋友 (Demo)',
+      artist: '柳爽',
+      audioUrl: 'https://music01-3bxv3bn.maozi.io/LIUSHUANG/shizongdepengyou.m4a',
+      lrcUrl: 'Music/失踪的朋友.lrc',
+      grad: ['#8b7cff', '#ff6ba8']
+    },
+    {
+      title: '危险派对',
+      artist: 'TU_兔斯基（翻唱）',
+      audioUrl: 'https://music01-3bxv3bn.maozi.io/QITA/weixianpaidui.mp3',
+      lrcUrl: 'Music/危险派对.lrc',
+      grad: ['#8b7cff', '#ff6ba8']
+    },
+    {
+      title: 'rain',
+      artist: 'mxmtoon',
+      audioUrl: 'https://music01-3bxv3bn.maozi.io/QITA/rain.mp3',
+      lrcUrl: 'Music/rain.lrc',
+      grad: ['#8b7cff', '#ff6ba8']
+    },
+    {
+      title: 'MOM',
+      artist: '蜡笔小心',
+      audioUrl: 'https://music01-3bxv3bn.maozi.io/QITA/MOM.mp3',
+      lrcUrl: 'Music/MOM.lrc',
+      grad: ['#8b7cff', '#ff6ba8']
+    },
+    {
+      title: '真冬HEAT',
+      artist: '畠中祐',
+      audioUrl: 'https://music01-3bxv3bn.maozi.io/TESHE/zhendongHEAT.mp3',
+      lrcUrl: 'Music/真冬HEAT.lrc',
+      grad: ['#8b7cff', '#ff6ba8']
+    },
+    {
+      title: '愛のテーマ (爱的主题)',
+      artist: '矢野立美',
+      audioUrl: 'https://music01-3bxv3bn.maozi.io/TESHE/aidezhuti.flac',
+      lrcUrl: 'Music/爱的主题.lrc',
+      grad: ['#8b7cff', '#ff6ba8']
+    }
+  ];
+
+  /* ============ DOM ============ */
+  const el = {
+    title: document.getElementById('title'),
+    artist: document.getElementById('artist'),
+    coverWrap: document.getElementById('coverWrap'),
+    lyrics: document.getElementById('lyrics'),
+    progress: document.getElementById('progress'),
+    fill: document.getElementById('fill'),
+    buffer: document.getElementById('buffer'),
+    thumb: document.getElementById('thumb'),
+    cur: document.getElementById('cur'),
+    dur: document.getElementById('dur'),
+    playBtn: document.getElementById('playBtn'),
+    prevBtn: document.getElementById('prevBtn'),
+    nextBtn: document.getElementById('nextBtn'),
+    modeBtn: document.getElementById('modeBtn'),
+    modeIcon: document.getElementById('modeIcon'),
+    playlistPanel: document.getElementById('playlistPanel'),
+    playlistItems: document.getElementById('playlistItems'),
+    playlistBtn: document.getElementById('playlistBtn'),
+    closePlaylist: document.getElementById('closePlaylist'),
+    mpCard: document.querySelector('.mp-card')
+  };
+
+  const mpRoot = document.getElementById('mpRoot');
+  const musicPage = document.getElementById('page-music');
+
+  /* ============ 状态 ============ */
+  const audio = new Audio();
+  audio.preload = 'metadata';
+  window.audio = audio; // 暴露给全局
+
+  let currentIndex = 0;
+  let currentLines = [];
+  let activeIdx = -1;
+  let dragging = false, dragRatio = 0;
+  let autoScrollPaused = false, scrollTimer = null;
+  let rafId = null;
+  let isMiniMode = false;
+  let playMode = 0; // 0: 列表, 1: 单曲, 2: 随机
+
+  /* ============ 工具 ============ */
+  function fmtTime(sec) {
+    if (!isFinite(sec) || sec < 0) sec = 0;
+    sec = Math.floor(sec);
+    return Math.floor(sec / 60) + ':' + String(sec % 60).padStart(2, '0');
   }
-];
 
-/* ============ 元素 ============ */
-    const audio = document.getElementById('audio');
-    const playBtn = document.getElementById('playBtn');
-    const playIcon = document.getElementById('playIcon');
-    const pauseIcon = document.getElementById('pauseIcon');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const progressBar = document.getElementById('progressBar');
-    const progressFill = document.getElementById('progressFill');
-    const curTimeEl = document.getElementById('curTime');
-    const totTimeEl = document.getElementById('totTime');
-    const lyricsBox = document.getElementById('lyricsBox');
-    const songTitle = document.getElementById('songTitle');
-    const songArtist = document.getElementById('songArtist');
-    const playlistEl = document.getElementById('playlist');
+  /* ============ 强力解析 LRC ============ */
+  function parseLRC(text) {
+    const out = [];
+    text.replace(/\r/g, '').split('\n').forEach(raw => {
+      const line = raw.trim(); if (!line) return;
+      const tagRe = /[\[<](\d{1,2}):(\d{2})(?:[.:](\d{1,3}))?[\]>]/g;
+      const tags = [];
+      let match;
 
-    let currentIndex = 0;
-    let lyrics = [];
-    let lyricEls = [];
-    let activeLyricIdx = -1;
+      while ((match = tagRe.exec(line)) !== null) {
+        tags.push({
+          time: (+match[1]) * 60 + (+match[2]) + (match[3] ? parseFloat('0.' + match[3]) : 0),
+          index: match.index,
+          length: match[0].length
+        });
+      }
 
-    /* ============ LRC 解析 ============ */
-    function parseLRC(text) {
-      const result = [];
-      const timeReg = /\[(\d{1,2}):(\d{1,2})(?:[.:](\d{1,3}))?\]/g;
-      for (const raw of text.split('\n')) {
-        const line = raw.trim();
-        if (!line) continue;
-        const times = [];
-        let m; timeReg.lastIndex = 0;
-        while ((m = timeReg.exec(line)) !== null) {
-          const ms = m[3] ? parseInt(m[3].padEnd(3, '0'), 10) : 0;
-          times.push(parseInt(m[1], 10) * 60 + parseInt(m[2], 10) + ms / 1000);
+      if (tags.length === 0) return;
+      const lineTime = tags[0].time;
+      const chars = [];
+      let plainText = '';
+
+      for (let i = 0; i < tags.length; i++) {
+        const currentTag = tags[i];
+        const nextTag = tags[i + 1];
+        const textStart = currentTag.index + currentTag.length;
+        const textEnd = nextTag ? nextTag.index : line.length;
+        let segment = line.slice(textStart, textEnd);
+
+        if (tags.length > 1) {
+          const regex = /([a-zA-Z0-9']+ ?)|([\s\S])/g;
+          const parts = [];
+          let partMatch;
+          while ((partMatch = regex.exec(segment)) !== null) {
+            if (partMatch[1]) parts.push(partMatch[1]);
+            else if (partMatch[2] && (partMatch[2].trim() !== '' || partMatch[2] === ' ')) parts.push(partMatch[2]);
+          }
+
+          for (const part of parts) {
+            chars.push({ t: currentTag.time, c: part });
+            plainText += part;
+          }
+        } else {
+          for (const ch of segment) {
+            chars.push({ t: currentTag.time, c: ch });
+            plainText += ch;
+          }
         }
-        if (!times.length) continue;
-        const content = line.replace(timeReg, '').trim();
-        if (!content) continue;
-        times.forEach(t => result.push({ time: t, text: content }));
       }
-      return result.sort((a, b) => a.time - b.time);
+
+      if (!plainText.trim()) return;
+      out.push({ time: lineTime, text: plainText, chars: chars });
+    });
+    out.sort((a, b) => a.time - b.time);
+    return out;
+  }
+
+  /* ============ 歌词渲染 ============ */
+  function renderLyrics(lines) {
+    el.lyrics.innerHTML = '';
+    if (!lines.length) {
+      const empty = document.createElement('div');
+      empty.className = 'mp-empty';
+      empty.textContent = '暂无歌词';
+      el.lyrics.appendChild(empty);
+      return;
+    }
+    const frag = document.createDocumentFragment();
+    lines.forEach((line, i) => {
+      const div = document.createElement('div');
+      div.className = 'mp-line';
+      div.dataset.index = i;
+
+      if (line.chars) {
+        line.chars.forEach(ch => {
+          const s = document.createElement('span');
+          s.className = 'ch';
+          s.textContent = ch.c;
+          ch.node = s;
+          div.appendChild(s);
+        });
+      } else {
+        div.textContent = line.text;
+      }
+      frag.appendChild(div);
+    });
+    el.lyrics.appendChild(frag);
+    el.lyrics.scrollTop = 0;
+  }
+
+  function scrollToLine(node) {
+    if (!node) return;
+    const target = node.offsetTop - el.lyrics.clientHeight / 2 + node.offsetHeight / 2;
+    el.lyrics.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
+  }
+
+  /* ============ 歌词同步更新（终极修复版） ============ */
+  function updateLyric(t) {
+    if (!currentLines.length) return;
+    let idx = -1;
+    for (let i = 0; i < currentLines.length; i++) {
+      if (currentLines[i].time <= t + 0.08) idx = i; else break;
     }
 
-    /* ============ 加载歌词 ============ */
-    async function loadLyrics(source) {
-      if (!source) return [];
-      if (source.includes('\n')) return parseLRC(source);
+    // 只有当前行发生变化时，才处理全量样式，防止卡顿
+    if (idx !== activeIdx) {
+      // 1. 先把所有行都变成未激活，并且清除所有字的 done
+      for (let i = 0; i < currentLines.length; i++) {
+        const lineEl = el.lyrics.children[i];
+        if (lineEl) lineEl.classList.remove('active');
+        const lineData = currentLines[i];
+        if (lineData && lineData.chars) {
+          lineData.chars.forEach(ch => {
+            if (ch.node) ch.node.classList.remove('done');
+          });
+        }
+      }
+
+      // 2. 把拖拽位置之前的行，全部强制设为 done（全亮）
+      for (let i = 0; i < idx; i++) {
+        const lineData = currentLines[i];
+        if (lineData && lineData.chars) {
+          lineData.chars.forEach(ch => {
+            if (ch.node) ch.node.classList.add('done');
+          });
+        }
+      }
+
+      // 3. 激活当前行
+      activeIdx = idx;
+      const cur = el.lyrics.children[idx];
+      if (cur && cur.classList) {
+        cur.classList.add('active');
+        if (!autoScrollPaused) scrollToLine(cur);
+      }
+    }
+
+    // 4. 处理当前行内部的逐字变色（如果倒退了，当前行后面的字也会褪色）
+    const line = currentLines[activeIdx];
+    if (line && line.chars) {
+      line.chars.forEach(ch => {
+        if (!ch.node) return;
+        if (t >= ch.t) {
+          ch.node.classList.add('done');
+        } else {
+          ch.node.classList.remove('done');
+        }
+      });
+    }
+  }
+
+  function pauseAutoScroll() {
+    autoScrollPaused = true;
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => { autoScrollPaused = false; }, 3000);
+  }
+  el.lyrics.addEventListener('wheel', pauseAutoScroll, { passive: true });
+  el.lyrics.addEventListener('touchmove', pauseAutoScroll, { passive: true });
+  el.lyrics.addEventListener('pointerdown', pauseAutoScroll);
+
+  el.lyrics.addEventListener('click', e => {
+    const node = e.target.closest('.mp-line');
+    if (!node) return;
+    const idx = +node.dataset.index;
+    if (isNaN(idx) || !currentLines[idx]) return;
+    audio.currentTime = currentLines[idx].time;
+    autoScrollPaused = false;
+    // 注意：这里不用再调用 updateLyric 了，主循环里的 rAF 会自动接管
+  });
+
+  /* ============ 进度条 ============ */
+  function setProgressVisual(ratio) {
+    const pct = (Math.min(1, Math.max(0, ratio)) * 100).toFixed(3) + '%';
+    el.fill.style.width = pct;
+    el.thumb.style.left = pct;
+  }
+  function ratioFromEvent(e) {
+    const rect = el.progress.getBoundingClientRect();
+    return Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
+  }
+  el.progress.addEventListener('pointerdown', e => {
+    if (!isFinite(audio.duration)) return;
+    dragging = true;
+    el.progress.classList.add('dragging');
+    el.progress.setPointerCapture(e.pointerId);
+    dragRatio = ratioFromEvent(e);
+    setProgressVisual(dragRatio);
+    el.cur.textContent = fmtTime(dragRatio * audio.duration);
+  });
+  el.progress.addEventListener('pointermove', e => {
+    if (!dragging) return;
+    dragRatio = ratioFromEvent(e);
+    setProgressVisual(dragRatio);
+    el.cur.textContent = fmtTime(dragRatio * audio.duration);
+  });
+  function endDrag(e) {
+    if (!dragging) return;
+    dragging = false;
+    el.progress.classList.remove('dragging');
+    try { el.progress.releasePointerCapture(e.pointerId); } catch (_) { }
+    if (isFinite(audio.duration)) audio.currentTime = dragRatio * audio.duration;
+    autoScrollPaused = false;
+  }
+  el.progress.addEventListener('pointerup', endDrag);
+  el.progress.addEventListener('pointercancel', endDrag);
+
+  /* ============ 主循环 ============ */
+  function loop() {
+    if (!dragging && isFinite(audio.duration) && audio.duration > 0) {
+      const r = audio.currentTime / audio.duration;
+      setProgressVisual(r);
+      el.cur.textContent = fmtTime(audio.currentTime);
       try {
-        const res = await fetch(source);
+        if (audio.buffered.length) {
+          const b = audio.buffered.end(audio.buffered.length - 1) / audio.duration;
+          el.buffer.style.width = (Math.min(1, b) * 100).toFixed(2) + '%';
+        }
+      } catch (_) { }
+    }
+    updateLyric(audio.currentTime);
+    rafId = requestAnimationFrame(loop);
+  }
+  function startLoop() { if (!rafId) rafId = requestAnimationFrame(loop); }
+  function stopLoop() { if (rafId) { cancelAnimationFrame(rafId); rafId = null; } }
+
+  /* ============ 播放控制 ============ */
+  function updateDuration() {
+    if (isFinite(audio.duration)) el.dur.textContent = fmtTime(audio.duration);
+  }
+  audio.addEventListener('loadedmetadata', updateDuration);
+  audio.addEventListener('durationchange', updateDuration);
+
+  audio.addEventListener('play', () => {
+    el.playBtn.classList.add('playing');
+    el.coverWrap.classList.add('spinning');
+    startLoop();
+
+    const currentPage = window.location.hash.replace('#', '') || 'home';
+    if (currentPage !== 'music') {
+      setMiniMode(true);
+    }
+  });
+
+  audio.addEventListener('pause', () => {
+    el.playBtn.classList.remove('playing');
+    el.coverWrap.classList.remove('spinning');
+    stopLoop();
+    setMiniMode(false);
+  });
+
+  /* ============ 播放模式控制 ============ */
+  const icons = {
+    'loop-all': '<path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/>',
+    'loop-one': '<path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/><text x="12" y="15" font-size="8" text-anchor="middle" fill="#8b7cff" font-weight="bold">1</text>',
+    'random': '<path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/>'
+  };
+
+  if (el.modeBtn) {
+    el.modeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      playMode = (playMode + 1) % 3;
+      updateModeUI();
+    });
+  }
+
+  function updateModeUI() {
+    if (!el.modeBtn) return;
+    if (playMode === 0) {
+      el.modeIcon.innerHTML = icons['loop-all'];
+      el.modeBtn.title = "列表循环";
+      el.modeIcon.style.fill = "#8f8fa3";
+    } else if (playMode === 1) {
+      el.modeIcon.innerHTML = icons['loop-one'];
+      el.modeBtn.title = "单曲循环";
+      el.modeIcon.style.fill = "#8b7cff";
+    } else if (playMode === 2) {
+      el.modeIcon.innerHTML = icons['random'];
+      el.modeBtn.title = "随机播放";
+      el.modeIcon.style.fill = "#8b7cff";
+    }
+  }
+
+  audio.addEventListener('ended', () => {
+    if (playMode === 0) {
+      loadTrack(currentIndex + 1, true);
+    } else if (playMode === 1) {
+      audio.currentTime = 0;
+      audio.play();
+    } else if (playMode === 2) {
+      if (TRACK_DATA.length > 1) {
+        let nextIdx = currentIndex;
+        while (nextIdx === currentIndex) nextIdx = Math.floor(Math.random() * TRACK_DATA.length);
+        loadTrack(nextIdx, true);
+      } else {
+        audio.currentTime = 0;
+        audio.play();
+      }
+    }
+  });
+
+  audio.addEventListener('error', () => {
+    el.artist.textContent = '音频加载失败，请检查链接或 CORS';
+  });
+
+  audio.addEventListener('timeupdate', () => {
+    if (!dragging && isFinite(audio.duration)) el.cur.textContent = fmtTime(audio.currentTime);
+  });
+
+  async function loadTrack(index, autoplay = false) {
+    currentIndex = (index + TRACK_DATA.length) % TRACK_DATA.length;
+    const t = TRACK_DATA[currentIndex];
+
+    audio.src = t.audioUrl;
+    audio.load();
+
+    el.title.textContent = t.title;
+    el.artist.textContent = t.artist;
+
+    currentLines = [];
+    activeIdx = -1;
+    renderLyrics([]);
+
+    if (t.lrcUrl) {
+      try {
+        const res = await fetch(encodeURI(t.lrcUrl));
         if (!res.ok) throw new Error('HTTP ' + res.status);
-        return parseLRC(await res.text());
-      } catch (e) {
-        console.warn('歌词加载失败:', source, e.message);
-        return [];
+        const text = await res.text();
+        currentLines = parseLRC(text);
+        renderLyrics(currentLines);
+      } catch (err) {
+        console.warn('歌词加载失败:', t.lrcUrl, err);
+        renderLyrics([]);
       }
     }
 
-    /* ============ 渲染歌词 ============ */
-    function renderLyrics(data) {
-      lyrics = data;
-      lyricEls = [];
-      activeLyricIdx = -1;
-      lyricsBox.innerHTML = '';
-      if (!lyrics.length) {
-        lyricsBox.innerHTML = '<div class="lyric-line" style="opacity:.4;">♪ 暂无歌词 ♪</div>';
+    setProgressVisual(0);
+    el.buffer.style.width = '0%';
+    el.cur.textContent = '0:00';
+    el.dur.textContent = '0:00';
+
+    if (autoplay) audio.play().catch(() => { });
+
+    if (el.playlistItems) {
+      Array.from(el.playlistItems.children).forEach((item, i) => {
+        item.classList.toggle('playing', i === currentIndex);
+      });
+      const playingItem = el.playlistItems.querySelector('.playing');
+      if (playingItem) {
+        playingItem.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      }
+    }
+  }
+
+  el.playBtn.addEventListener('click', () => {
+    if (audio.paused) audio.play().catch(err => console.warn(err));
+    else audio.pause();
+  });
+
+  el.prevBtn.addEventListener('click', () => {
+    if (playMode === 2 && TRACK_DATA.length > 1) {
+      let prevIdx = currentIndex;
+      while (prevIdx === currentIndex) prevIdx = Math.floor(Math.random() * TRACK_DATA.length);
+      loadTrack(prevIdx, !audio.paused);
+    } else {
+      loadTrack(currentIndex - 1, !audio.paused);
+    }
+  });
+
+  el.nextBtn.addEventListener('click', () => {
+    if (playMode === 2 && TRACK_DATA.length > 1) {
+      let nextIdx = currentIndex;
+      while (nextIdx === currentIndex) nextIdx = Math.floor(Math.random() * TRACK_DATA.length);
+      loadTrack(nextIdx, !audio.paused);
+    } else {
+      loadTrack(currentIndex + 1, !audio.paused);
+    }
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT') return;
+    if (e.code === 'Space') { e.preventDefault(); audio.paused ? audio.play().catch(() => { }) : audio.pause(); }
+    else if (e.code === 'ArrowRight' && isFinite(audio.duration)) audio.currentTime = Math.min(audio.duration, audio.currentTime + 5);
+    else if (e.code === 'ArrowLeft' && isFinite(audio.duration)) audio.currentTime = Math.max(0, audio.currentTime - 5);
+  });
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopLoop();
+    else if (!audio.paused) startLoop();
+  });
+
+  /* ============ 迷你播放器逻辑 ============ */
+  function setMiniMode(mini) {
+    if (isMiniMode === mini) return;
+    isMiniMode = mini;
+
+    if (mini) {
+      document.body.appendChild(mpRoot);
+      mpRoot.classList.add('mini-mode');
+    } else {
+      musicPage.appendChild(mpRoot);
+      mpRoot.classList.remove('mini-mode');
+    }
+  }
+
+  window.toggleMiniMode = function (currentPageName) {
+    if (currentPageName === 'music' || audio.paused) {
+      setMiniMode(false);
+    } else {
+      setMiniMode(true);
+    }
+  };
+
+  mpRoot.addEventListener('click', (e) => {
+    if (isMiniMode) {
+      if (e.target.closest('.mp-btn-play') || e.target.closest('#prevBtn') || e.target.closest('#nextBtn')) {
         return;
       }
-      lyrics.forEach((item) => {
-        const div = document.createElement('div');
-        div.className = 'lyric-line';
-        div.textContent = item.text;
-        div.addEventListener('click', () => {
-          if (audio.duration) audio.currentTime = item.time;
-        });
-        lyricsBox.appendChild(div);
-        lyricEls.push(div);
-      });
-      setActiveLyric(0);
+      window.location.hash = 'music';
     }
+  });
 
-    /* ============ 高亮 + 滚动（修复版）============ */
-    function setActiveLyric(index) {
-      if (index === activeLyricIdx) return;
-      if (activeLyricIdx >= 0 && lyricEls[activeLyricIdx]) {
-        lyricEls[activeLyricIdx].classList.remove('active');
-      }
-      if (index >= 0 && index < lyricEls.length) {
-        const el = lyricEls[index];
-        el.classList.add('active');
-        // ✅ 用 offsetTop（相对 .lyrics，因为它是 position:relative）
-        const targetTop = el.offsetTop - (lyricsBox.clientHeight - el.offsetHeight) / 2;
-        lyricsBox.scrollTo({ top: targetTop, behavior: 'smooth' });
-      }
-      activeLyricIdx = index;
-    }
+  /* ============ 歌单列表逻辑（修复版，放回卡片内） ============ */
+  if (el.playlistPanel && el.playlistBtn) {
+    // 不要 appendChild 到 body 了，就让它留在 mpCard 里
+    document.body.appendChild(el.playlistPanel);
 
-    /* ============ 查找当前歌词 ============ */
-    function findLyricIndex(time) {
-      let idx = -1;
-      for (let i = 0; i < lyrics.length; i++) {
-        if (time >= lyrics[i].time) idx = i;
-        else break;
-      }
-      return idx;
-    }
+    el.playlistBtn.addEventListener('click', () => el.playlistPanel.classList.add('show'));
+    el.closePlaylist.addEventListener('click', () => el.playlistPanel.classList.remove('show'));
 
-    /* ============ 时间格式化 ============ */
-    function fmt(sec) {
-      if (!sec || isNaN(sec)) return '0:00';
-      const m = Math.floor(sec / 60), s = Math.floor(sec % 60);
-      return `${m}:${s < 10 ? '0' : ''}${s}`;
-    }
-
-    /* ============ 加载歌曲 ============ */
-    async function loadSong(index, autoPlay = false) {
-      currentIndex = (index + songs.length) % songs.length;
-      const song = songs[currentIndex];
-      songTitle.textContent = song.title;
-      songArtist.textContent = song.artist;
-
-      document.querySelectorAll('.playlist-item').forEach((el, i) => {
-        el.classList.toggle('active', i === currentIndex);
-      });
-
-      audio.src = song.src;
-      audio.load();
-      const lyricData = await loadLyrics(song.lrc);
-      renderLyrics(lyricData);
-
-      progressFill.style.width = '0%';
-      curTimeEl.textContent = '0:00';
-
-      if (autoPlay) audio.play().catch(e => console.log(e));
-    }
-
-    /* ============ 播放/暂停 ============ */
-    function togglePlay() {
-      if (!audio.src) { loadSong(0, true); return; }
-      audio.paused ? audio.play().catch(e => console.log(e)) : audio.pause();
-    }
-    function updatePlayIcon() {
-      const playing = !audio.paused;
-      playIcon.style.display = playing ? 'none' : 'block';
-      pauseIcon.style.display = playing ? 'block' : 'none';
-    }
-
-    /* ============ 进度条 ============ */
-    function updateProgress() {
-      const cur = audio.currentTime, dur = audio.duration || 0;
-      curTimeEl.textContent = fmt(cur);
-      totTimeEl.textContent = fmt(dur);
-      progressFill.style.width = dur ? (cur / dur * 100) + '%' : '0%';
-    }
-
-    /* ============ 播放列表 ============ */
     function renderPlaylist() {
-      playlistEl.innerHTML = '';
-      songs.forEach((s, i) => {
-        const div = document.createElement('div');
-        div.className = 'playlist-item';
-        div.innerHTML = `<span>${i + 1}. ${s.title}</span><span class="dur">${s.artist}</span>`;
-        div.addEventListener('click', () => loadSong(i, true));
-        playlistEl.appendChild(div);
+      el.playlistItems.innerHTML = '';
+      TRACK_DATA.forEach((song, index) => {
+        const item = document.createElement('div');
+        item.className = 'mp-song-item';
+        if (index === currentIndex) item.classList.add('playing');
+
+        item.innerHTML = `
+                    <div class="song-title">${song.title}</div>
+                    <div class="song-artist">${song.artist}</div>
+                `;
+
+        item.addEventListener('click', () => {
+          if (index !== currentIndex) {
+            loadTrack(index, true);
+          }
+          el.playlistPanel.classList.remove('show');
+        });
+
+        el.playlistItems.appendChild(item);
       });
     }
 
-    /* ============ 事件 ============ */
-    playBtn.addEventListener('click', togglePlay);
-    prevBtn.addEventListener('click', () => loadSong(currentIndex - 1, !audio.paused));
-    nextBtn.addEventListener('click', () => loadSong(currentIndex + 1, !audio.paused));
-    audio.addEventListener('play', updatePlayIcon);
-    audio.addEventListener('pause', updatePlayIcon);
-    audio.addEventListener('ended', () => loadSong(currentIndex + 1, true));
-    audio.addEventListener('loadedmetadata', updateProgress);
-    audio.addEventListener('timeupdate', () => {
-      updateProgress();
-      if (lyrics.length) {
-        const idx = findLyricIndex(audio.currentTime);
-        if (idx !== -1) setActiveLyric(idx);
+    document.addEventListener('pointerdown', (e) => {
+      if (el.playlistPanel.classList.contains('show')) {
+        if (!el.playlistPanel.contains(e.target) && !el.playlistBtn.contains(e.target)) {
+          el.playlistPanel.classList.remove('show');
+        }
       }
     });
-    progressBar.addEventListener('click', e => {
-      if (!audio.duration) return;
-      const rect = progressBar.getBoundingClientRect();
-      const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-      audio.currentTime = ratio * audio.duration;
-    });
 
-    /* ============ 初始化 ============ */
     renderPlaylist();
-    loadSong(0, false);
+  }
+
+  /* ============ 初始化 ============ */
+  loadTrack(0, false).then(() => { el.playBtn.disabled = false; });
+  audio.addEventListener('canplay', () => { el.playBtn.disabled = false; });
+
+})();
