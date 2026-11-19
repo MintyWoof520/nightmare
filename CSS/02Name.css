@@ -1,1469 +1,2051 @@
+/* 薄荷人物名 */
+.msg-name628 {
+    color: rgb(44, 255, 192);
+    font-family: "name";
+    font-size: 90%;
+    font-style: italic;
+    /* 斜体 */
+    font-weight: bold;
+    /* 加粗 */
+    text-align: right;
+    /* 名字靠右 */
+    text-shadow: 0 0 8px #01ffaa;
+}
 
-        /* 薄荷人物名 */
-        .msg-name628{
-            color: rgb(44, 255, 192);
-            font-family: "name";
-            font-size: 90%;
-            font-style: italic;  /* 斜体 */
-            font-weight: bold;   /* 加粗 */
-            text-align: right;   /* 名字靠右 */
-            text-shadow: 0 0 8px #01ffaa;
-        }
-        /* 万俟子琅人物名 */
-        .msg-nameA{
-            color: rgb(199, 239, 255);
-            font-family: "name";
-            font-size: 90%;
-            font-style: italic;  /* 斜体 */
-            font-weight: bold;   /* 加粗 */
-            text-align: right;   /* 名字靠右 */
-            text-shadow: 0 0 8px #3ef8d0;
-        }
-        /* 万俟子琅左人物名 */
-        .msg-nameAa{
-            color: rgb(199, 239, 255);
-            font-family: "name";
-            font-size: 90%;
-            font-style: italic;  /* 斜体 */
-            font-weight: bold;   /* 加粗 */
-            text-align: left;   /* 名字靠左 */
-            text-shadow: 0 0 8px #3ef8d0;
-        }
+.msg-name628- {
+    color: rgb(44, 255, 192);
+    font-family: "name";
+    font-size: 90%;
+    font-style: italic;
+    /* 斜体 */
+    font-weight: bold;
+    /* 加粗 */
+    text-align: right;
+    /* 名字靠右 */
+    text-shadow: 0 0 8px #01ffaa;
+}
 
-        /* ————————————————————分割线———————————————————————— */
+/* 万俟子琅人物名 */
+.msg-nameA {
+    color: rgb(199, 239, 255);
+    font-family: "name";
+    font-size: 90%;
+    font-style: italic;
+    /* 斜体 */
+    font-weight: bold;
+    /* 加粗 */
+    text-align: right;
+    /* 名字靠右 */
+    text-shadow: 0 0 8px #3ef8d0;
+}
 
-        /* 刘歌产2人物名 */
-        .msg-name52a {
-            color: rgb(255, 227, 227);
-            font-family: "name";
-            font-size: 90%;
-            font-style: italic;  /* 斜体 */
-            font-weight: bold;   /* 加粗 */
-            text-align: right;   /* 名字靠右 */
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 易二三2人物名字 */
-        .msg-name106a {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-align: right;   /* 名字靠右 */
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 方昀2人物名字 */
-        .msg-name133a {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-align: right;   /* 名字靠右 */
-            text-shadow: 0 0 8px #ff0000;
-        }
+/* 万俟子琅左人物名 */
+.msg-nameAa {
+    color: rgb(199, 239, 255);
+    font-family: "name";
+    font-size: 90%;
+    font-style: italic;
+    /* 斜体 */
+    font-weight: bold;
+    /* 加粗 */
+    text-align: left;
+    /* 名字靠左 */
+    text-shadow: 0 0 8px #3ef8d0;
+}
 
-        /* ————————————————————分割线———————————————————————— */
+/* ————————————————————分割线———————————————————————— */
 
-        /* 乌龟人物名字 */
-        .msg-nameB {
-            color: rgb(153, 255, 139);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #01ff01;
-        }
-        /* 乌龟人形人物名字 */
-        .msg-nameBb {
-            color: rgb(145, 171, 255);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #2701ff;
-        }
-        /* 桑肖柠人物名字 */
-        .msg-nameC {
-            color: rgb(255, 180, 230);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff01ea;
-        }
-        /* 宋分题人物名字 */
-        .msg-nameD {
-            color: rgb(255, 228, 139);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #fbff01;
-        }
-        /* 宋命题人物名字 */
-        .msg-nameE {
-            color: rgb(158, 227, 255);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #0184ff;
-        }
-        /* 贝采薇人物名字 */
-        .msg-nameF {
-            color: rgb(255, 188, 241);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff01c8;
-        }
-        /* 桑薛糕人物名字 */
-        .msg-nameG {
-            color: rgb(255, 228, 139);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #fbff01;
-        }
-        /* 燕归人物名字 */
-        .msg-nameH {
-            color: rgb(145, 171, 255);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #2701ff;
-        }
+/* 刘歌产2人物名 */
+.msg-name52a {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    font-size: 90%;
+    font-style: italic;
+    /* 斜体 */
+    font-weight: bold;
+    /* 加粗 */
+    text-align: right;
+    /* 名字靠右 */
+    text-shadow: 0 0 8px #ff0000;
+}
 
-        /* ————————————————————分割线———————————————————————— */
+/* 易二三2人物名字 */
+.msg-name106a {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-align: right;
+    /* 名字靠右 */
+    text-shadow: 0 0 8px #ff0000;
+}
 
-        /* DeepSeek人物名字 */
-        .msg-nameDS {
-            color: rgb(182, 199, 255);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #0044ff;
-        }
+/* 方昀2人物名字 */
+.msg-name133a {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-align: right;
+    /* 名字靠右 */
+    text-shadow: 0 0 8px #ff0000;
+}
 
-        /* ————————————————————分割线———————————————————————— */
+/* 尚嫄2人物名字 */
+.msg-name151a {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-align: right;
+    /* 名字靠右 */
+    text-shadow: 0 0 8px #ff0000;
+}
 
-        /* 余厌厌人物名字 */
-        .msg-name1 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 舍管阿姨人物名字 */
-        .msg-name2 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 柳千妩人物名字 */
-        .msg-name3 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 安芷染人物名字 */
-        .msg-name4 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 黄莺莺人物名字 */
-        .msg-name5 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 郑冽人物名字 */
-        .msg-name6 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 护士人物名字 */
-        .msg-name7 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 医生人物名字 */
-        .msg-name8 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 老公人物名字 */
-        .msg-name9 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 婆婆人物名字 */
-        .msg-name10 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 乞丐人物名字 */
-        .msg-name11 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 保安老王人物名字 */
-        .msg-name12 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 保安老张人物名字 */
-        .msg-name13 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 刘雨雯人物名字 */
-        .msg-name14 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 病人甲人物名字 */
-        .msg-name15 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 病人乙人物名字 */
-        .msg-name16 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 小男孩人物名字 */
-        .msg-name17 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 房产中介人物名字 */
-        .msg-name18 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 情侣女人物名字 */
-        .msg-name19 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 情侣男人物名字 */
-        .msg-name20 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 公交车司机人物名字 */
-        .msg-name21 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 老阿姨人物名字 */
-        .msg-name22 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 疯子人物名字 */
-        .msg-name23 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 助理人物名字 */
-        .msg-name24 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 路人甲人物名字 */
-        .msg-name25 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 路人乙人物名字 */
-        .msg-name26 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 巫鸦人物名字 */
-        .msg-name27 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 茉莉酱人物名字 */
-        .msg-name28 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 茉莉妈妈人物名字 */
-        .msg-name29 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 问路女人人物名字 */
-        .msg-name30 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 猪蹄老柳人物名字 */
-        .msg-name31 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 农民人物名字 */
-        .msg-name32 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 夜叶耶人物名字 */
-        .msg-name33 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 叶小小人物名字 */
-        .msg-name34 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 村民老张人物名字 */
-        .msg-name35 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 老张媳妇人物名字 */
-        .msg-name36 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 村民老刘人物名字 */
-        .msg-name37 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 村民老北人物名字 */
-        .msg-name38 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 商场经理人物名字 */
-        .msg-name39 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 服务生人物名字 */
-        .msg-name40 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 主持人人物名字 */
-        .msg-name41 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 工程师人物名字 */
-        .msg-name42 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 杂耍艺人人物名字 */
-        .msg-name43 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 沈妤人物名字 */
-        .msg-name44 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 沈橘灿人物名字 */
-        .msg-name45 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 箱鬼黑人物名字 */
-        .msg-name46 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 箱鬼白人物名字 */
-        .msg-name46a {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 奶茶店店员人物名字 */
-        .msg-name47 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 斑鸠人物名字 */
-        .msg-name48 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 4s店销售员人物名字 */
-        .msg-name49 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 改装工人人物名字 */
-        .msg-name50 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 岳决人物名字 */
-        .msg-name51 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 刘歌产人物名字 */
-        .msg-name52 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 沈殷人物名字 */
-        .msg-name53 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 谭溪夜人物名字 */
-        .msg-name54 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 伊藤奈子人物名字 */
-        .msg-name55 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 谭溪夜姑姑人物名字 */
-        .msg-name56 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 沈兮人物名字 */
-        .msg-name57 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 童初人物名字 */
-        .msg-name58 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 老奶奶人物名字 */
-        .msg-name59 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 长发女人物名字 */
-        .msg-name60 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 爷爷人物名字 */
-        .msg-name61 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 唐延玉人物名字 */
-        .msg-name62 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 伞小蕊人物名字 */
-        .msg-name63 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 木嘻嘻人物名字 */
-        .msg-name64 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 唐范统人物名字 */
-        .msg-name65 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 艾珍奈人物名字 */
-        .msg-name66 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 邵雪啸人物名字 */
-        .msg-name67 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 孙依星人物名字 */
-        .msg-name68 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 老和尚人物名字 */
-        .msg-name69 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 老和尚尸体人物名字 */
-        .msg-name69a {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 小和尚蒙面人物名字 */
-        .msg-name70 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 小和尚鬼人物名字 */
-        .msg-name70a {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 人皮鬼人物名字 */
-        .msg-name71 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 白开人物名字 */
-        .msg-name72 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 沐熙人物名字 */
-        .msg-name73 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 程肉肉人物名字 */
-        .msg-name74 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* ？薛糕人物名字 */
-        .msg-name75 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 救援1人物名字 */
-        .msg-name76 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 救援2人物名字 */
-        .msg-name77 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 猫人物名字 */
-        .msg-name78 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 救援3人物名字 */
-        .msg-name79 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 救援4人物名字 */
-        .msg-name80 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 黎梦人物名字 */
-        .msg-name81 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 孙家小学校长人物名字 */
-        .msg-name82 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 孙家小学校长鬼人物名字 */
-        .msg-name82a {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 语文老师人物名字 */
-        .msg-name83 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 数学老师人物名字 */
-        .msg-name84 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 英语老师人物名字 */
-        .msg-name85 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* ？丧尸人物名字 */
-        .msg-name86 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 老爷爷人物名字 */
-        .msg-name87 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 小萝莉人物名字 */
-        .msg-name88 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 网一云人物名字 */
-        .msg-name89 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 剁肉馅的人物名字 */
-        .msg-name90 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 老教授人物名字 */
-        .msg-name91 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 无头鬼&江户川初豆人物名字 */
-        .msg-name92 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 柳树人物名字 */
-        .msg-name93 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 救援人员一人物名字 */
-        .msg-name94 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 刘队人物名字 */
-        .msg-name95 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 柯伍邪人物名字 */
-        .msg-name96 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 救援人员二人物名字 */
-        .msg-name97 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 唐俊逸人物名字 */
-        .msg-name98 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 挖掘机老王人物名字 */
-        .msg-name99 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 挖掘机老王鬼人物名字 */
-        .msg-name99a {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 虔沂可人物名字 */
-        .msg-name100 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 苏珊璃人物名字 */
-        .msg-name101 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 狗人物名字 */
-        .msg-name102 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 女学生人物名字 */
-        .msg-name103 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* ？燕归人物名字 */
-        .msg-name104 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 校长老婆人物名字 */
-        .msg-name105 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 易二三人物名字 */
-        .msg-name106 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 冷季人物名字 */
-        .msg-name107 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 陈姜茗人物名字 */
-        .msg-name108 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 陈姜茗鬼人物名字 */
-        .msg-name108a {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 陆泽宇人物名字 */
-        .msg-name109 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 陆泽宇鬼人物名字 */
-        .msg-name109a {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 宋淳早人物名字 */
-        .msg-name110 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 宋淳早鬼人物名字 */
-        .msg-name110a {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 陆九渊人物名字 */
-        .msg-name111 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 女人人物名字 */
-        .msg-name112 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 希米露人物名字 */
-        .msg-name113 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 赵映澜人物名字 */
-        .msg-name114 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 夹谷梁人物名字 */
-        .msg-name115 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 余子倩人物名字 */
-        .msg-name116 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 鹿小闹人物名字 */
-        .msg-name117 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 林杨人物名字 */
-        .msg-name118 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 白墨人物名字 */
-        .msg-name119 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 歪扭人人物名字 */
-        .msg-name120 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 尸体人物名字 */
-        .msg-name121 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 螳螂人物名字 */
-        .msg-name122 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 汤暄人物名字 */
-        .msg-name123 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 郭若羽人物名字 */
-        .msg-name124 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 挑着水桶的人物名字 */
-        .msg-name125 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 柳诗雅人物名字 */
-        .msg-name126 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 陈清酒人物名字 */
-        .msg-name127 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 陈卿卿人物名字 */
-        .msg-name128 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 铁线虫人物名字 */
-        .msg-name129 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 苗橙人物名字 */
-        .msg-name130 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 苗橙鬼人物名字 */
-        .msg-name130a {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 苗老太太人物名字 */
-        .msg-name131 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 苗老太太鬼人物名字 */
-        .msg-name131a {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 苗老爷爷人物名字 */
-        .msg-name132 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 苗老爷爷鬼人物名字 */
-        .msg-name132a {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 方昀人物名字 */
-        .msg-name133 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 姜余人物名字 */
-        .msg-name134 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        /* 肋骨人物名字 */
-        .msg-name135 {
-            color: rgb(255, 227, 227);
-            font-family: "name"; /* 字体引用 */
-            font-size: 90%;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff0000;
-        }
+/* ————————————————————分割线———————————————————————— */
 
+/* 乌龟人物名字 */
+.msg-nameB {
+    color: rgb(153, 255, 139);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #01ff01;
+}
+
+/* 乌龟人形人物名字 */
+.msg-nameBb {
+    color: rgb(145, 171, 255);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #2701ff;
+}
+
+/* 桑肖柠人物名字 */
+.msg-nameC {
+    color: rgb(255, 180, 230);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff01ea;
+}
+
+/* 宋分题人物名字 */
+.msg-nameD {
+    color: rgb(255, 228, 139);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #fbff01;
+}
+
+/* 宋命题人物名字 */
+.msg-nameE {
+    color: rgb(158, 227, 255);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #0184ff;
+}
+
+/* 贝采薇人物名字 */
+.msg-nameF {
+    color: rgb(255, 188, 241);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff01c8;
+}
+
+/* 桑薛糕人物名字 */
+.msg-nameG {
+    color: rgb(255, 228, 139);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #fbff01;
+}
+
+/* 燕归人物名字 */
+.msg-nameH {
+    color: rgb(145, 171, 255);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #2701ff;
+}
+
+/* 小蛇崽崽人 人物名字 */
+.msg-nameI {
+    color: rgb(255, 255, 255);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #000000;
+}
+
+/* 小蛇崽崽人物名字 */
+.msg-nameIi {
+    color: rgb(255, 255, 255);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #000000;
+}
+
+/* ————————————————————分割线———————————————————————— */
+
+/* DeepSeek人物名字 */
+.msg-nameDS {
+    color: rgb(182, 199, 255);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #0044ff;
+}
+
+/* ————————————————————分割线———————————————————————— */
+
+/* 余厌厌人物名字 */
+.msg-name1 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 舍管阿姨人物名字 */
+.msg-name2 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 柳千妩人物名字 */
+.msg-name3 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 安芷染人物名字 */
+.msg-name4 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 黄莺莺人物名字 */
+.msg-name5 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 郑冽人物名字 */
+.msg-name6 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 护士人物名字 */
+.msg-name7 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 医生人物名字 */
+.msg-name8 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 老公人物名字 */
+.msg-name9 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 婆婆人物名字 */
+.msg-name10 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 乞丐人物名字 */
+.msg-name11 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 保安老王人物名字 */
+.msg-name12 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 保安老张人物名字 */
+.msg-name13 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 刘雨雯人物名字 */
+.msg-name14 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 病人甲人物名字 */
+.msg-name15 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 病人乙人物名字 */
+.msg-name16 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 小男孩人物名字 */
+.msg-name17 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 房产中介人物名字 */
+.msg-name18 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 情侣女人物名字 */
+.msg-name19 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 情侣男人物名字 */
+.msg-name20 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 公交车司机人物名字 */
+.msg-name21 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 老阿姨人物名字 */
+.msg-name22 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 疯子人物名字 */
+.msg-name23 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 助理人物名字 */
+.msg-name24 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 路人甲人物名字 */
+.msg-name25 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 路人乙人物名字 */
+.msg-name26 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 巫鸦人物名字 */
+.msg-name27 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 茉莉酱人物名字 */
+.msg-name28 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 茉莉妈妈人物名字 */
+.msg-name29 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 问路女人人物名字 */
+.msg-name30 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 猪蹄老柳人物名字 */
+.msg-name31 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 农民人物名字 */
+.msg-name32 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 夜叶耶人物名字 */
+.msg-name33 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 叶小小人物名字 */
+.msg-name34 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 村民老张人物名字 */
+.msg-name35 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 老张媳妇人物名字 */
+.msg-name36 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 村民老刘人物名字 */
+.msg-name37 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 村民老北人物名字 */
+.msg-name38 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 商场经理人物名字 */
+.msg-name39 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 服务生人物名字 */
+.msg-name40 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 主持人人物名字 */
+.msg-name41 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 工程师人物名字 */
+.msg-name42 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 杂耍艺人人物名字 */
+.msg-name43 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 沈妤人物名字 */
+.msg-name44 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 沈橘灿人物名字 */
+.msg-name45 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 箱鬼黑人物名字 */
+.msg-name46 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 箱鬼白人物名字 */
+.msg-name46a {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 奶茶店店员人物名字 */
+.msg-name47 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 斑鸠人物名字 */
+.msg-name48 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 4s店销售员人物名字 */
+.msg-name49 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 改装工人人物名字 */
+.msg-name50 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 岳决人物名字 */
+.msg-name51 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 刘歌产人物名字 */
+.msg-name52 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 沈殷人物名字 */
+.msg-name53 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 谭溪夜人物名字 */
+.msg-name54 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 伊藤奈子人物名字 */
+.msg-name55 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 谭溪夜姑姑人物名字 */
+.msg-name56 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 沈兮人物名字 */
+.msg-name57 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 童初人物名字 */
+.msg-name58 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 老奶奶人物名字 */
+.msg-name59 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 长发女人物名字 */
+.msg-name60 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 爷爷人物名字 */
+.msg-name61 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 唐延玉人物名字 */
+.msg-name62 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 伞小蕊人物名字 */
+.msg-name63 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 木嘻嘻人物名字 */
+.msg-name64 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 唐范统人物名字 */
+.msg-name65 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 艾珍奈人物名字 */
+.msg-name66 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 邵雪啸人物名字 */
+.msg-name67 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 孙依星人物名字 */
+.msg-name68 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 老和尚人物名字 */
+.msg-name69 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 老和尚尸体人物名字 */
+.msg-name69a {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 小和尚蒙面人物名字 */
+.msg-name70 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 小和尚鬼人物名字 */
+.msg-name70a {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 人皮鬼人物名字 */
+.msg-name71 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 白开人物名字 */
+.msg-name72 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 沐熙人物名字 */
+.msg-name73 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 程肉肉人物名字 */
+.msg-name74 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* ？薛糕人物名字 */
+.msg-name75 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 救援1人物名字 */
+.msg-name76 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 救援2人物名字 */
+.msg-name77 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 猫人物名字 */
+.msg-name78 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 救援3人物名字 */
+.msg-name79 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 救援4人物名字 */
+.msg-name80 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 黎梦人物名字 */
+.msg-name81 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 孙家小学校长人物名字 */
+.msg-name82 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 孙家小学校长鬼人物名字 */
+.msg-name82a {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 语文老师人物名字 */
+.msg-name83 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 数学老师人物名字 */
+.msg-name84 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 英语老师人物名字 */
+.msg-name85 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* ？丧尸人物名字 */
+.msg-name86 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 老爷爷人物名字 */
+.msg-name87 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 小萝莉人物名字 */
+.msg-name88 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 网一云人物名字 */
+.msg-name89 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 剁肉馅的人物名字 */
+.msg-name90 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 老教授人物名字 */
+.msg-name91 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 无头鬼&江户川初豆人物名字 */
+.msg-name92 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 柳树人物名字 */
+.msg-name93 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 救援人员一人物名字 */
+.msg-name94 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 刘队人物名字 */
+.msg-name95 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 柯伍邪人物名字 */
+.msg-name96 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 救援人员二人物名字 */
+.msg-name97 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 唐俊逸人物名字 */
+.msg-name98 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 挖掘机老王人物名字 */
+.msg-name99 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 挖掘机老王鬼人物名字 */
+.msg-name99a {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 虔沂可人物名字 */
+.msg-name100 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 苏珊璃人物名字 */
+.msg-name101 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 狗人物名字 */
+.msg-name102 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 女学生人物名字 */
+.msg-name103 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* ？燕归人物名字 */
+.msg-name104 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 校长老婆人物名字 */
+.msg-name105 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 易二三人物名字 */
+.msg-name106 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 冷季人物名字 */
+.msg-name107 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 陈姜茗人物名字 */
+.msg-name108 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 陈姜茗鬼人物名字 */
+.msg-name108a {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 陆泽宇人物名字 */
+.msg-name109 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 陆泽宇鬼人物名字 */
+.msg-name109a {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 宋淳早人物名字 */
+.msg-name110 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 宋淳早鬼人物名字 */
+.msg-name110a {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 陆九渊人物名字 */
+.msg-name111 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 女人人物名字 */
+.msg-name112 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 希米露人物名字 */
+.msg-name113 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 赵映澜人物名字 */
+.msg-name114 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 夹谷梁人物名字 */
+.msg-name115 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 余子倩人物名字 */
+.msg-name116 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 鹿小闹人物名字 */
+.msg-name117 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 林杨人物名字 */
+.msg-name118 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 白墨人物名字 */
+.msg-name119 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 歪扭人人物名字 */
+.msg-name120 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 尸体人物名字 */
+.msg-name121 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 螳螂人物名字 */
+.msg-name122 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 汤暄人物名字 */
+.msg-name123 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 郭若羽人物名字 */
+.msg-name124 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 挑着水桶的人物名字 */
+.msg-name125 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 柳诗雅人物名字 */
+.msg-name126 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 陈清酒人物名字 */
+.msg-name127 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 陈卿卿人物名字 */
+.msg-name128 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 铁线虫人物名字 */
+.msg-name129 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 苗橙人物名字 */
+.msg-name130 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 苗橙鬼人物名字 */
+.msg-name130a {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 苗老太太人物名字 */
+.msg-name131 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 苗老太太鬼人物名字 */
+.msg-name131a {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 苗老爷爷人物名字 */
+.msg-name132 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 苗老爷爷鬼人物名字 */
+.msg-name132a {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 方昀人物名字 */
+.msg-name133 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 姜余人物名字 */
+.msg-name134 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 贝吕勒人物名字 */
+.msg-name135 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 荆聿人物名字 */
+.msg-name136 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 肋骨人物名字 */
+.msg-name137 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 薛卜完人物名字 */
+.msg-name138 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* ？？1蛇崽人物名字 */
+.msg-name139 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* ？1人物名字 */
+.msg-name140 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 胡荔人物名字 */
+.msg-name141 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 风与暮人物名字 */
+.msg-name142 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 童安酿人物名字 */
+.msg-name143 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 大娘人物名字 */
+.msg-name144 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 仙娘子人物名字 */
+.msg-name145 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 救援人员一人物名字 */
+.msg-name146 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 救援人员二人物名字 */
+.msg-name147 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 鹰眼异能者白木槿人物名字 */
+.msg-name148 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 鹰眼异能者白木槿鬼人物名字 */
+.msg-name148a {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 植物异能者令狐玖人物名字 */
+.msg-name149 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 植物异能者钟意人物名字 */
+.msg-name150 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 尚嫄人物名字 */
+.msg-name151 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 收音机人物名字 */
+.msg-name152 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* 张队人物名字 */
+.msg-name153 {
+    color: rgb(255, 227, 227);
+    font-family: "name";
+    /* 字体引用 */
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0000;
+}

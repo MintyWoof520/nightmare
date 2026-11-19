@@ -1,979 +1,1294 @@
+/* 薄荷头像空间 */
+.right-msg .msg-name628 {
+    position: relative;
+    padding-right: 42px;
+    line-height: 36px;
+}
 
-        /* 薄荷头像空间 */
-        .right-msg .msg-name628 {
-            position: relative;
-            padding-right: 42px;
-            line-height: 36px;
-        }
-        /* 万俟子琅头像空间 */
-        .right-msg .msg-nameA {
-            position: relative;
-            padding-right: 42px;
-            line-height: 36px;
-        }
-        /* 万俟子琅左头像空间 */
-        .left-msg .msg-nameAa {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
+.right-msg .msg-name628- {
+    position: relative;
+    padding-right: 42px;
+    line-height: 36px;
+}
 
-        /* ————————————————————分割线———————————————————————— */
+/* 万俟子琅头像空间 */
+.right-msg .msg-nameA {
+    position: relative;
+    padding-right: 42px;
+    line-height: 36px;
+}
 
-        /* 刘歌产2头像空间 */
-        .right-msg .msg-name52a {
-            position: relative;
-            padding-right: 42px;
-            line-height: 36px;
-        }
-        /* 易二三2头像空间 */
-        .right-msg .msg-name106a {
-            position: relative;
-            padding-right: 42px;
-            line-height: 36px;
-        }
-        /* 方昀2头像空间 */
-        .right-msg .msg-name133a {
-            position: relative;
-            padding-right: 42px;
-            line-height: 36px;
-        }
+/* 万俟子琅左头像空间 */
+.left-msg .msg-nameAa {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
 
-        /* ————————————————————分割线———————————————————————— */
+/* ————————————————————分割线———————————————————————— */
 
-        /* 乌龟头像空间 */
-        .left-msg .msg-nameB {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 人形乌龟头像空间 */
-        .left-msg .msg-nameBb {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 桑肖柠头像空间 */
-        .left-msg .msg-nameC {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 宋分题头像空间 */
-        .left-msg .msg-nameD {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 宋命题头像空间 */
-        .left-msg .msg-nameE {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 贝采薇头像空间 */
-        .left-msg .msg-nameF {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 桑薛糕头像空间 */
-        .left-msg .msg-nameG {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 燕归头像空间 */
-        .left-msg .msg-nameH {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
+/* 刘歌产2头像空间 */
+.right-msg .msg-name52a {
+    position: relative;
+    padding-right: 42px;
+    line-height: 36px;
+}
 
-        /* ————————————————————分割线———————————————————————— */
+/* 易二三2头像空间 */
+.right-msg .msg-name106a {
+    position: relative;
+    padding-right: 42px;
+    line-height: 36px;
+}
 
-        /* DeepSeek头像空间 */
-        .left-msg .msg-nameDS {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
+/* 方昀2头像空间 */
+.right-msg .msg-name133a {
+    position: relative;
+    padding-right: 42px;
+    line-height: 36px;
+}
 
-        /* ————————————————————分割线———————————————————————— */
+/* 尚嫄2头像空间 */
+.right-msg .msg-name151a {
+    position: relative;
+    padding-right: 42px;
+    line-height: 36px;
+}
 
-        /* 余厌厌头像空间 */
-        .left-msg .msg-name1 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 舍管阿姨头像空间 */
-        .left-msg .msg-name2 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 柳千妩头像空间 */
-        .left-msg .msg-name3 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 安芷染头像空间 */
-        .left-msg .msg-name4 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 黄莺莺头像空间 */
-        .left-msg .msg-name5 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 郑冽头像空间 */
-        .left-msg .msg-name6 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 护士头像空间 */
-        .left-msg .msg-name7 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 医生头像空间 */
-        .left-msg .msg-name8 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 老公头像空间 */
-        .left-msg .msg-name9 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 婆婆头像空间 */
-        .left-msg .msg-name10 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 乞丐头像空间 */
-        .left-msg .msg-name11 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 保安老王头像空间 */
-        .left-msg .msg-name12 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 保安老张头像空间 */
-        .left-msg .msg-name13 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 刘雨雯头像空间 */
-        .left-msg .msg-name14 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 病人甲头像空间 */
-        .left-msg .msg-name15 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 病人乙头像空间 */
-        .left-msg .msg-name16 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 小男孩头像空间 */
-        .left-msg .msg-name17 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 房产中介头像空间 */
-        .left-msg .msg-name18 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 情侣女头像空间 */
-        .left-msg .msg-name19 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 情侣男头像空间 */
-        .left-msg .msg-name20 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 公交车司机头像空间 */
-        .left-msg .msg-name21 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 老阿姨头像空间 */
-        .left-msg .msg-name22 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 疯子头像空间 */
-        .left-msg .msg-name23 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 助理头像空间 */
-        .left-msg .msg-name24 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 路人甲头像空间 */
-        .left-msg .msg-name25 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 路人乙头像空间 */
-        .left-msg .msg-name26 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 巫鸦头像空间 */
-        .left-msg .msg-name27 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 茉莉酱头像空间 */
-        .left-msg .msg-name28 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 茉莉妈妈头像空间 */
-        .left-msg .msg-name29 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 问路女人头像空间 */
-        .left-msg .msg-name30 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 猪蹄老柳头像空间 */
-        .left-msg .msg-name31 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 农民头像空间 */
-        .left-msg .msg-name32 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 叶夜耶头像空间 */
-        .left-msg .msg-name33 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 叶小小头像空间 */
-        .left-msg .msg-name34 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 村民老张头像空间 */
-        .left-msg .msg-name35 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 老张媳妇头像空间 */
-        .left-msg .msg-name36 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 村民老刘头像空间 */
-        .left-msg .msg-name37 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 村民老北头像空间 */
-        .left-msg .msg-name38 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 商场经理头像空间 */
-        .left-msg .msg-name39 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 服务生头像空间 */
-        .left-msg .msg-name40 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 主持人头像空间 */
-        .left-msg .msg-name41 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 工程师头像空间 */
-        .left-msg .msg-name42 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 杂耍艺人头像空间 */
-        .left-msg .msg-name43 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 沈妤头像空间 */
-        .left-msg .msg-name44 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 沈橘灿头像空间 */
-        .left-msg .msg-name45 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 箱鬼黑头像空间 */
-        .left-msg .msg-name46 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 箱鬼白头像空间 */
-        .left-msg .msg-name46a {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 奶茶店店员头像空间 */
-        .left-msg .msg-name47 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 斑鸠头像空间 */
-        .left-msg .msg-name48 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 4s店销售员头像空间 */
-        .left-msg .msg-name49 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 改装工人头像空间 */
-        .left-msg .msg-name50 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 岳决头像空间 */
-        .left-msg .msg-name51 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 刘歌产头像空间 */
-        .left-msg .msg-name52 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 沈殷头像空间 */
-        .left-msg .msg-name53 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 谭溪夜头像空间 */
-        .left-msg .msg-name54 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 伊藤奈子头像空间 */
-        .left-msg .msg-name55 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 谭溪夜姑姑头像空间 */
-        .left-msg .msg-name56 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 沈兮头像空间 */
-        .left-msg .msg-name57 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 童初头像空间 */
-        .left-msg .msg-name58 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 老奶奶头像空间 */
-        .left-msg .msg-name59 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 长发女头像空间 */
-        .left-msg .msg-name60 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 爷爷头像空间 */
-        .left-msg .msg-name61 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 唐延玉头像空间 */
-        .left-msg .msg-name62 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 伞小蕊头像空间 */
-        .left-msg .msg-name63 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 木嘻嘻头像空间 */
-        .left-msg .msg-name64 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 唐范统头像空间 */
-        .left-msg .msg-name65 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 艾珍奈头像空间 */
-        .left-msg .msg-name66 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 邵雪啸头像空间 */
-        .left-msg .msg-name67 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 孙依星头像空间 */
-        .left-msg .msg-name68 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 老和尚头像空间 */
-        .left-msg .msg-name69 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 老和尚尸体头像空间 */
-        .left-msg .msg-name69a {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 小和尚蒙面头像空间 */
-        .left-msg .msg-name70 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 小和尚鬼头像空间 */
-        .left-msg .msg-name70a {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 人皮鬼头像空间 */
-        .left-msg .msg-name71 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 白开头像空间 */
-        .left-msg .msg-name72 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 沐熙头像空间 */
-        .left-msg .msg-name73 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 程肉肉头像空间 */
-        .left-msg .msg-name74 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* ？薛糕头像空间 */
-        .left-msg .msg-name75 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 救援1头像空间 */
-        .left-msg .msg-name76 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 救援2头像空间 */
-        .left-msg .msg-name77 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 猫头像空间 */
-        .left-msg .msg-name78 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 救援3头像空间 */
-        .left-msg .msg-name79 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 救援4头像空间 */
-        .left-msg .msg-name80 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 黎梦头像空间 */
-        .left-msg .msg-name81 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 孙家小学校长头像空间 */
-        .left-msg .msg-name82 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 孙家小学校长鬼头像空间 */
-        .left-msg .msg-name82a {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 语文老师头像空间 */
-        .left-msg .msg-name83 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 数学老师头像空间 */
-        .left-msg .msg-name84 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 英语老师头像空间 */
-        .left-msg .msg-name85 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* ？丧尸头像空间 */
-        .left-msg .msg-name86 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 老爷爷头像空间 */
-        .left-msg .msg-name87 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 小萝莉头像空间 */
-        .left-msg .msg-name88 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 网一云头像空间 */
-        .left-msg .msg-name89 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 剁肉馅的头像空间 */
-        .left-msg .msg-name90 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 老教授头像空间 */
-        .left-msg .msg-name91 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 无头鬼&江户川初豆头像空间 */
-        .left-msg .msg-name92 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 柳树头像空间 */
-        .left-msg .msg-name93 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 救援人员一头像空间 */
-        .left-msg .msg-name94 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 刘队头像空间 */
-        .left-msg .msg-name95 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 柯伍邪头像空间 */
-        .left-msg .msg-name96 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 救援人员二头像空间 */
-        .left-msg .msg-name97 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 唐俊逸头像空间 */
-        .left-msg .msg-name98 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 挖掘机老王头像空间 */
-        .left-msg .msg-name99 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 挖掘机老王鬼头像空间 */
-        .left-msg .msg-name99a {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 虔沂可头像空间 */
-        .left-msg .msg-name100 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 苏珊璃头像空间 */
-        .left-msg .msg-name101 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 狗头像空间 */
-        .left-msg .msg-name102 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 女学生头像空间 */
-        .left-msg .msg-name103 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* ？燕归头像空间 */
-        .left-msg .msg-name104 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 校长老婆头像空间 */
-        .left-msg .msg-name105 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 易二三头像空间 */
-        .left-msg .msg-name106 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 冷季头像空间 */
-        .left-msg .msg-name107 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 陈姜茗头像空间 */
-        .left-msg .msg-name108 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 陈姜茗鬼头像空间 */
-        .left-msg .msg-name108a {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 陆泽宇头像空间 */
-        .left-msg .msg-name109 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 陆泽宇鬼头像空间 */
-        .left-msg .msg-name109a {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 宋淳早头像空间 */
-        .left-msg .msg-name110 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 宋淳早鬼头像空间 */
-        .left-msg .msg-name110a {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 陆九渊头像空间 */
-        .left-msg .msg-name111 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 女人头像空间 */
-        .left-msg .msg-name112 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 希米露头像空间 */
-        .left-msg .msg-name113 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 赵映澜头像空间 */
-        .left-msg .msg-name114 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 夹谷梁头像空间 */
-        .left-msg .msg-name115 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 余子倩头像空间 */
-        .left-msg .msg-name116 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 鹿小闹头像空间 */
-        .left-msg .msg-name117 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 林杨头像空间 */
-        .left-msg .msg-name118 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 白墨头像空间 */
-        .left-msg .msg-name119 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 歪扭人头像空间 */
-        .left-msg .msg-name120 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 尸体头像空间 */
-        .left-msg .msg-name121 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 螳螂头像空间 */
-        .left-msg .msg-name122 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 汤暄头像空间 */
-        .left-msg .msg-name123 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 郭若羽头像空间 */
-        .left-msg .msg-name124 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 挑着水桶的人头像空间 */
-        .left-msg .msg-name125 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 柳诗雅头像空间 */
-        .left-msg .msg-name126 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 陈清酒头像空间 */
-        .left-msg .msg-name127 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 陈卿卿头像空间 */
-        .left-msg .msg-name128 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 铁线虫头像空间 */
-        .left-msg .msg-name129 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 苗橙头像空间 */
-        .left-msg .msg-name130 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 苗橙鬼头像空间 */
-        .left-msg .msg-name130a {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 苗老太太头像空间 */
-        .left-msg .msg-name131 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 苗老太太鬼头像空间 */
-        .left-msg .msg-name131a {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 苗老爷爷头像空间 */
-        .left-msg .msg-name132 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 苗老爷爷鬼头像空间 */
-        .left-msg .msg-name132a {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 方昀头像空间 */
-        .left-msg .msg-name133 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 姜余头像空间 */
-        .left-msg .msg-name134 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
-        /* 肋骨头像空间 */
-        .left-msg .msg-name135 {
-            position: relative;
-            padding-left: 40px;
-            line-height: 36px;
-        }
+/* ————————————————————分割线———————————————————————— */
+
+/* 乌龟头像空间 */
+.left-msg .msg-nameB {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 人形乌龟头像空间 */
+.left-msg .msg-nameBb {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 桑肖柠头像空间 */
+.left-msg .msg-nameC {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 宋分题头像空间 */
+.left-msg .msg-nameD {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 宋命题头像空间 */
+.left-msg .msg-nameE {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 贝采薇头像空间 */
+.left-msg .msg-nameF {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 桑薛糕头像空间 */
+.left-msg .msg-nameG {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 燕归头像空间 */
+.left-msg .msg-nameH {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 小蛇崽崽人头像空间 */
+.left-msg .msg-nameI {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 小蛇崽崽头像空间 */
+.left-msg .msg-nameIi {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* ————————————————————分割线———————————————————————— */
+
+/* DeepSeek头像空间 */
+.left-msg .msg-nameDS {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* ————————————————————分割线———————————————————————— */
+
+/* 余厌厌头像空间 */
+.left-msg .msg-name1 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 舍管阿姨头像空间 */
+.left-msg .msg-name2 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 柳千妩头像空间 */
+.left-msg .msg-name3 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 安芷染头像空间 */
+.left-msg .msg-name4 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 黄莺莺头像空间 */
+.left-msg .msg-name5 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 郑冽头像空间 */
+.left-msg .msg-name6 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 护士头像空间 */
+.left-msg .msg-name7 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 医生头像空间 */
+.left-msg .msg-name8 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 老公头像空间 */
+.left-msg .msg-name9 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 婆婆头像空间 */
+.left-msg .msg-name10 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 乞丐头像空间 */
+.left-msg .msg-name11 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 保安老王头像空间 */
+.left-msg .msg-name12 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 保安老张头像空间 */
+.left-msg .msg-name13 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 刘雨雯头像空间 */
+.left-msg .msg-name14 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 病人甲头像空间 */
+.left-msg .msg-name15 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 病人乙头像空间 */
+.left-msg .msg-name16 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 小男孩头像空间 */
+.left-msg .msg-name17 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 房产中介头像空间 */
+.left-msg .msg-name18 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 情侣女头像空间 */
+.left-msg .msg-name19 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 情侣男头像空间 */
+.left-msg .msg-name20 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 公交车司机头像空间 */
+.left-msg .msg-name21 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 老阿姨头像空间 */
+.left-msg .msg-name22 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 疯子头像空间 */
+.left-msg .msg-name23 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 助理头像空间 */
+.left-msg .msg-name24 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 路人甲头像空间 */
+.left-msg .msg-name25 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 路人乙头像空间 */
+.left-msg .msg-name26 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 巫鸦头像空间 */
+.left-msg .msg-name27 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 茉莉酱头像空间 */
+.left-msg .msg-name28 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 茉莉妈妈头像空间 */
+.left-msg .msg-name29 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 问路女人头像空间 */
+.left-msg .msg-name30 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 猪蹄老柳头像空间 */
+.left-msg .msg-name31 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 农民头像空间 */
+.left-msg .msg-name32 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 叶夜耶头像空间 */
+.left-msg .msg-name33 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 叶小小头像空间 */
+.left-msg .msg-name34 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 村民老张头像空间 */
+.left-msg .msg-name35 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 老张媳妇头像空间 */
+.left-msg .msg-name36 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 村民老刘头像空间 */
+.left-msg .msg-name37 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 村民老北头像空间 */
+.left-msg .msg-name38 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 商场经理头像空间 */
+.left-msg .msg-name39 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 服务生头像空间 */
+.left-msg .msg-name40 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 主持人头像空间 */
+.left-msg .msg-name41 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 工程师头像空间 */
+.left-msg .msg-name42 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 杂耍艺人头像空间 */
+.left-msg .msg-name43 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 沈妤头像空间 */
+.left-msg .msg-name44 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 沈橘灿头像空间 */
+.left-msg .msg-name45 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 箱鬼黑头像空间 */
+.left-msg .msg-name46 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 箱鬼白头像空间 */
+.left-msg .msg-name46a {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 奶茶店店员头像空间 */
+.left-msg .msg-name47 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 斑鸠头像空间 */
+.left-msg .msg-name48 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 4s店销售员头像空间 */
+.left-msg .msg-name49 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 改装工人头像空间 */
+.left-msg .msg-name50 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 岳决头像空间 */
+.left-msg .msg-name51 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 刘歌产头像空间 */
+.left-msg .msg-name52 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 沈殷头像空间 */
+.left-msg .msg-name53 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 谭溪夜头像空间 */
+.left-msg .msg-name54 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 伊藤奈子头像空间 */
+.left-msg .msg-name55 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 谭溪夜姑姑头像空间 */
+.left-msg .msg-name56 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 沈兮头像空间 */
+.left-msg .msg-name57 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 童初头像空间 */
+.left-msg .msg-name58 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 老奶奶头像空间 */
+.left-msg .msg-name59 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 长发女头像空间 */
+.left-msg .msg-name60 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 爷爷头像空间 */
+.left-msg .msg-name61 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 唐延玉头像空间 */
+.left-msg .msg-name62 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 伞小蕊头像空间 */
+.left-msg .msg-name63 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 木嘻嘻头像空间 */
+.left-msg .msg-name64 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 唐范统头像空间 */
+.left-msg .msg-name65 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 艾珍奈头像空间 */
+.left-msg .msg-name66 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 邵雪啸头像空间 */
+.left-msg .msg-name67 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 孙依星头像空间 */
+.left-msg .msg-name68 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 老和尚头像空间 */
+.left-msg .msg-name69 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 老和尚尸体头像空间 */
+.left-msg .msg-name69a {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 小和尚蒙面头像空间 */
+.left-msg .msg-name70 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 小和尚鬼头像空间 */
+.left-msg .msg-name70a {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 人皮鬼头像空间 */
+.left-msg .msg-name71 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 白开头像空间 */
+.left-msg .msg-name72 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 沐熙头像空间 */
+.left-msg .msg-name73 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 程肉肉头像空间 */
+.left-msg .msg-name74 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* ？薛糕头像空间 */
+.left-msg .msg-name75 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 救援1头像空间 */
+.left-msg .msg-name76 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 救援2头像空间 */
+.left-msg .msg-name77 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 猫头像空间 */
+.left-msg .msg-name78 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 救援3头像空间 */
+.left-msg .msg-name79 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 救援4头像空间 */
+.left-msg .msg-name80 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 黎梦头像空间 */
+.left-msg .msg-name81 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 孙家小学校长头像空间 */
+.left-msg .msg-name82 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 孙家小学校长鬼头像空间 */
+.left-msg .msg-name82a {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 语文老师头像空间 */
+.left-msg .msg-name83 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 数学老师头像空间 */
+.left-msg .msg-name84 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 英语老师头像空间 */
+.left-msg .msg-name85 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* ？丧尸头像空间 */
+.left-msg .msg-name86 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 老爷爷头像空间 */
+.left-msg .msg-name87 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 小萝莉头像空间 */
+.left-msg .msg-name88 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 网一云头像空间 */
+.left-msg .msg-name89 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 剁肉馅的头像空间 */
+.left-msg .msg-name90 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 老教授头像空间 */
+.left-msg .msg-name91 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 无头鬼&江户川初豆头像空间 */
+.left-msg .msg-name92 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 柳树头像空间 */
+.left-msg .msg-name93 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 救援人员一头像空间 */
+.left-msg .msg-name94 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 刘队头像空间 */
+.left-msg .msg-name95 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 柯伍邪头像空间 */
+.left-msg .msg-name96 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 救援人员二头像空间 */
+.left-msg .msg-name97 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 唐俊逸头像空间 */
+.left-msg .msg-name98 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 挖掘机老王头像空间 */
+.left-msg .msg-name99 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 挖掘机老王鬼头像空间 */
+.left-msg .msg-name99a {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 虔沂可头像空间 */
+.left-msg .msg-name100 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 苏珊璃头像空间 */
+.left-msg .msg-name101 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 狗头像空间 */
+.left-msg .msg-name102 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 女学生头像空间 */
+.left-msg .msg-name103 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* ？燕归头像空间 */
+.left-msg .msg-name104 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 校长老婆头像空间 */
+.left-msg .msg-name105 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 易二三头像空间 */
+.left-msg .msg-name106 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 冷季头像空间 */
+.left-msg .msg-name107 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 陈姜茗头像空间 */
+.left-msg .msg-name108 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 陈姜茗鬼头像空间 */
+.left-msg .msg-name108a {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 陆泽宇头像空间 */
+.left-msg .msg-name109 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 陆泽宇鬼头像空间 */
+.left-msg .msg-name109a {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 宋淳早头像空间 */
+.left-msg .msg-name110 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 宋淳早鬼头像空间 */
+.left-msg .msg-name110a {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 陆九渊头像空间 */
+.left-msg .msg-name111 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 女人头像空间 */
+.left-msg .msg-name112 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 希米露头像空间 */
+.left-msg .msg-name113 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 赵映澜头像空间 */
+.left-msg .msg-name114 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 夹谷梁头像空间 */
+.left-msg .msg-name115 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 余子倩头像空间 */
+.left-msg .msg-name116 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 鹿小闹头像空间 */
+.left-msg .msg-name117 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 林杨头像空间 */
+.left-msg .msg-name118 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 白墨头像空间 */
+.left-msg .msg-name119 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 歪扭人头像空间 */
+.left-msg .msg-name120 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 尸体头像空间 */
+.left-msg .msg-name121 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 螳螂头像空间 */
+.left-msg .msg-name122 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 汤暄头像空间 */
+.left-msg .msg-name123 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 郭若羽头像空间 */
+.left-msg .msg-name124 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 挑着水桶的人头像空间 */
+.left-msg .msg-name125 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 柳诗雅头像空间 */
+.left-msg .msg-name126 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 陈清酒头像空间 */
+.left-msg .msg-name127 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 陈卿卿头像空间 */
+.left-msg .msg-name128 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 铁线虫头像空间 */
+.left-msg .msg-name129 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 苗橙头像空间 */
+.left-msg .msg-name130 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 苗橙鬼头像空间 */
+.left-msg .msg-name130a {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 苗老太太头像空间 */
+.left-msg .msg-name131 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 苗老太太鬼头像空间 */
+.left-msg .msg-name131a {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 苗老爷爷头像空间 */
+.left-msg .msg-name132 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 苗老爷爷鬼头像空间 */
+.left-msg .msg-name132a {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 方昀头像空间 */
+.left-msg .msg-name133 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 姜余头像空间 */
+.left-msg .msg-name134 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 肋骨头像空间 */
+.left-msg .msg-name135 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 贝吕勒头像空间 */
+.left-msg .msg-name136 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 荆聿头像空间 */
+.left-msg .msg-name137 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 薛卜完头像空间 */
+.left-msg .msg-name138 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* ？？1蛇崽头像空间 */
+.left-msg .msg-name139 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* ？1头像空间 */
+.left-msg .msg-name140 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 胡荔头像空间 */
+.left-msg .msg-name141 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 风与暮头像空间 */
+.left-msg .msg-name142 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 童安酿头像空间 */
+.left-msg .msg-name143 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 大娘头像空间 */
+.left-msg .msg-name144 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 仙娘子头像空间 */
+.left-msg .msg-name145 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 救援人员一头像空间 */
+.left-msg .msg-name146 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 救援人员二头像空间 */
+.left-msg .msg-name147 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 鹰眼异能者白木槿头像空间 */
+.left-msg .msg-name148 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 鹰眼异能者白木槿鬼头像空间 */
+.left-msg .msg-name148a {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 植物异能者令狐玖头像空间 */
+.left-msg .msg-name149 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 植物异能者钟意头像空间 */
+.left-msg .msg-name150 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 尚嫄头像空间 */
+.left-msg .msg-name151 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 收音机头像空间 */
+.left-msg .msg-name152 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
+
+/* 张队头像空间 */
+.left-msg .msg-name153 {
+    position: relative;
+    padding-left: 40px;
+    line-height: 36px;
+}
