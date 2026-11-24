@@ -1,6 +1,640 @@
-/* 章节页交互逻辑（优化版 + 全局字色 + 自定义主题 + 自定义背景） */
+/* 章节页交互逻辑（优化版 + 全局字色 + 自定义主题 + 自定义背景 + 打字机 + 字体缩放 + 全文连播） */
 (function () {
     'use strict';
+
+    /* =========================================
+       0. 阅读设置：字体缩放 + 打字机
+       ========================================= */
+    const READ_SETTINGS_KEY = 'nightmare-read-settings';
+    const AUTO_CONTINUE_KEY = 'nightmare-auto-continue';   // 记录"是连播跳章过来的"
+    const DEFAULT_READ_SETTINGS = {
+        fontScale: 1, typewriter: true, typeSpeed: 35,
+        chatMode: true,   // 真实聊天模式：正在输入… → 整条发送
+        chatSound: true,  // 发送音效
+        autoPlay: false,  // 自动连播（全书）
+        autoSpeed: 1      // 连播倍速
+    };
+
+    const readSettings = (function () {
+        try {
+            const raw = JSON.parse(localStorage.getItem(READ_SETTINGS_KEY) || '{}');
+            return {
+                fontScale: typeof raw.fontScale === 'number'
+                    ? Math.min(1.6, Math.max(0.8, raw.fontScale))
+                    : DEFAULT_READ_SETTINGS.fontScale,
+                typewriter: raw.typewriter !== false,
+                typeSpeed: typeof raw.typeSpeed === 'number'
+                    ? Math.min(120, Math.max(8, raw.typeSpeed))
+                    : DEFAULT_READ_SETTINGS.typeSpeed,
+                chatMode: raw.chatMode !== false,
+                chatSound: raw.chatSound !== false,
+                autoPlay: raw.autoPlay === true,
+                autoSpeed: typeof raw.autoSpeed === 'number'
+                    ? Math.min(3, Math.max(0.5, raw.autoSpeed))
+                    : DEFAULT_READ_SETTINGS.autoSpeed
+            };
+        } catch (e) {
+            return Object.assign({}, DEFAULT_READ_SETTINGS);
+        }
+    })();
+
+    function persistReadSettings() {
+        try { localStorage.setItem(READ_SETTINGS_KEY, JSON.stringify(readSettings)); } catch (e) { }
+    }
+
+    function applyFontScale() {
+        document.documentElement.style.setProperty('--font-scale', readSettings.fontScale);
+    }
+    applyFontScale();
+
+    /* =========================================
+       0.5 拟人打字节奏 + 真实聊天引擎
+       ========================================= */
+
+    /* 每个字的停顿：基础速度 ± 随机抖动，标点额外停顿，偶尔"想一下" */
+    function charDelay(ch, base) {
+        let d = base * (0.55 + Math.random() * 0.9);
+        if ('，、；：'.indexOf(ch) >= 0) d += base * 3;
+        else if ('。！？'.indexOf(ch) >= 0) d += base * 5;
+        else if ('…—'.indexOf(ch) >= 0) d += base * 2.2;
+        if (Math.random() < 0.02) d += base * 8;
+        return d;
+    }
+
+    /* 发送音效：WebAudio 合成，无需任何音频文件 */
+    let audioCtx = null;
+    function playSendSound(isRight) {
+        if (!readSettings.chatSound) return;
+        try {
+            audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const t = audioCtx.currentTime;
+            const o = audioCtx.createOscillator();
+            const g = audioCtx.createGain();
+            o.type = 'sine';
+            o.frequency.setValueAtTime(isRight ? 740 : 580, t);
+            o.frequency.exponentialRampToValueAtTime(isRight ? 1240 : 960, t + 0.09);
+            g.gain.setValueAtTime(0.0001, t);
+            g.gain.exponentialRampToValueAtTime(0.11, t + 0.015);
+            g.gain.exponentialRampToValueAtTime(0.0001, t + 0.2);
+            o.connect(g); g.connect(audioCtx.destination);
+            o.start(t); o.stop(t + 0.22);
+        } catch (e) { /* 无音频环境时静默降级 */ }
+    }
+
+    /* 打字机引擎（拟人节奏版） */
+    let activeTyper = null;
+    let autoTimer = null;
+
+    function startTypewriter(el, onDone) {
+        if (activeTyper) activeTyper.finish();
+
+        // 只收集正文文本节点，跳过评论气泡内部
+        const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
+            acceptNode(node) {
+                if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+                const p = node.parentElement;
+                if (p && p.closest && p.closest('.hint-trigger')) return NodeFilter.FILTER_REJECT;
+                return NodeFilter.FILTER_ACCEPT;
+            }
+        });
+
+        const chunks = [];
+        let n;
+        while ((n = walker.nextNode())) {
+            chunks.push({ node: n, text: n.nodeValue });
+        }
+        if (!chunks.length) { if (onDone) onDone(); return; }
+
+        chunks.forEach(c => { c.node.nodeValue = ''; });
+
+        let ti = 0, ci = 0, timer = null, done = false, paused = false;
+        let lastFollow = Date.now();
+        let userInterrupted = false;
+
+        const stopFollow = () => { userInterrupted = true; };
+        window.addEventListener('wheel', stopFollow, { passive: true });
+        window.addEventListener('touchmove', stopFollow, { passive: true });
+
+        const speed = Math.max(8, readSettings.typeSpeed);
+
+        const api = {
+            isDone: () => done,
+            finish() {
+                if (done) return;
+                done = true;
+                if (timer) { clearTimeout(timer); timer = null; }
+                chunks.forEach(c => { c.node.nodeValue = c.text; });
+                window.removeEventListener('wheel', stopFollow);
+                window.removeEventListener('touchmove', stopFollow);
+                if (activeTyper === api) activeTyper = null;
+                if (onDone) onDone();
+            }
+        };
+
+        function follow() {
+            if (userInterrupted) return;
+            const now = Date.now();
+            if (now - lastFollow < 120) return;
+            lastFollow = now;
+            const rect = el.getBoundingClientRect();
+            const bottomLimit = window.innerHeight - (document.body.classList.contains('composer-on') ? 110 : 0) - 12;
+            if (rect.bottom > bottomLimit) {
+                window.scrollTo(0, window.scrollY + (rect.bottom - bottomLimit) + 64);
+            }
+        }
+
+        function step() {
+            if (done || paused) return;
+            const c = chunks[ti];
+            if (!c) { api.finish(); return; }
+            ci++;
+            c.node.nodeValue = c.text.slice(0, ci);
+            follow();
+            const delay = charDelay(c.text.charAt(ci - 1), speed);
+            if (ci >= c.text.length) { ti++; ci = 0; }
+            if (ti >= chunks.length) {
+                timer = setTimeout(() => api.finish(), delay);
+                return;
+            }
+            timer = setTimeout(step, delay);
+        }
+
+        activeTyper = api;
+        step();
+    }
+
+    /* 全局节奏：打字速度 ÷ 连播倍速 */
+    function pace() {
+        return Math.max(8, readSettings.typeSpeed) / (readSettings.autoSpeed || 1);
+    }
+
+    /* =========================================
+       0.6 底部输入框：角色逐字敲入 → 发送
+       ========================================= */
+    let composer = null;
+    let composerSuppressed = false;   // 本章读完后，输入框不再出现
+
+    function ensureComposer() {
+        if (composer) return composer;
+        const bar = document.createElement('div');
+        bar.className = 'chat-composer';
+        bar.innerHTML = `
+            <div class="composer-head">
+                <span class="composer-speaker"></span>
+                <span class="composer-status"></span>
+            </div>
+            <div class="composer-row">
+                <div class="composer-input"><span class="composer-text"></span><span class="composer-caret"></span><span class="composer-placeholder"></span></div>
+                <button class="composer-send" aria-label="发送">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2.4 21.6l19.2-9.6L2.4 2.4l.01 7.2L16.8 12 2.41 14.4z"/></svg>
+                </button>
+            </div>
+        `;
+        document.body.appendChild(bar);
+        composer = {
+            bar,
+            speaker: bar.querySelector('.composer-speaker'),
+            status: bar.querySelector('.composer-status'),
+            text: bar.querySelector('.composer-text'),
+            caret: bar.querySelector('.composer-caret'),
+            placeholder: bar.querySelector('.composer-placeholder'),
+            input: bar.querySelector('.composer-input'),
+            sendBtn: bar.querySelector('.composer-send')
+        };
+        // 点发送键 = 立即敲完并发送当前消息
+        composer.sendBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (activeTyper) activeTyper.finish();
+        });
+        return composer;
+    }
+
+    function composerVisible() {
+        return readSettings.typewriter && readSettings.chatMode;
+    }
+
+    /* 本章读完 / 展开全文后：隐藏输入框，并阻止它再次出现 */
+    function hideComposer() {
+        composerSuppressed = true;
+        document.body.classList.remove('composer-on');
+        if (composer) {
+            composer.bar.classList.remove('typing', 'side-left', 'side-right');
+        }
+    }
+
+    function updateComposerMode() {
+        const on = composerVisible() && !composerSuppressed;
+        document.body.classList.toggle('composer-on', on);
+        if (on) {
+            ensureComposer();
+            if (!activeTyper) composerIdle();
+        }
+    }
+
+    function composerIdle() {
+        if (!composer) return;
+        composer.bar.classList.remove('side-left', 'side-right', 'typing');
+        composer.speaker.textContent = '';
+        composer.text.textContent = '';
+        composer.caret.style.display = 'none';
+        composer.placeholder.style.display = '';
+        if (currentIndex >= items.length && items.length > 0) {
+            composer.status.textContent = '';
+            composer.placeholder.textContent = readSettings.autoPlay ? '即将进入下一章…' : '本章完 · 感谢阅读';
+        } else if (readSettings.autoPlay) {
+            composer.status.textContent = autoPaused ? '连播已暂停' : '自动播放中 ×' + readSettings.autoSpeed;
+            composer.placeholder.textContent = autoPaused ? '点击屏幕手动继续…' : '等待下一条消息…';
+        } else {
+            composer.status.textContent = '';
+            composer.placeholder.textContent = '点击屏幕继续对话…';
+        }
+    }
+
+    /* 取气泡正文（排除评论气泡内容） */
+    function bubbleText(bubble) {
+        if (!bubble) return '';
+        const clone = bubble.cloneNode(true);
+        clone.querySelectorAll('.hint-trigger').forEach(n => n.remove());
+        return (clone.textContent || '').trim();
+    }
+
+    /* 真实聊天引擎：文字逐个敲进底部输入框，敲完整条发送 */
+    function startChatSend(el, onDone) {
+        if (activeTyper) activeTyper.finish();
+
+        const isRight = el.classList.contains('right-msg');
+        const text = bubbleText(el.querySelector('.bubble'));
+        const nameEl = el.querySelector('[class^="msg-name"]');
+        const speakerName = nameEl ? (nameEl.textContent || '').trim() : (isRight ? '我' : '对方');
+
+        const c = ensureComposer();
+        if (!composerSuppressed) document.body.classList.add('composer-on');
+        c.bar.classList.remove('side-left', 'side-right');
+        c.bar.classList.add(isRight ? 'side-right' : 'side-left', 'typing');
+        c.speaker.textContent = speakerName;
+        c.status.textContent = '正在输入…';
+        c.placeholder.style.display = 'none';
+        c.caret.style.display = '';
+        c.text.textContent = '';
+
+        const base = pace();
+        let i = 0, timer = null, done = false, paused = false;
+
+        function doSend(withPop) {
+            c.bar.classList.remove('typing');
+            c.text.textContent = '';
+            c.caret.style.display = 'none';
+            if (withPop) {
+                c.sendBtn.classList.add('sending');
+                setTimeout(() => c.sendBtn.classList.remove('sending'), 220);
+                playSendSound(isRight);
+            }
+            showItem(el);
+            if (withPop) {
+                el.classList.add('msg-pop');
+                setTimeout(() => el.classList.remove('msg-pop'), 450);
+            }
+            composerIdle();
+        }
+
+        const api = {
+            isDone: () => done,
+            isPaused: () => paused,
+            pause() {
+                if (done || paused) return;
+                paused = true;
+                if (timer) { clearTimeout(timer); timer = null; }
+            },
+            resume() {
+                if (done || !paused) return;
+                paused = false;
+                typeStep();
+            },
+            finish() {
+                if (done) return;
+                done = true;
+                if (timer) { clearTimeout(timer); timer = null; }
+                doSend(false);
+                if (activeTyper === api) activeTyper = null;
+                if (onDone) onDone();
+            }
+        };
+
+        function typeStep() {
+            if (done) return;
+            i++;
+            c.text.textContent = text.slice(0, i);
+            c.input.scrollTop = c.input.scrollHeight;
+            if (i >= text.length) {
+                // 敲完了，顿一下再按发送
+                timer = setTimeout(() => {
+                    if (done) return;
+                    done = true;
+                    timer = null;
+                    doSend(true);
+                    if (activeTyper === api) activeTyper = null;
+                    if (onDone) onDone();
+                }, 260 / (readSettings.autoSpeed || 1));
+                return;
+            }
+            timer = setTimeout(typeStep, charDelay(text.charAt(i - 1), base));
+        }
+
+        activeTyper = api;
+        if (!text.length) { api.finish(); return; }
+        timer = setTimeout(typeStep, 200);
+
+        requestAnimationFrame(() => {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        });
+    }
+
+    /* 自动连播：按上一条消息的阅读时长安排下一条 */
+    let autoPendingEl = null;
+
+    /* 只统计正文长度：剔除评论气泡，避免等待时长被隐藏评论撑大 */
+    function storyTextLength(el) {
+        const clone = el.cloneNode(true);
+        clone.querySelectorAll('.hint-trigger').forEach(n => n.remove());
+        return (clone.textContent || '').trim().length;
+    }
+
+    function itemCompleted(el) {
+        updateProgress();
+
+        if (el !== items[currentIndex - 1]) { updateAutoBanner(); return; }
+        if (activeTyper && !activeTyper.isDone()) { updateAutoBanner(); return; }
+
+        /* 最后一段读完 → 本章结束，进入"章节连播"流程 */
+        if (currentIndex >= items.length) {
+            onChapterComplete();
+            return;
+        }
+
+        updateAutoBanner();
+        if (!readSettings.autoPlay || autoPaused) return;
+
+        const len = storyTextLength(el);
+        // 更快更跟手：每字 40ms，最短 0.5s、最长 2.6s，再除以倍速
+        const delay = Math.min(2600, Math.max(500, len * 40)) / (readSettings.autoSpeed || 1);
+        autoPendingEl = el;
+        if (autoTimer) clearTimeout(autoTimer);
+        autoTimer = setTimeout(() => { autoTimer = null; autoPendingEl = null; revealNextItem(); }, delay);
+    }
+
+    function stopAutoPlay() {
+        if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; }
+    }
+
+    /* =========================================
+       0.7 顶部阅读进度条 + 自动播放状态条 + 章节连播
+       ========================================= */
+    let autoPaused = false;
+
+    /* —— 章节连播状态 —— */
+    let chapterCompleted = false;   // 本章是否已读完，防止重复触发
+    let chapterTimer = null;        // 跳章定时器
+    let chapterTick = null;         // 倒计时刷新定时器
+    let chapterAdvanceAt = 0;       // 预计跳章时间戳（0 = 没有倒计时）
+    let chapterNextUrl = '';        // 下一章地址
+    const CHAPTER_GAP_BASE = 2600;  // 章节间基础停顿（ms），再除以倍速
+
+    const topHud = document.createElement('div');
+    topHud.className = 'top-hud';
+    topHud.innerHTML = `
+        <div class="read-progress-track"><div class="read-progress-fill"></div></div>
+        <div class="auto-banner" hidden>
+            <span class="auto-dot"></span>
+            <span class="auto-text">自动播放中</span>
+            <button class="auto-btn auto-next" type="button" style="display:none">进入下一章</button>
+            <button class="auto-btn auto-toggle" type="button">暂停</button>
+            <button class="auto-btn auto-exit" type="button">退出</button>
+        </div>
+    `;
+    document.body.appendChild(topHud);
+    const progressFill = topHud.querySelector('.read-progress-fill');
+    const autoBanner = topHud.querySelector('.auto-banner');
+    const autoText = topHud.querySelector('.auto-text');
+    const autoToggleBtn = topHud.querySelector('.auto-toggle');
+    const autoExitBtn = topHud.querySelector('.auto-exit');
+    const autoNextBtn = topHud.querySelector('.auto-next');
+
+    function setBtnVisible(btn, visible) {
+        if (btn) btn.style.display = visible ? '' : 'none';
+    }
+
+    /* 阅读进度 = 已读完的段落数 / 总段落数（正在打字的那段不算读完） */
+    function updateProgress() {
+        if (!items.length) { progressFill.style.width = '0%'; return; }
+        let doneCount = currentIndex;
+        if (activeTyper && !activeTyper.isDone()) doneCount = Math.max(0, doneCount - 1);
+        progressFill.style.width = Math.min(100, doneCount / items.length * 100) + '%';
+    }
+
+    /* ---------- 章节连播：找下一章 ---------- */
+    function getNextChapterUrl() {
+        const nav = document.getElementById('chapter-nav');
+        if (!nav) return null;
+        const links = Array.from(nav.querySelectorAll('a[href]'));
+        if (!links.length) return null;
+
+        // 优先找文案是"下一章"的链接，否则退而取第二个链接
+        let link = links.find(a => /下一章|下一頁|下一页|next/i.test((a.textContent || '').trim()));
+        if (!link) link = links.length > 1 ? links[1] : null;
+        if (!link) return null;
+
+        const href = link.getAttribute('href');
+        if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return null;
+
+        let url;
+        try { url = new URL(href, location.href); } catch (e) { return null; }
+
+        // 指回当前页（说明是最后一章）视为没有下一章
+        const cur = location.href.split('#')[0];
+        if (url.href.split('#')[0] === cur) return null;
+        return url.href;
+    }
+
+    /* ---------- 章节连播：取消 / 安排 / 跳转 ---------- */
+    function cancelChapterAdvance() {
+        if (chapterTimer) { clearTimeout(chapterTimer); chapterTimer = null; }
+        if (chapterTick) { clearInterval(chapterTick); chapterTick = null; }
+        chapterAdvanceAt = 0;
+    }
+
+    function scheduleChapterAdvance(immediate) {
+        cancelChapterAdvance();
+
+        const url = getNextChapterUrl();
+        if (!url) { updateAutoBanner(); return; }
+        chapterNextUrl = url;
+
+        if (immediate) { goNextChapter(); return; }
+
+        const wait = Math.max(800, Math.round(CHAPTER_GAP_BASE / (readSettings.autoSpeed || 1)));
+        chapterAdvanceAt = Date.now() + wait;
+
+        chapterTimer = setTimeout(() => {
+            chapterTimer = null;
+            goNextChapter();
+        }, wait);
+
+        // 每 200ms 刷新一次倒计时文字
+        chapterTick = setInterval(() => {
+            if (!chapterAdvanceAt) {
+                clearInterval(chapterTick); chapterTick = null;
+                return;
+            }
+            if (Date.now() >= chapterAdvanceAt) {
+                clearInterval(chapterTick); chapterTick = null;
+            }
+            updateAutoBanner();
+        }, 200);
+
+        updateAutoBanner();
+    }
+
+    function goNextChapter() {
+        const url = chapterNextUrl || getNextChapterUrl();
+        cancelChapterAdvance();
+        chapterNextUrl = '';
+        if (!url) { updateAutoBanner(); return; }
+        // 告诉下一章：我是连播跳过来的
+        try { sessionStorage.setItem(AUTO_CONTINUE_KEY, '1'); } catch (e) { }
+        location.href = url;
+    }
+
+    /* 本章读完（最后一段打字结束才会调用） */
+    function onChapterComplete() {
+        if (chapterCompleted) return;
+        chapterCompleted = true;
+
+        hideComposer();
+        updateProgress();
+
+        const nav = document.getElementById('chapter-nav');
+        if (nav) {
+            nav.classList.add('show');
+            setTimeout(() => {
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            }, 300);
+        }
+
+        if (readSettings.autoPlay && !autoPaused) {
+            scheduleChapterAdvance(false);
+        } else {
+            updateAutoBanner();
+        }
+    }
+
+    /* ---------- 状态条渲染 ---------- */
+    function updateAutoBanner() {
+        if (!readSettings.autoPlay) {
+            autoBanner.hidden = true;
+            autoBanner.classList.remove('paused', 'chapter-end');
+            setBtnVisible(autoToggleBtn, false);
+            setBtnVisible(autoNextBtn, false);
+            return;
+        }
+
+        const chapterDone = currentIndex >= items.length && (!activeTyper || activeTyper.isDone());
+
+        /* 章节未读完：常规"自动播放中 / 已暂停" */
+        if (!chapterDone) {
+            autoBanner.hidden = false;
+            autoBanner.classList.remove('chapter-end');
+            autoBanner.classList.toggle('paused', autoPaused);
+            autoText.textContent = autoPaused ? '已暂停' : '自动播放中';
+            setBtnVisible(autoToggleBtn, true);
+            autoToggleBtn.textContent = autoPaused ? '继续' : '暂停';
+            setBtnVisible(autoNextBtn, false);
+            return;
+        }
+
+        /* 章节已读完 */
+        autoBanner.hidden = false;
+        autoBanner.classList.add('chapter-end');
+
+        if (!getNextChapterUrl()) {
+            autoBanner.classList.remove('paused');
+            autoText.textContent = '已读完最后一章';
+            setBtnVisible(autoToggleBtn, false);
+            setBtnVisible(autoNextBtn, false);
+            return;
+        }
+
+        setBtnVisible(autoNextBtn, true);
+        setBtnVisible(autoToggleBtn, true);
+
+        if (autoPaused || !chapterAdvanceAt) {
+            autoBanner.classList.add('paused');
+            autoText.textContent = autoPaused ? '连播已暂停' : '本章已读完';
+            autoToggleBtn.textContent = '继续';
+            autoNextBtn.textContent = '进入下一章';
+        } else {
+            autoBanner.classList.remove('paused');
+            const left = Math.max(0, chapterAdvanceAt - Date.now());
+            autoText.textContent = (left / 1000).toFixed(1) + ' 秒后进入下一章';
+            autoToggleBtn.textContent = '暂停';
+            autoNextBtn.textContent = '立即进入';
+        }
+    }
+
+    function pauseAutoPlay() {
+        autoPaused = true;
+        stopAutoPlay();
+        cancelChapterAdvance();
+        if (activeTyper && activeTyper.pause) activeTyper.pause();
+        updateAutoBanner();
+        composerIdle();
+    }
+
+    function resumeAutoPlay() {
+        autoPaused = false;
+        updateAutoBanner();
+        composerIdle();
+
+        // 本章已经读完：直接进下一章
+        const chapterDone = currentIndex >= items.length && (!activeTyper || activeTyper.isDone());
+        if (chapterDone) {
+            if (getNextChapterUrl()) goNextChapter();
+            return;
+        }
+
+        if (activeTyper && activeTyper.isPaused && activeTyper.isPaused()) {
+            activeTyper.resume();
+            return;
+        }
+        if (activeTyper || currentIndex >= items.length) return;
+        stopAutoPlay();
+        autoTimer = setTimeout(() => { autoTimer = null; revealNextItem(); }, 250);
+    }
+
+    function exitAutoPlay() {
+        readSettings.autoPlay = false;
+        persistReadSettings();
+        autoPaused = false;
+        stopAutoPlay();
+        cancelChapterAdvance();
+        if (activeTyper && activeTyper.isPaused && activeTyper.isPaused()) activeTyper.resume();
+        updateAutoBanner();
+        composerIdle();
+        refreshPanel();   // 同步设置面板里的开关状态
+    }
+
+    autoToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (autoPaused) resumeAutoPlay(); else pauseAutoPlay();
+    });
+    autoExitBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        exitAutoPlay();
+    });
+    autoNextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goNextChapter();
+    });
 
     /* =========================================
        1. 对话逐段显示
@@ -9,10 +643,8 @@
     let currentIndex = 0;
     let isProcessing = false;
 
-    function revealNextItem() {
-        if (currentIndex >= items.length) return;
-
-        const el = items[currentIndex];
+    /* 展开一个段落（高度/透明度动画） */
+    function showItem(el) {
         el.classList.add('show');
 
         const targetHeight = el.scrollHeight;
@@ -26,8 +658,6 @@
         };
         el.addEventListener('transitionend', onEnd);
 
-        currentIndex++;
-
         requestAnimationFrame(() => {
             if (targetHeight > window.innerHeight * 0.8) {
                 window.scrollTo({ top: Math.max(0, el.offsetTop - 20), behavior: 'smooth' });
@@ -35,26 +665,77 @@
                 window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
             }
         });
+    }
+
+    function revealNextItem() {
+        if (currentIndex >= items.length) {
+            // 本章已读完：若连播开着，点按 = 直接进下一章
+            if (readSettings.autoPlay && !autoPaused) goNextChapter();
+            return;
+        }
+
+        stopAutoPlay();
+        if (activeTyper) activeTyper.finish();
+
+        const el = items[currentIndex];
+        currentIndex++;
+
+        const isChatMsg = el.classList.contains('left-msg') || el.classList.contains('right-msg');
+        const onDone = () => itemCompleted(el);
+
+        if (readSettings.typewriter && readSettings.chatMode && isChatMsg) {
+            // 真实聊天：正在输入… → 整条发送
+            startChatSend(el, onDone);
+        } else {
+            showItem(el);
+            if (readSettings.typewriter) {
+                el.classList.add('msg-pop');
+                setTimeout(() => el.classList.remove('msg-pop'), 450);
+                startTypewriter(el, onDone);
+            } else {
+                onDone();
+            }
+        }
 
         if (currentIndex === items.length) {
-            const nav = document.getElementById('chapter-nav');
-            if (nav) {
-                nav.classList.add('show');
-                setTimeout(() => {
-                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-                }, 300);
-            }
+            // 最后一段已揭示：导航与连播倒计时交给 onChapterComplete（打字结束后）
+            updateProgress();
         }
     }
 
-    function handleScreenClick(e) {
-        if (isProcessing) return;
+    /* 初始化底部输入框（聊天模式开启时） */
+    updateComposerMode();
 
+    /* 初始化顶部进度条与状态条；开着连播就立刻开播，不用先点一下 */
+    updateProgress();
+    updateAutoBanner();
+    if (readSettings.autoPlay && currentIndex < items.length) {
+        let resumed = false;
+        try {
+            resumed = sessionStorage.getItem(AUTO_CONTINUE_KEY) === '1';
+            sessionStorage.removeItem(AUTO_CONTINUE_KEY);
+        } catch (e) { }
+        autoTimer = setTimeout(() => { autoTimer = null; revealNextItem(); }, resumed ? 150 : 600);
+    }
+
+    function handleScreenClick(e) {
         if (e.target.closest(
-            '.hint-trigger, .theme-toggle, .theme-panel, .modal-mask, #expand-btn, a, button, .chapter-nav'
+            '.hint-trigger, .theme-toggle, .theme-panel, .modal-mask, #expand-btn, a, button, .chapter-nav, .top-hud'
         )) {
             return;
         }
+
+        stopAutoPlay();
+
+        // 打字/输入中：先把当前段补完（立即发送），不推进下一段
+        if (activeTyper) {
+            activeTyper.finish();
+            isProcessing = true;
+            setTimeout(() => { isProcessing = false; }, 120);
+            return;
+        }
+
+        if (isProcessing) return;
 
         isProcessing = true;
         revealNextItem();
@@ -80,7 +761,7 @@
         lastTouchTime = Date.now();
 
         if (e.target.closest(
-            '.hint-trigger, .theme-toggle, .theme-panel, .modal-mask, #expand-btn, a, button, .chapter-nav'
+            '.hint-trigger, .theme-toggle, .theme-panel, .modal-mask, #expand-btn, a, button, .chapter-nav, .top-hud'
         )) {
             return;
         }
@@ -105,6 +786,14 @@
             const tag = (e.target.tagName || '').toLowerCase();
             if (tag === 'input' || tag === 'textarea' || tag === 'button') return;
             e.preventDefault();
+
+            if (activeTyper) {
+                activeTyper.finish();
+                isProcessing = true;
+                setTimeout(() => { isProcessing = false; }, 120);
+                return;
+            }
+
             if (isProcessing) return;
             isProcessing = true;
             revealNextItem();
@@ -119,6 +808,13 @@
     if (expandBtn) {
         expandBtn.addEventListener('click', function (e) {
             e.stopPropagation();
+            stopAutoPlay();
+            cancelChapterAdvance();
+            chapterCompleted = true;   // 展开全文不触发自动跳章
+            if (activeTyper) activeTyper.finish();
+
+            hideComposer();   // 展开全文：收起底部输入框
+
             document.body.classList.add('no-transition');
             items.forEach(item => {
                 item.classList.add('show');
@@ -127,6 +823,8 @@
             currentIndex = items.length;
             expandBtn.classList.add('done');
             expandBtn.innerHTML = '<i class="iconfont icon-yuedu"></i>';
+            updateProgress();
+            updateAutoBanner();
             const nav = document.getElementById('chapter-nav');
             if (nav) nav.classList.add('show');
             void document.body.offsetHeight;
@@ -141,6 +839,7 @@
     document.querySelectorAll('.hint-trigger').forEach(trigger => {
         const toggle = (e) => {
             e.stopPropagation();
+            if (activeTyper) activeTyper.finish();
             const willOpen = !trigger.classList.contains('open');
             if (willOpen) layoutHints(trigger);
             trigger.classList.toggle('open');
@@ -258,7 +957,7 @@
     function setActiveThemeId(id) { try { localStorage.setItem(ACTIVE_THEME_KEY, id); } catch (e) { } }
     function getActiveBgId() { try { return localStorage.getItem(ACTIVE_BG_KEY) || 'default'; } catch (e) { return 'default'; } }
     function setActiveBgId(id) { try { localStorage.setItem(ACTIVE_BG_KEY, id); } catch (e) { } }
-    
+
     function getGlobalTextColors() {
         try { return JSON.parse(localStorage.getItem(GLOBAL_TEXT_KEY) || '{}'); } catch (e) { return {}; }
     }
@@ -280,7 +979,7 @@
         const alpha = b.alpha == null ? 0.9 : Math.max(0, Math.min(1, b.alpha));
         const a = Math.round(alpha * 255).toString(16).padStart(2, '0');
         const dir = b.dir || 'to right';
-        
+
         if (b.bgType === 'gradient') {
             const c1 = b.c1 + a;
             const c2 = (b.c2 || b.c1) + a;
@@ -288,19 +987,13 @@
             const c3 = b.c3 ? b.c3 + a : c1;
 
             if (isCyber) {
-                // cyber 主题自带 background-size: 200% 的流光动画
-                // 我们根据传入的颜色数量，生成完美首尾相接的循环色标
                 if (hasC3) {
-                    // 3色循环：A -> B -> C -> A 无限滚动
                     return `linear-gradient(${dir}, ${c1} 0%, ${c2} 16.66%, ${c3} 33.33%, ${c1} 50%, ${c2} 66.66%, ${c3} 83.33%, ${c1} 100%)`;
                 } else if (b.c2 && b.c2 !== b.c1) {
-                    // 2色交替：A -> B -> A
                     return `linear-gradient(${dir}, ${c1} 0%, ${c2} 25%, ${c1} 50%, ${c2} 75%, ${c1} 100%)`;
                 }
-                // 单色
                 return `linear-gradient(${dir}, ${c1}, ${c1})`;
             } else {
-                // 普通主题不支持动画，直接自然过渡
                 if (hasC3) {
                     return `linear-gradient(${dir}, ${c1} 0%, ${c2} 50%, ${c3} 100%)`;
                 } else if (b.c2 && b.c2 !== b.c1) {
@@ -429,10 +1122,10 @@
        ========================================= */
     function defaultBubble(key) {
         const presets = {
-            left:      { text: '#ffffff', bgType: 'gradient', c1: '#400652', c2: '#e65757', c3: '', dir: 'to right', alpha: 0.85 },
-            right:     { text: '#ffffff', bgType: 'gradient', c1: '#000000', c2: '#3592dd', c3: '', dir: 'to left',  alpha: 0.85 },
+            left: { text: '#ffffff', bgType: 'gradient', c1: '#400652', c2: '#e65757', c3: '', dir: 'to right', alpha: 0.85 },
+            right: { text: '#ffffff', bgType: 'gradient', c1: '#000000', c2: '#3592dd', c3: '', dir: 'to left', alpha: 0.85 },
             narration: { text: '#fff2ce', bgType: 'gradient', c1: '#660000', c2: '#aa3333', c3: '', dir: 'to bottom right', alpha: 0.8 },
-            hint:      { text: '#ffffff', bgType: 'gradient', c1: '#2c0303', c2: '#e25f5f', c3: '', dir: 'to bottom right', alpha: 0.9 }
+            hint: { text: '#ffffff', bgType: 'gradient', c1: '#2c0303', c2: '#e25f5f', c3: '', dir: 'to bottom right', alpha: 0.9 }
         };
         return JSON.parse(JSON.stringify(presets[key] || presets.left));
     }
@@ -539,7 +1232,6 @@
                 mask.addEventListener('change', (e) => {
                     if (e.target.id === 'theme-base-select') {
                         data.baseTheme = e.target.value;
-                        // 基础主题变了，重绘所有预览气泡以适配动画
                         mask.querySelector('#bubble-editor-container').innerHTML = buildEditorHTML();
                     }
                 });
@@ -720,7 +1412,7 @@
     /* =========================================
        11. 外观设置面板
        ========================================= */
-    let refreshPanel = () => {};
+    let refreshPanel = () => { };
 
     function normalizeHex(color) {
         color = (color || '').trim();
@@ -768,7 +1460,7 @@
             const customThemes = loadCustomThemes();
             const customBgs = loadCustomBgs();
             const globalText = getGlobalTextColors();
-            
+
             const cs = getComputedStyle(document.documentElement);
 
             panel.innerHTML = `
@@ -815,9 +1507,9 @@
                 <div class="theme-section-title">快捷全局文字颜色</div>
                 <div class="global-color-group">
                     ${BUBBLE_KEYS.map(b => {
-                        const isCustom = !!globalText[b.key];
-                        let displayColor = isCustom ? normalizeHex(globalText[b.key]) : normalizeHex(cs.getPropertyValue(b.varText).split(',')[0]);
-                        return `
+                const isCustom = !!globalText[b.key];
+                let displayColor = isCustom ? normalizeHex(globalText[b.key]) : normalizeHex(cs.getPropertyValue(b.varText).split(',')[0]);
+                return `
                             <div class="color-row">
                                 <span class="color-label">${b.title}</span>
                                 <input type="color" value="${displayColor}" data-global-key="${b.key}" ${isCustom ? '' : 'disabled'} title="${isCustom ? '自定义颜色' : '当前跟随主题'}">
@@ -827,7 +1519,60 @@
                                 </label>
                             </div>
                         `;
-                    }).join('')}
+            }).join('')}
+                </div>
+
+                <div class="theme-section-title">阅读设置</div>
+                <div class="read-settings">
+                    <div class="setting-row">
+                        <label>字体大小</label>
+                        <input type="range" min="0.8" max="1.6" step="0.05"
+                               data-setting="fontScale" value="${readSettings.fontScale}">
+                        <span class="setting-value" data-value="fontScale">${Math.round(readSettings.fontScale * 100)}%</span>
+                    </div>
+                    <div class="setting-row">
+                        <label>打字机</label>
+                        <label class="switch">
+                            <input type="checkbox" data-setting="typewriter" ${readSettings.typewriter ? 'checked' : ''}>
+                            <span class="switch-track"></span>
+                        </label>
+                    </div>
+                    <div class="setting-row" data-typewriter-row
+                         style="display:${readSettings.typewriter ? '' : 'none'}">
+                        <label>打字速度</label>
+                        <input type="range" min="8" max="120" step="4"
+                               data-setting="typeSpeed" value="${readSettings.typeSpeed}">
+                        <span class="setting-value" data-value="typeSpeed">${readSettings.typeSpeed}ms</span>
+                    </div>
+                    <div class="setting-row" data-typewriter-row
+                         style="display:${readSettings.typewriter ? '' : 'none'}">
+                        <label>聊天模式</label>
+                        <label class="switch">
+                            <input type="checkbox" data-setting="chatMode" ${readSettings.chatMode ? 'checked' : ''}>
+                            <span class="switch-track"></span>
+                        </label>
+                    </div>
+                    <div class="setting-row" data-typewriter-row
+                         style="display:${readSettings.typewriter && readSettings.chatMode ? '' : 'none'}">
+                        <label>消息音效</label>
+                        <label class="switch">
+                            <input type="checkbox" data-setting="chatSound" ${readSettings.chatSound ? 'checked' : ''}>
+                            <span class="switch-track"></span>
+                        </label>
+                    </div>
+                    <div class="setting-row">
+                        <label>自动连播</label>
+                        <label class="switch">
+                            <input type="checkbox" data-setting="autoPlay" ${readSettings.autoPlay ? 'checked' : ''}>
+                            <span class="switch-track"></span>
+                        </label>
+                    </div>
+                    <div class="setting-row">
+                        <label>播放倍速</label>
+                        <select class="speed-select" data-setting="autoSpeed">
+                            ${[0.5, 1, 1.5, 2, 3].map(v => `<option value="${v}" ${readSettings.autoSpeed === v ? 'selected' : ''}>×${v}</option>`).join('')}
+                        </select>
+                    </div>
                 </div>
 
                 <div class="theme-section-title">背景样式</div>
@@ -869,93 +1614,160 @@
                 const action = actionBtn.dataset.action;
                 const id = actionBtn.dataset.id;
                 if (action === 'new-theme') { openThemeEditor(); return; }
-                if (action === 'new-bg')    { openBgEditor(); return; }
-                if (action === 'edit-theme')   { openThemeEditor(id); return; }
-                if (action === 'edit-bg')      { openBgEditor(id); return; }
+                if (action === 'new-bg') { openBgEditor(); return; }
+                if (action === 'edit-theme') { openThemeEditor(id); return; }
+                if (action === 'edit-bg') { openBgEditor(id); return; }
                 if (action === 'delete-theme') {
                     const t = loadCustomThemes().find(x => x.id === id);
-                    if (t && confirm(`确定删除主题「${t.name}」吗？`)) {
-                        saveCustomThemes(loadCustomThemes().filter(x => x.id !== id));
-                        if (getActiveThemeId() === id) { setActiveThemeId('classic'); applyActiveTheme(); }
-                        render();
-                    }
+                    if (!t) return;
+                    if (!confirm(`确定删除主题「${t.name}」吗？`)) return;
+                    saveCustomThemes(loadCustomThemes().filter(x => x.id !== id));
+                    if (getActiveThemeId() === id) { setActiveThemeId('classic'); applyActiveTheme(); }
+                    render();
                     return;
                 }
                 if (action === 'delete-bg') {
                     const b = loadCustomBgs().find(x => x.id === id);
-                    if (b && confirm(`确定删除背景「${b.name}」吗？`)) {
-                        saveCustomBgs(loadCustomBgs().filter(x => x.id !== id));
-                        if (getActiveBgId() === id) { setActiveBgId('default'); applyActiveBg(); }
-                        render();
-                    }
+                    if (!b) return;
+                    if (!confirm(`确定删除背景「${b.name}」吗？`)) return;
+                    saveCustomBgs(loadCustomBgs().filter(x => x.id !== id));
+                    if (getActiveBgId() === id) { setActiveBgId('default'); applyActiveBg(); }
+                    render();
                     return;
                 }
             }
 
-            const themeBtn = e.target.closest('[data-theme-id]');
-            if (themeBtn) {
-                setActiveThemeId(themeBtn.dataset.themeId);
+            const themeOpt = e.target.closest('[data-theme-id]');
+            if (themeOpt) {
+                setActiveThemeId(themeOpt.dataset.themeId);
                 applyActiveTheme();
                 render();
                 return;
             }
-            const bgBtn = e.target.closest('[data-bg-id]');
-            if (bgBtn) {
-                setActiveBgId(bgBtn.dataset.bgId);
+
+            const bgOpt = e.target.closest('[data-bg-id]');
+            if (bgOpt) {
+                setActiveBgId(bgOpt.dataset.bgId);
                 applyActiveBg();
                 render();
                 return;
             }
         });
 
-        /* ---------- 快捷字色：取色器实时更新 ---------- */
+        /* ---------- 输入 / 变更委托 ---------- */
         panel.addEventListener('input', (e) => {
-            const input = e.target.closest('input[type=color][data-global-key]');
-            if (!input) return;
-            const key = input.dataset.globalKey;
-            const obj = getGlobalTextColors();
-            obj[key] = input.value;
-            setGlobalTextColors(obj);
-            applyGlobalTextColors();
-        });
-
-        /* ---------- 快捷字色：跟随开关 ---------- */
-        panel.addEventListener('change', (e) => {
-            const cb = e.target.closest('input[type=checkbox][data-follow-key]');
-            if (cb) {
-                const key = cb.dataset.followKey;
-                const obj = getGlobalTextColors();
-                if (cb.checked) {
-                    delete obj[key];
-                    setGlobalTextColors(obj);
-                    applyGlobalTextColors();
-                    render();
-                } else {
-                    const b = BUBBLE_KEYS.find(x => x.key === key);
-                    const cur = getComputedStyle(document.documentElement).getPropertyValue(b.varText);
-                    obj[key] = normalizeHex(cur.split(',')[0]);
-                    setGlobalTextColors(obj);
-                    applyGlobalTextColors();
-                    render();
-                }
+            const key = e.target.dataset.globalKey;
+            if (key) {
+                const custom = getGlobalTextColors();
+                custom[key] = e.target.value;
+                setGlobalTextColors(custom);
+                applyGlobalTextColors();
                 return;
             }
+
+            const setting = e.target.dataset.setting;
+            if (setting === 'fontScale') {
+                readSettings.fontScale = parseFloat(e.target.value);
+                applyFontScale();
+                persistReadSettings();
+                const label = panel.querySelector('[data-value="fontScale"]');
+                if (label) label.textContent = Math.round(readSettings.fontScale * 100) + '%';
+            } else if (setting === 'typeSpeed') {
+                readSettings.typeSpeed = parseInt(e.target.value, 10);
+                persistReadSettings();
+                const label = panel.querySelector('[data-value="typeSpeed"]');
+                if (label) label.textContent = readSettings.typeSpeed + 'ms';
+            }
         });
 
-        /* ---------- 开关按钮 ---------- */
+        panel.addEventListener('change', (e) => {
+            const followKey = e.target.dataset.followKey;
+            if (followKey) {
+                const custom = getGlobalTextColors();
+                if (e.target.checked) {
+                    delete custom[followKey];
+                    setGlobalTextColors(custom);
+                    applyGlobalTextColors();
+                } else {
+                    const row = e.target.closest('.color-row');
+                    const colorInput = row.querySelector('input[type="color"]');
+                    custom[followKey] = colorInput.value;
+                    setGlobalTextColors(custom);
+                    applyGlobalTextColors();
+                }
+                render();
+                return;
+            }
+
+            const setting = e.target.dataset.setting;
+            if (setting === 'typewriter') {
+                readSettings.typewriter = e.target.checked;
+                persistReadSettings();
+                updateComposerMode();
+                render();
+            } else if (setting === 'chatMode') {
+                readSettings.chatMode = e.target.checked;
+                persistReadSettings();
+                updateComposerMode();
+                render();
+            } else if (setting === 'chatSound') {
+                readSettings.chatSound = e.target.checked;
+                persistReadSettings();
+            } else if (setting === 'autoPlay') {
+                readSettings.autoPlay = e.target.checked;
+                persistReadSettings();
+                if (!readSettings.autoPlay) {
+                    stopAutoPlay();
+                    cancelChapterAdvance();
+                    autoPaused = false;
+                    if (activeTyper && activeTyper.isPaused && activeTyper.isPaused()) activeTyper.resume();
+                } else {
+                    autoPaused = false;
+                    const chapterDone = currentIndex >= items.length && (!activeTyper || activeTyper.isDone());
+                    if (chapterDone) {
+                        // 本章已读完：直接按"进入下一章"处理
+                        if (getNextChapterUrl()) scheduleChapterAdvance(false);
+                    } else if (!activeTyper && currentIndex < items.length) {
+                        // 打开开关立刻开播，不等下一次点击
+                        stopAutoPlay();
+                        autoTimer = setTimeout(() => { autoTimer = null; revealNextItem(); }, 300);
+                    }
+                }
+                updateAutoBanner();
+                composerIdle();
+            } else if (setting === 'autoSpeed') {
+                readSettings.autoSpeed = parseFloat(e.target.value);
+                persistReadSettings();
+                // 正在等待下一条时改倍速：立即按新倍速重排，不用等旧的等完
+                if (autoTimer && autoPendingEl) {
+                    const el = autoPendingEl;
+                    stopAutoPlay();
+                    autoPendingEl = null;
+                    itemCompleted(el);
+                }
+                // 章节间倒计时也按新倍速重排
+                if (chapterAdvanceAt) {
+                    scheduleChapterAdvance(false);
+                }
+                updateAutoBanner();
+                composerIdle();
+            }
+        });
+
+        /* ---------- 面板开关 ---------- */
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const open = panel.classList.toggle('open');
-            if (open) render();
+            panel.classList.toggle('open');
+            if (panel.classList.contains('open')) render();
         });
 
-        /* ---------- 点外部关闭 ---------- */
         document.addEventListener('click', (e) => {
-            if (panel.classList.contains('open') && !panel.contains(e.target) && !btn.contains(e.target) && !e.target.closest('.modal-mask')) {
-                panel.classList.remove('open');
-            }
+            if (!panel.classList.contains('open')) return;
+            if (e.target.closest('#themePanel') || e.target.closest('.theme-toggle')) return;
+            panel.classList.remove('open');
         });
     }
 
     createThemePanel();
+
 })();
