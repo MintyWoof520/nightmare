@@ -13,10 +13,12 @@ body::before {
     box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.85), inset 0 0 40px rgba(0, 0, 0, 0.5);
     z-index: 900;
 }
+
 @font-face {
     font-family: yyy;
     src: url(../Fonts/FontsLab-FuGuShouJi-2.ttf);
 }
+
 .page p {
     display: block;
     text-shadow: none !important;
@@ -956,6 +958,7 @@ details li a.is-last::after {
         right: 20px;
     }
 }
+
 /* SECTION: home-hero-v3 */
 /* ---------- 首页英雄区（v3） ---------- */
 #page-home {
@@ -1289,6 +1292,7 @@ details li a.is-last::after {
 /* ---------- 章节卡片：序号行 + 阅读百分比（v6） ---------- */
 .ch-top {
     display: flex;
+    justify-content: flex-start;
     align-items: baseline;
     gap: 8px;
     width: 100%;
@@ -1306,4 +1310,45 @@ details li a.is-last::after {
 
 .ch-pct.show {
     display: inline;
+}
+
+/* ==========================================
+   SECTION: mulu-wide-pc
+   PC 端目录加宽：整体更宽 + 章节四列
+   ========================================== */
+@media (min-width: 641px) {
+
+    /* 关键修复：body 是 flex + align-items:center，
+       导致 .app 收缩到内容宽度，目录最多只能放两列。
+       这里让 .app 撑满视口。 */
+    .app {
+        width: 100%;
+    }
+
+    /* 目录页铺满，网格底纹也能铺开 */
+    #page-mulu {
+        width: 100%;
+    }
+
+    /* 档案库主容器：从 1100px 加宽到 1400px
+       （原规则带 !important，这里必须同时带） */
+    #page-mulu .miao {
+        max-width: 1000px !important;
+    }
+
+    /* 顶部统计 / 继续阅读 / 工具栏 / 搜索空状态
+       保持和主容器同宽，避免一边宽一边窄 */
+    #page-mulu .archive-stats,
+    #page-mulu .resume-card,
+    #page-mulu .mulu-toolbar,
+    #page-mulu .search-empty {
+        max-width: 1000px;
+    }
+
+    /* 章节卡片：PC 端固定四列
+       （原规则 repeat(auto-fill, minmax(180px,1fr)) 带 !important，需覆盖） */
+    #page-mulu details ul {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 14px !important;
+    }
 }
