@@ -268,20 +268,6 @@ body {
     }
 }
 
-/* 标题 */
-h1,
-h2,
-h3 {
-    text-align: center;
-    margin: 1em 0 1em 0;
-    page-break-after: avoid;
-    text-indent: 0;
-    color: #ff8080;
-    font-family: "name";
-    font-size: 35px;
-    text-shadow: 0 0 10px #ff0000;
-}
-
 .bubble {
     font-size: 1rem;
 }
@@ -346,7 +332,7 @@ h3 {
 /* 字体引用 */
 @font-face {
     font-family: name;
-    src: url(../Fonts/zixiaohunqiufengti.ttf);
+    src: url(../Fonts/zihunkuangao.ttf);
 }
 
 @font-face {
@@ -357,6 +343,19 @@ h3 {
 @font-face {
     font-family: speak3;
     src: url(../Fonts/YouSheYuFeiTeJianKangTi-2.ttf);
+}
+/* 标题 */
+h1,
+h2,
+h3 {
+    text-align: center;
+    margin: 1em 0 1em 0;
+    page-break-after: avoid;
+    text-indent: 0;
+    color: #ff8080;
+    font-family: "name";
+    font-size: 35px;
+    text-shadow: 0 0 10px #ff0000;
 }
 
 /* 隐藏态：高度 / 透明度 / 边距一起过渡 */
