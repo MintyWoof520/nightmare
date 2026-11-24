@@ -1,4 +1,4 @@
-/* 章节页交互逻辑（优化版 + 全局字色 + 自定义主题 + 自定义背景 + 打字机 + 字体缩放 + 全文连播） */
+/* 章节页交互逻辑（优化版 + 全局字色 + 自定义主题 + 自定义背景 + 打字机 + 字体缩放 + 全文连播 + 阅读记忆） */
 (function () {
     'use strict';
 
@@ -120,6 +120,17 @@
 
         const api = {
             isDone: () => done,
+            isPaused: () => paused,
+            pause() {
+                if (done || paused) return;
+                paused = true;
+                if (timer) { clearTimeout(timer); timer = null; }
+            },
+            resume() {
+                if (done || !paused) return;
+                paused = false;
+                step();
+            },
             finish() {
                 if (done) return;
                 done = true;
@@ -322,7 +333,7 @@
         };
 
         function typeStep() {
-            if (done) return;
+            if (done || paused) return;
             i++;
             c.text.textContent = text.slice(0, i);
             c.input.scrollTop = c.input.scrollHeight;
@@ -705,18 +716,6 @@
 
     /* 初始化底部输入框（聊天模式开启时） */
     updateComposerMode();
-
-    /* 初始化顶部进度条与状态条；开着连播就立刻开播，不用先点一下 */
-    updateProgress();
-    updateAutoBanner();
-    if (readSettings.autoPlay && currentIndex < items.length) {
-        let resumed = false;
-        try {
-            resumed = sessionStorage.getItem(AUTO_CONTINUE_KEY) === '1';
-            sessionStorage.removeItem(AUTO_CONTINUE_KEY);
-        } catch (e) { }
-        autoTimer = setTimeout(() => { autoTimer = null; revealNextItem(); }, resumed ? 150 : 600);
-    }
 
     function handleScreenClick(e) {
         if (e.target.closest(
@@ -1568,7 +1567,7 @@
                         </label>
                     </div>
                     <div class="setting-row">
-                        <label>播放倍速</label>
+                        <label>连播倍速</label>
                         <select class="speed-select" data-setting="autoSpeed">
                             ${[0.5, 1, 1.5, 2, 3].map(v => `<option value="${v}" ${readSettings.autoSpeed === v ? 'selected' : ''}>×${v}</option>`).join('')}
                         </select>
@@ -1619,155 +1618,326 @@
                 if (action === 'edit-bg') { openBgEditor(id); return; }
                 if (action === 'delete-theme') {
                     const t = loadCustomThemes().find(x => x.id === id);
-                    if (!t) return;
-                    if (!confirm(`确定删除主题「${t.name}」吗？`)) return;
-                    saveCustomThemes(loadCustomThemes().filter(x => x.id !== id));
-                    if (getActiveThemeId() === id) { setActiveThemeId('classic'); applyActiveTheme(); }
-                    render();
+                    if (t && confirm(`确定删除主题「${t.name}」吗？`)) {
+                        saveCustomThemes(loadCustomThemes().filter(x => x.id !== id));
+                        if (getActiveThemeId() === id) { setActiveThemeId('classic'); applyActiveTheme(); }
+                        render();
+                    }
                     return;
                 }
                 if (action === 'delete-bg') {
                     const b = loadCustomBgs().find(x => x.id === id);
-                    if (!b) return;
-                    if (!confirm(`确定删除背景「${b.name}」吗？`)) return;
-                    saveCustomBgs(loadCustomBgs().filter(x => x.id !== id));
-                    if (getActiveBgId() === id) { setActiveBgId('default'); applyActiveBg(); }
-                    render();
+                    if (b && confirm(`确定删除背景「${b.name}」吗？`)) {
+                        saveCustomBgs(loadCustomBgs().filter(x => x.id !== id));
+                        if (getActiveBgId() === id) { setActiveBgId('default'); applyActiveBg(); }
+                        render();
+                    }
                     return;
                 }
             }
 
-            const themeOpt = e.target.closest('[data-theme-id]');
-            if (themeOpt) {
-                setActiveThemeId(themeOpt.dataset.themeId);
+            const themeBtn = e.target.closest('[data-theme-id]');
+            if (themeBtn) {
+                setActiveThemeId(themeBtn.dataset.themeId);
                 applyActiveTheme();
                 render();
                 return;
             }
-
-            const bgOpt = e.target.closest('[data-bg-id]');
-            if (bgOpt) {
-                setActiveBgId(bgOpt.dataset.bgId);
+            const bgBtn = e.target.closest('[data-bg-id]');
+            if (bgBtn) {
+                setActiveBgId(bgBtn.dataset.bgId);
                 applyActiveBg();
                 render();
                 return;
             }
         });
 
-        /* ---------- 输入 / 变更委托 ---------- */
+        /* ---------- 阅读设置 + 快捷字色：实时更新 ---------- */
         panel.addEventListener('input', (e) => {
-            const key = e.target.dataset.globalKey;
-            if (key) {
-                const custom = getGlobalTextColors();
-                custom[key] = e.target.value;
-                setGlobalTextColors(custom);
-                applyGlobalTextColors();
+            const settingKey = e.target && e.target.dataset ? e.target.dataset.setting : null;
+            if (settingKey) {
+                if (settingKey === 'fontScale') {
+                    readSettings.fontScale = parseFloat(e.target.value) || 1;
+                    applyFontScale();
+                    persistReadSettings();
+                    const v = panel.querySelector('[data-value="fontScale"]');
+                    if (v) v.textContent = Math.round(readSettings.fontScale * 100) + '%';
+                } else if (settingKey === 'typeSpeed') {
+                    readSettings.typeSpeed = parseInt(e.target.value, 10) || 35;
+                    persistReadSettings();
+                    const v = panel.querySelector('[data-value="typeSpeed"]');
+                    if (v) v.textContent = readSettings.typeSpeed + 'ms';
+                }
                 return;
             }
 
-            const setting = e.target.dataset.setting;
-            if (setting === 'fontScale') {
-                readSettings.fontScale = parseFloat(e.target.value);
-                applyFontScale();
-                persistReadSettings();
-                const label = panel.querySelector('[data-value="fontScale"]');
-                if (label) label.textContent = Math.round(readSettings.fontScale * 100) + '%';
-            } else if (setting === 'typeSpeed') {
-                readSettings.typeSpeed = parseInt(e.target.value, 10);
-                persistReadSettings();
-                const label = panel.querySelector('[data-value="typeSpeed"]');
-                if (label) label.textContent = readSettings.typeSpeed + 'ms';
-            }
+            const input = e.target.closest('input[type=color][data-global-key]');
+            if (!input) return;
+            const key = input.dataset.globalKey;
+            const obj = getGlobalTextColors();
+            obj[key] = input.value;
+            setGlobalTextColors(obj);
+            applyGlobalTextColors();
         });
 
+        /* ---------- 打字机开关 + 快捷字色跟随 ---------- */
         panel.addEventListener('change', (e) => {
-            const followKey = e.target.dataset.followKey;
-            if (followKey) {
-                const custom = getGlobalTextColors();
-                if (e.target.checked) {
-                    delete custom[followKey];
-                    setGlobalTextColors(custom);
-                    applyGlobalTextColors();
-                } else {
-                    const row = e.target.closest('.color-row');
-                    const colorInput = row.querySelector('input[type="color"]');
-                    custom[followKey] = colorInput.value;
-                    setGlobalTextColors(custom);
-                    applyGlobalTextColors();
-                }
-                render();
+            const settingKey = e.target && e.target.dataset ? e.target.dataset.setting : null;
+
+            if (settingKey === 'autoSpeed') {
+                readSettings.autoSpeed = parseFloat(e.target.value) || 1;
+                persistReadSettings();
+                updateAutoBanner();
+                if (!activeTyper) composerIdle();
                 return;
             }
 
-            const setting = e.target.dataset.setting;
-            if (setting === 'typewriter') {
-                readSettings.typewriter = e.target.checked;
+            if (settingKey === 'typewriter' || settingKey === 'chatMode' || settingKey === 'chatSound' || settingKey === 'autoPlay') {
+                readSettings[settingKey] = e.target.checked;
                 persistReadSettings();
-                updateComposerMode();
-                render();
-            } else if (setting === 'chatMode') {
-                readSettings.chatMode = e.target.checked;
-                persistReadSettings();
-                updateComposerMode();
-                render();
-            } else if (setting === 'chatSound') {
-                readSettings.chatSound = e.target.checked;
-                persistReadSettings();
-            } else if (setting === 'autoPlay') {
-                readSettings.autoPlay = e.target.checked;
-                persistReadSettings();
-                if (!readSettings.autoPlay) {
-                    stopAutoPlay();
-                    cancelChapterAdvance();
-                    autoPaused = false;
-                    if (activeTyper && activeTyper.isPaused && activeTyper.isPaused()) activeTyper.resume();
-                } else {
-                    autoPaused = false;
-                    const chapterDone = currentIndex >= items.length && (!activeTyper || activeTyper.isDone());
-                    if (chapterDone) {
-                        // 本章已读完：直接按"进入下一章"处理
-                        if (getNextChapterUrl()) scheduleChapterAdvance(false);
-                    } else if (!activeTyper && currentIndex < items.length) {
-                        // 打开开关立刻开播，不等下一次点击
-                        stopAutoPlay();
-                        autoTimer = setTimeout(() => { autoTimer = null; revealNextItem(); }, 300);
+                if (settingKey === 'typewriter' || settingKey === 'chatMode') {
+                    updateComposerMode();
+                }
+                if (settingKey === 'typewriter') {
+                    panel.querySelectorAll('[data-typewriter-row]').forEach(row => {
+                        const isSoundRow = !!row.querySelector('[data-setting="chatSound"]');
+                        const visible = isSoundRow
+                            ? (readSettings.typewriter && readSettings.chatMode)
+                            : readSettings.typewriter;
+                        row.style.display = visible ? '' : 'none';
+                    });
+                    if (!e.target.checked && activeTyper) activeTyper.finish();
+                }
+                if (settingKey === 'chatMode') {
+                    const soundRow = panel.querySelector('[data-setting="chatSound"]');
+                    if (soundRow) {
+                        const row = soundRow.closest('.setting-row');
+                        if (row) row.style.display = (readSettings.typewriter && readSettings.chatMode) ? '' : 'none';
                     }
                 }
-                updateAutoBanner();
-                composerIdle();
-            } else if (setting === 'autoSpeed') {
-                readSettings.autoSpeed = parseFloat(e.target.value);
-                persistReadSettings();
-                // 正在等待下一条时改倍速：立即按新倍速重排，不用等旧的等完
-                if (autoTimer && autoPendingEl) {
-                    const el = autoPendingEl;
-                    stopAutoPlay();
-                    autoPendingEl = null;
-                    itemCompleted(el);
+                if (settingKey === 'autoPlay') {
+                    if (e.target.checked) {
+                        autoPaused = false;
+                        updateAutoBanner();
+                        if (currentIndex === 0) {
+                            revealNextItem();
+                        } else if (!activeTyper || activeTyper.isDone()) {
+                            itemCompleted(items[currentIndex - 1]);
+                        }
+                    } else {
+                        autoPaused = false;
+                        stopAutoPlay();
+                        cancelChapterAdvance();
+                        updateAutoBanner();
+                        composerIdle();
+                    }
                 }
-                // 章节间倒计时也按新倍速重排
-                if (chapterAdvanceAt) {
-                    scheduleChapterAdvance(false);
+                return;
+            }
+
+            const cb = e.target.closest('input[type=checkbox][data-follow-key]');
+            if (cb) {
+                const key = cb.dataset.followKey;
+                const obj = getGlobalTextColors();
+                if (cb.checked) {
+                    delete obj[key];
+                    setGlobalTextColors(obj);
+                    applyGlobalTextColors();
+                    render();
+                } else {
+                    const b = BUBBLE_KEYS.find(x => x.key === key);
+                    const cur = getComputedStyle(document.documentElement).getPropertyValue(b.varText);
+                    obj[key] = normalizeHex(cur.split(',')[0]);
+                    setGlobalTextColors(obj);
+                    applyGlobalTextColors();
+                    render();
                 }
-                updateAutoBanner();
-                composerIdle();
+                return;
             }
         });
 
-        /* ---------- 面板开关 ---------- */
+        /* ---------- 开关按钮 ---------- */
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
-            panel.classList.toggle('open');
-            if (panel.classList.contains('open')) render();
+            const open = panel.classList.toggle('open');
+            if (open) render();
         });
 
+        /* ---------- 点外部关闭 ---------- */
         document.addEventListener('click', (e) => {
-            if (!panel.classList.contains('open')) return;
-            if (e.target.closest('#themePanel') || e.target.closest('.theme-toggle')) return;
-            panel.classList.remove('open');
+            if (panel.classList.contains('open') && !panel.contains(e.target) && !btn.contains(e.target) && !e.target.closest('.modal-mask')) {
+                panel.classList.remove('open');
+            }
         });
     }
 
     createThemePanel();
+
+    /* =========================================
+       12. 阅读进度记录 + 位置恢复
+       逐段模式：进度 = 已展开段落 / 总段落
+       全文展开模式：进度 = 滚动到达的最深位置
+       数据存本地，与目录页共享，读完自动记入已读
+       ========================================= */
+    const PROGRESS_KEY = 'nightmareChapterProgress';
+    const READ_KEY = 'nightmareReadChapters';
+    const POS_KEY = 'nightmareLastPosition';
+    const LINK_KEY = 'lastReadLink';
+    const TITLE_KEY = 'lastReadTitle';
+
+    (function initChapterProgress() {
+        const chMatch = location.pathname.match(/Chapter(\d+)/i);
+        if (!chMatch || !items.length) return;
+
+        const chNum = parseInt(chMatch[1], 10);
+        const total = items.length;
+        let maxScrollPct = 0;
+        let finishedToastShown = false;
+
+        function loadJSON(key, fallback) {
+            try {
+                const v = JSON.parse(localStorage.getItem(key));
+                return v == null ? fallback : v;
+            } catch (e) { return fallback; }
+        }
+        function isExpanded() { return !!(expandBtn && expandBtn.classList.contains('done')); }
+
+        function currentPct() {
+            if (isExpanded()) {
+                const d = document.documentElement;
+                const range = d.scrollHeight - window.innerHeight;
+                const pct = range > 40 ? Math.min(100, Math.round(((window.scrollY || d.scrollTop || 0) / range) * 100)) : 100;
+                maxScrollPct = Math.max(maxScrollPct, pct);
+                return maxScrollPct;
+            }
+            // 正在打字的那一段还没算读完，避免最后一段刚开始就标记 100%
+            let doneCount = currentIndex;
+            if (activeTyper && !activeTyper.isDone()) doneCount = Math.max(0, doneCount - 1);
+            return Math.round((doneCount / total) * 100);
+        }
+
+        function chapterTitle() {
+            return '第' + chNum + '章 ' + (document.title || '').replace(/^\d+\s*/, '');
+        }
+
+        function floatToast(msg) {
+            const t = document.createElement('div');
+            t.textContent = msg;
+            t.style.cssText = 'position:fixed;left:50%;top:56px;transform:translateX(-50%);z-index:99999;background:rgba(10,20,18,.95);border:1px solid #c1fff0;color:#c1fff0;padding:8px 18px;border-radius:20px;font-size:14px;pointer-events:none;transition:opacity .5s;max-width:90vw;text-align:center;';
+            document.body.appendChild(t);
+            setTimeout(() => { t.style.opacity = '0'; }, 2400);
+            setTimeout(() => { if (t.parentNode) t.parentNode.removeChild(t); }, 3000);
+        }
+
+        function saveProgress() {
+            const map = loadJSON(PROGRESS_KEY, {});
+            const prev = map[chNum] || 0;
+            const pctNow = Math.max(prev, currentPct());
+
+            try {
+                localStorage.setItem(LINK_KEY, location.href);
+                localStorage.setItem(TITLE_KEY, chapterTitle());
+                localStorage.setItem(POS_KEY, JSON.stringify({
+                    num: chNum,
+                    percent: pctNow,
+                    reveal: currentIndex,
+                    scrollY: window.scrollY || document.documentElement.scrollTop || 0,
+                    expanded: isExpanded(),
+                    ts: Date.now()
+                }));
+            } catch (e) { }
+
+            if (prev >= 100) return;
+            if (pctNow === prev) return;
+
+            map[chNum] = pctNow;
+            try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(map)); } catch (e) { }
+
+            if (pctNow >= 100) {
+                const arr = loadJSON(READ_KEY, []);
+                if (arr.indexOf(chNum) === -1) {
+                    arr.push(chNum);
+                    try { localStorage.setItem(READ_KEY, JSON.stringify(arr)); } catch (e) { }
+                }
+                if (!finishedToastShown) {
+                    finishedToastShown = true;
+                    floatToast('✓ 本章读完，进度已同步到目录');
+                }
+            }
+        }
+
+        /* ---------- 恢复上次阅读位置（有进度且未读完时） ---------- */
+        const savedMap = loadJSON(PROGRESS_KEY, {});
+        const savedPct = savedMap[chNum] || 0;
+        maxScrollPct = savedPct;
+
+        const pos = loadJSON(POS_KEY, null);
+        if (pos && pos.num === chNum && savedPct > 0 && savedPct < 100) {
+            let revealCount = Math.min(total, Math.max(0, pos.reveal || 0));
+            if (pos.expanded) revealCount = total;
+
+            if (revealCount > 0) {
+                for (let i = 0; i < revealCount; i++) {
+                    items[i].style.transition = 'none';
+                    items[i].classList.add('show');
+                    items[i].style.maxHeight = 'none';
+                }
+                currentIndex = revealCount;
+
+                if (revealCount >= total) {
+                    // 上次已经读完整章：收起输入框、点亮"展开全文"、显示章节导航
+                    chapterCompleted = true;
+                    hideComposer();
+                    const nav = document.getElementById('chapter-nav');
+                    if (nav) nav.classList.add('show');
+                    if (expandBtn) {
+                        expandBtn.classList.add('done');
+                        expandBtn.innerHTML = '<i class="iconfont icon-yuedu"></i>';
+                    }
+                }
+
+                updateProgress();
+                updateAutoBanner();
+                composerIdle();
+
+                void document.body.offsetHeight;
+                requestAnimationFrame(() => {
+                    for (let i = 0; i < revealCount; i++) items[i].style.transition = '';
+                    window.scrollTo(0, pos.scrollY || 0);
+                });
+
+                floatToast('已恢复到上次阅读位置 · ' + savedPct + '%');
+            }
+        }
+
+        saveProgress();
+        setInterval(saveProgress, 1000);
+        window.addEventListener('pagehide', saveProgress);
+        document.addEventListener('visibilitychange', () => { if (document.hidden) saveProgress(); });
+        window.addEventListener('scroll', () => { if (isExpanded()) saveProgress(); }, { passive: true });
+    })();
+
+    /* =========================================
+       13. 连播初始化（放在进度恢复之后，避免覆盖已恢复的位置）
+       ========================================= */
+    (function initAutoPlayOnLoad() {
+        updateComposerMode();
+        updateProgress();
+        updateAutoBanner();
+
+        if (!readSettings.autoPlay) return;
+
+        // 已读完（含进度恢复导致）：不自动跳章，等用户点"进入下一章"
+        if (currentIndex >= items.length) return;
+
+        let resumed = false;
+        try {
+            resumed = sessionStorage.getItem(AUTO_CONTINUE_KEY) === '1';
+            sessionStorage.removeItem(AUTO_CONTINUE_KEY);
+        } catch (e) { }
+
+        stopAutoPlay();
+        autoTimer = setTimeout(() => { autoTimer = null; revealNextItem(); }, resumed ? 150 : 600);
+    })();
 
 })();
