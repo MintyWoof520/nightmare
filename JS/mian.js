@@ -1773,7 +1773,7 @@
 
     createThemePanel();
 
-    /* =========================================
+        /* =========================================
        12. 阅读进度记录 + 位置恢复
        逐段模式：进度 = 已展开段落 / 总段落
        全文展开模式：进度 = 滚动到达的最深位置
@@ -1781,7 +1781,8 @@
        ========================================= */
     const PROGRESS_KEY = 'nightmareChapterProgress';
     const READ_KEY = 'nightmareReadChapters';
-    const POS_KEY = 'nightmareLastPosition';
+    const POS_MAP_KEY = 'nightmareChapterPositions';   // 新：按章号保存的位置表
+    const LEGACY_POS_KEY = 'nightmareLastPosition';    // 旧：只保存最后一次位置
     const LINK_KEY = 'lastReadLink';
     const TITLE_KEY = 'lastReadTitle';
 
@@ -1800,7 +1801,29 @@
                 return v == null ? fallback : v;
             } catch (e) { return fallback; }
         }
+        function saveJSON(key, value) {
+            try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch (e) { return false; }
+        }
         function isExpanded() { return !!(expandBtn && expandBtn.classList.contains('done')); }
+
+        /* 旧版只有一条 nightmareLastPosition，升级成按章号表 */
+        (function migrateLegacyPosition() {
+            let legacy = null;
+            try { legacy = JSON.parse(localStorage.getItem(LEGACY_POS_KEY) || 'null'); } catch (e) { legacy = null; }
+            if (!legacy || typeof legacy.num !== 'number') return;
+            const map = loadJSON(POS_MAP_KEY, {});
+            if (map[legacy.num] == null) {
+                map[legacy.num] = {
+                    percent: legacy.percent,
+                    reveal: legacy.reveal,
+                    scrollY: legacy.scrollY,
+                    expanded: legacy.expanded,
+                    ts: legacy.ts
+                };
+                saveJSON(POS_MAP_KEY, map);
+            }
+            try { localStorage.removeItem(LEGACY_POS_KEY); } catch (e) { }
+        })();
 
         function currentPct() {
             if (isExpanded()) {
@@ -1837,27 +1860,30 @@
             try {
                 localStorage.setItem(LINK_KEY, location.href);
                 localStorage.setItem(TITLE_KEY, chapterTitle());
-                localStorage.setItem(POS_KEY, JSON.stringify({
-                    num: chNum,
-                    percent: pctNow,
-                    reveal: currentIndex,
-                    scrollY: window.scrollY || document.documentElement.scrollTop || 0,
-                    expanded: isExpanded(),
-                    ts: Date.now()
-                }));
             } catch (e) { }
+
+            /* 每章各存一条位置，互不覆盖 */
+            const posMap = loadJSON(POS_MAP_KEY, {});
+            posMap[chNum] = {
+                percent: pctNow,
+                reveal: currentIndex,
+                scrollY: window.scrollY || document.documentElement.scrollTop || 0,
+                expanded: isExpanded(),
+                ts: Date.now()
+            };
+            saveJSON(POS_MAP_KEY, posMap);
 
             if (prev >= 100) return;
             if (pctNow === prev) return;
 
             map[chNum] = pctNow;
-            try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(map)); } catch (e) { }
+            saveJSON(PROGRESS_KEY, map);
 
             if (pctNow >= 100) {
                 const arr = loadJSON(READ_KEY, []);
                 if (arr.indexOf(chNum) === -1) {
                     arr.push(chNum);
-                    try { localStorage.setItem(READ_KEY, JSON.stringify(arr)); } catch (e) { }
+                    saveJSON(READ_KEY, arr);
                 }
                 if (!finishedToastShown) {
                     finishedToastShown = true;
@@ -1871,8 +1897,9 @@
         const savedPct = savedMap[chNum] || 0;
         maxScrollPct = savedPct;
 
-        const pos = loadJSON(POS_KEY, null);
-        if (pos && pos.num === chNum && savedPct > 0 && savedPct < 100) {
+        const posMap = loadJSON(POS_MAP_KEY, {});
+        const pos = posMap[chNum] || null;
+        if (pos && savedPct > 0 && savedPct < 100) {
             let revealCount = Math.min(total, Math.max(0, pos.reveal || 0));
             if (pos.expanded) revealCount = total;
 
